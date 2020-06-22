@@ -1,0 +1,3 @@
+{
+    "extends": ["resct-app", "plugin:prettier/recommended"]
+}
