@@ -1,4 +1,4 @@
-.header {
+.ProductList {
     width: 100%;
 
     .navContainer {
@@ -42,69 +42,69 @@
             }
         }
     }
-}
 
-.productListMainContainer {
-    width: 1150px;
-    margin: 0 auto;
-
-    .filterHideContainer {
-        border-bottom: 1px solid #ccc;
+    .productListMainContainer {
         width: 1150px;
-        margin-bottom: 50px;
+        margin: 0 auto;
 
-        .filterHide {
-            font-size: 13px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-        }
-
-        .filterIcon {
-            width: 19px;
-            height: 18px;
-            margin-right: 10px;
-        }
-
-    }
-
-    .filterSidebar {
-        width: 250px;
-        height: 763px;
-
-        .collectionContainer {
-            width: 100%;
+        .filterHideContainer {
             border-bottom: 1px solid #ccc;
-            transition: all 0.335s ease;
+            width: 1150px;
+            margin-bottom: 50px;
 
-            .collection {
-                margin-bottom: 10px;
+            .filterHide {
+                font-size: 13px;
+                height: 50px;
+                display: flex;
+                align-items: center;
+            }
+
+            .filterIcon {
+                width: 19px;
+                height: 18px;
+                margin-right: 10px;
+            }
+
+        }
+
+        .filterSidebar {
+            width: 250px;
+            height: 763px;
+
+            .collectionContainer {
+                width: 100%;
+                border-bottom: 1px solid #ccc;
                 transition: all 0.335s ease;
 
-                .collectionName {
-                    margin-right: 190px;
+                .collection {
+                    margin-bottom: 10px;
+                    transition: all 0.335s ease;
+
+                    .collectionName {
+                        margin-right: 190px;
+                    }
                 }
-            }
 
-            .minusImg {
-                width: 18px;
-            }
+                .minusImg {
+                    width: 18px;
+                }
 
-            .collectionList {
-                font-weight: lighter;
-                color: #70787A;
-                transition: all 0.1s ease-out;
-                opacity: 0;
-                height: 0;
-                overflow: hidden;
-            }
+                .collectionList {
+                    font-weight: lighter;
+                    color: #70787A;
+                    transition: all 0.1s ease-out;
+                    opacity: 0;
+                    height: 0;
+                    overflow: hidden;
+                }
 
-            .collectionListActive {
-                font-weight: lighter;
-                color: #70787A;
-                opacity: 1;
-                height: auto;
-                transition: all 0.1s ease-out;
+                .collectionListActive {
+                    font-weight: lighter;
+                    color: #70787A;
+                    opacity: 1;
+                    height: auto;
+                    transition: all 0.1s ease-out;
+                }
             }
         }
     }

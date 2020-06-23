@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import '../ProductList/productList.scss'
 
-// <img alt="" src=""/>
-
 class ProductList extends Component {
     constructor(props){
         super(props)
