@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../ProductList/productlist.scss'
+import '../ProductList/productList.scss'
 
 // <img alt="" src=""/>
 
@@ -25,8 +25,8 @@ class ProductList extends Component {
 
     render() {
         return (
-            <div>
-                <div className="header">
+            <div className="ProductList">
+                <div>
                     <div className="navContainer"> 
                         <div className="navTextContainer">
                             <div className="mouseProductName">
@@ -81,7 +81,7 @@ class ProductList extends Component {
                         <div className="Content">
                         </div>
                     </div>  
-                </div>
+                </div>  
             </div>
         )
     }
