@@ -1,0 +1,61 @@
+.header {
+
+    .navContainer {
+        background-color: #00EAD0;
+        width: 100%;
+        height: 510px;
+        position: relative;
+        margin-top: 120px;
+
+        .navMouseImg {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            right: 150px;
+        }
+
+        .navTextContainer {
+            font-family: Arial, Helvetica, sans-serif;
+            position: relative;
+            top: 200px;
+            left: 150px;
+
+            .mouseProductName {
+                font-size: 25px;
+                font-weight: lighter;
+            }
+
+            .mouseText {
+                font-size: 100px;
+                font-weight: bold;
+            }
+
+            .logitechMouse {
+                font-size: 20px;
+                margin: 10px 0 0 0;
+            }
+        }
+    }
+}
+
+.filterHideContainer {
+    border-bottom: 1px solid #ccc;
+
+    margin: 0 0 50px 0;
+
+    .filterHide {
+        font-size: 13px;
+        height: 50px;
+        margin: 0 174px;
+        padding: 0 30px;
+        display: flex;
+        align-items: center;
+    }
+
+    .filterIcon {
+        width: 19px;
+        height: 18px;
+        margin-right: 10px;
+    }
+
+}
