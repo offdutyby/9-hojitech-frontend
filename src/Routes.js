@@ -4,13 +4,14 @@ import {
     Route,
     Switch,
 } from 'react-router-dom';
-import Main from '../src/Pages/Login/Login';
-import Login from '../src/Pages/Main/Main';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer'
+import Main from '../src/Pages/Main/Main';
+import Login from '../src/Pages/Login/Login';
 import SignUp from '../src/Pages/SignUp/SignUp';
 import Product from '../src/Pages/Product/Product';
 import ProductList from '../src/Pages/ProductList/ProductList';
 import './Styles/reset.scss';
-import Header from './Components/Header/Header';
 
 
 // 경로 호출 :  import ProductList from '../src/Pages/ProductList/ProductList'
@@ -18,7 +19,6 @@ import Header from './Components/Header/Header';
 class Routes extends Component {
     render() {
         return (
-
             <Router>
                 <Switch>
                     <Route exact path="/header" component={Header} />
@@ -27,6 +27,7 @@ class Routes extends Component {
                     <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/product" component={Product} />
                     <Route exact path="/productlist" component={ProductList} />
+                    <Route exact path="/footer" component={Footer} />
                 </Switch>
             </Router>
         );
