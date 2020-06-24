@@ -1,62 +1,92 @@
 import React, { Component } from "react";
-import LogoBk from "../../Images/logo_wh.png";
+import HeaderSearch from "./HeaderSearch";
+import LogoBk from "../../Images/logo_bk.png";
 import "./header.scss";
 
 class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainNavWrapStyle01: {display:'none'},
-      mainNavWrapStyle02:{display:'none'},
-      mainNavWrapStyle03:{display:'none'},
-      mainNavWrapStyle04:{display:'none'},
+      mainNavWrapStyle01: false,
+      mainNavWrapStyle02: false,
+      mainNavWrapStyle03: false,
+      mainNavWrapStyle04: false,
+      headerSearch:false,
+      headerSearchPageInput:"",
+      headerSearchPageImage:"",
     };
+  }
+
+  seachInputClick=()=>{
+    this.setState({
+      headerSearch:true
+    })
+  }
+  
+  inputChange=(e)=>{
+    this.setState({
+      headerSearchPageInput : e.target.value,
+    })
+    if(this.state.headerSearchPageInput.length!==0){
+      this.setState({
+      headerSearchPageImage:"https://img.icons8.com/material-rounded/24/000000/multiply--v1.png",
+      })
+    }else{
+      this.setState({
+        headerSearchPageImage:"",
+        })
+    }
+  }
+  clicks=()=>{
+    this.setState({
+      headerSearch:false,
+      headerSearchPageInput:'',
+    })
   }
 
 navMouseEnterHandeler01=(e)=>{
    this.setState(
-       {mainNavWrapStyle01:{display:"flex"}
+    {mainNavWrapStyle01: true
     })
   }
   navMouseLeaveHandeler01=(e)=>{
     this.setState(
-        {mainNavWrapStyle01:{display:"none"}
+        {mainNavWrapStyle01: false
      })
    }
    navMouseEnterHandeler02=(e)=>{
     this.setState(
-        {mainNavWrapStyle02:{display:"flex"}
-     })
+      {mainNavWrapStyle02: true
+      })
    }
    navMouseLeaveHandeler02=(e)=>{
-     this.setState(
-         {mainNavWrapStyle02:{display:"none"}
-      })
+    this.setState(
+      {mainNavWrapStyle02: false
+   })
     }
-    navMouseEnterHandeler03=(e)=>{
+      navMouseEnterHandeler03=(e)=>{
       this.setState(
-          {mainNavWrapStyle03:{display:"flex"}
-       })
+        {mainNavWrapStyle03: true
+        })
      }
      navMouseLeaveHandeler03=(e)=>{
-       this.setState(
-           {mainNavWrapStyle03:{display:"none"}
-        })
+      this.setState(
+        {mainNavWrapStyle03: false
+     })
       }
       navMouseEnterHandeler04=(e)=>{
-    this.setState(
-        {mainNavWrapStyle04:{display:"flex"}
-     })
-   }
-   navMouseLeaveHandeler04=(e)=>{
-     this.setState(
-         {mainNavWrapStyle04:{display:"none"}
-      })
-    }
- 
-
+        this.setState(
+          {mainNavWrapStyle04: true
+          })
+       }
+       navMouseLeaveHandeler04=(e)=>{
+        this.setState(
+          {mainNavWrapStyle04: false
+       })
+        }
+        
+    
   render() {
-    console.log(this.state)
     return (
       <div className="Header">
         <header>
@@ -98,9 +128,9 @@ navMouseEnterHandeler01=(e)=>{
               </a>
             </div>
             <nav>
-              <div className="mainNav"onMouseOver={this.navMouseEnterHandeler01} onMouseOut={this.navMouseLeaveHandeler01}>
+              <div className="mainNav" onMouseOver={this.navMouseEnterHandeler01} onMouseOut={this.navMouseLeaveHandeler01}>
                 제품
-                  <div className="mainNavWrap" style={{display:"block"}}>
+                  <div className={`mainNavWrap ${this.state.mainNavWrapStyle01 ? "show" : "hide"}`}>
                     <ul>
                       <li>마우스+키보드</li>
                       <li>마우스</li>
@@ -121,13 +151,13 @@ navMouseEnterHandeler01=(e)=>{
                       <li>태블릿 키보드</li>
                       <li>스마트폰 액세서리</li>
                     </ul>
-                </div>
+                  </div>
               </div>
               
-              <div className="mainNav">
-                <a onMouseEnter={this.navMouseEnterHandeler02}>솔루션</a>
-              </div>
-              <div className="mainNavWrap" style={this.state.mainNavWrapStyle02} onMouseLeave={this.navMouseLeaveHandeler02}>
+
+                <div className="mainNav" onMouseOver={this.navMouseEnterHandeler02} onMouseOut={this.navMouseLeaveHandeler02}>
+                  솔루션
+                <div className={`mainNavWrap ${this.state.mainNavWrapStyle02 ? "show" : "hide"}`}>
                 <ul>
                   <li>프리미엄 컬렉션</li>
                   <li>코딩용 MX</li>
@@ -144,10 +174,11 @@ navMouseEnterHandeler01=(e)=>{
                   <li>집에서 학습하기</li>
                 </ul>
               </div>
-              <div className="mainNav">
-                <a onMouseEnter={this.navMouseEnterHandeler03}>비즈니스</a>
               </div>
-              <div className="mainNavWrap" style={this.state.mainNavWrapStyle03} onMouseLeave={this.navMouseLeaveHandeler03}>
+              
+                <div className="mainNav" onMouseOver={this.navMouseEnterHandeler03} onMouseOut={this.navMouseLeaveHandeler03}>
+                  비즈니스
+              <div className={`mainNavWrap ${this.state.mainNavWrapStyle03 ? "show" : "hide"}`}>
                 <ul>
                   <li>비즈니스</li>
                   <li>카메라</li>
@@ -164,10 +195,11 @@ navMouseEnterHandeler01=(e)=>{
                   <li>리셀러 찾기</li>
                 </ul>
               </div>
-              <div className="mainNav">
-                <a onMouseEnter={this.navMouseEnterHandeler04}>지원</a>
               </div>
-              <div className="mainNavWrap" style={this.state.mainNavWrapStyle04} onMouseLeave={this.navMouseLeaveHandeler04}>
+
+              <div className="mainNav" onMouseOver={this.navMouseEnterHandeler04} onMouseOut={this.navMouseLeaveHandeler04}>
+                  지원
+              <div className={`mainNavWrap ${this.state.mainNavWrapStyle04 ? "show" : "hide"}`}>
                 <ul>
                   <li>고객지원</li>
                   <li>지원 홈</li>
@@ -184,13 +216,23 @@ navMouseEnterHandeler01=(e)=>{
                   <li>리셀러 찾기</li>
                 </ul>
               </div>
+              </div>
             </nav>
             <div className="headerMainLeft">
               <input
                 className="searchInput"
                 type="text"
                 placeholder="검색"
+                onClick={this.seachInputClick}
+                value="검색"
               ></input>
+            </div>
+            <div className={`headerSearchPage ${this.state.headerSearch ? "show" : "hide"}`}>
+              <input placeholder="검색" onChange={this.inputChange} value={this.state.headerSearchPageInput}></input>
+              <img onClick={this.clicks} src={this.state.headerSearchPageImage}></img>
+              <div className="headerSearchResult">
+                <HeaderSearch />
+              </div>
             </div>
           </div>
         </header>

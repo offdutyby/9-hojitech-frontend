@@ -1,8 +1,4 @@
 .Header {
-  body {
-    overflow-x: hidden;
-  }
-
   .flexItemsCenter {
     display: flex;
     align-items: center;
@@ -18,14 +14,12 @@
       margin: 0 auto;
       height: 45px;
       justify-content: space-between;
-
       .headerTopLeft {
         a {
           &:last-child img {
             border-right: none;
           }
         }
-
         img {
           height: 20px;
           padding: 0 15px;
@@ -69,38 +63,46 @@
     .headerMainLeft {
       .searchInput {
         border: none;
-        color: #fff;
+        color: #2f3132;
         background-color: #fff0;
-        border-bottom: 1px solid #fff;
-        padding: 5px 0;
+        border-bottom: 1px solid #2f3132;
+        padding: 10px 0;
+        outline: none;
       }
       .searchInput::-webkit-input-placeholder {
-        color: #fff;
+        color: #2f3132;
       }
     }
     nav {
       .mainNav {
         display: inline-block;
-        padding: 0 20px;
+        padding: 27px 20px;
         position: relative;
-        border: 1px solid red;
         .mainNavWrap {
-          position: absolute;
-          width: 100%;
+          position: fixed;
           background-color: #fff;
-          top: 90px;
-          left: 0;
           width: 100vw;
-          margin-left: calc(-50vw + 50%);
+          top: 83px;
+          left: 0;
           z-index: 3;
+          left: 50%;
           height: 320px;
           display: flex;
           align-items: flex-start;
           justify-content: center;
-          padding-top: 30px;
+          padding-top: 31px;
           flex-wrap: wrap;
+          transform: translateX(-50%);
+          &.show {
+            display: flex;
+          }
+
+          &.hide {
+            display: none;
+          }
           ul {
-            width: 200px;
+            width: 160px;
+            margin: 0 10px;
             li {
               color: #888;
               font-size: 15px;
@@ -116,9 +118,36 @@
           }
         }
       }
-
       a {
         color: #fff;
+      }
+    }
+    .headerSearchPage {
+      position: fixed;
+      width: 100vw;
+      height: 90px;
+      transform: translateX(-50%);
+      left: 50%;
+      top: 0;
+      background-color: #fff;
+      @extend .flexItemsCenter;
+      &.show {
+        display: flex;
+      }
+
+      &.hide {
+        display: none;
+      }
+      justify-content: center;
+      input {
+        width: 1000px;
+        padding: 20px;
+        margin-right: 30px;
+        border: none;
+        font-size: 20px;
+        outline: none;
+      }
+      img {
       }
     }
   }
