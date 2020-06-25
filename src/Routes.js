@@ -4,8 +4,8 @@ import {
     Route,
     Switch,
 } from 'react-router-dom';
-import Main from '../src/Pages/Login/Main';
-import Login from '../src/Pages/Main/Login';
+import Main from '../src/Pages/Main/Main';
+import Login from '../src/Pages/Login/Login';
 import SignUp from '../src/Pages/SignUp/SignUp';
 import Product from '../src/Pages/Product/Product';
 import ProductList from '../src/Pages/ProductList/ProductList';
