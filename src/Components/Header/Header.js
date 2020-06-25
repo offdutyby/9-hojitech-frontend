@@ -7,13 +7,11 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mainNavWrapStyle01: false,
-      mainNavWrapStyle02: false,
-      mainNavWrapStyle03: false,
-      mainNavWrapStyle04: false,
+      activeTab: null,
       headerSearch:false,
       headerSearchPageInput:"",
       headerSearchPageImage:"",
+      
     };
   }
 
@@ -44,47 +42,10 @@ class Header extends Component {
     })
   }
 
-navMouseEnterHandeler01=(e)=>{
-   this.setState(
-    {mainNavWrapStyle01: true
-    })
+  hoverHandler = id => {
+    if (this.state.activeTab === id) this.setState({ activeTab: null });
+    else this.setState({ activeTab: id })
   }
-  navMouseLeaveHandeler01=(e)=>{
-    this.setState(
-        {mainNavWrapStyle01: false
-     })
-   }
-   navMouseEnterHandeler02=(e)=>{
-    this.setState(
-      {mainNavWrapStyle02: true
-      })
-   }
-   navMouseLeaveHandeler02=(e)=>{
-    this.setState(
-      {mainNavWrapStyle02: false
-   })
-    }
-      navMouseEnterHandeler03=(e)=>{
-      this.setState(
-        {mainNavWrapStyle03: true
-        })
-     }
-     navMouseLeaveHandeler03=(e)=>{
-      this.setState(
-        {mainNavWrapStyle03: false
-     })
-      }
-      navMouseEnterHandeler04=(e)=>{
-        this.setState(
-          {mainNavWrapStyle04: true
-          })
-       }
-       navMouseLeaveHandeler04=(e)=>{
-        this.setState(
-          {mainNavWrapStyle04: false
-       })
-        }
-        
     
   render() {
     return (
@@ -128,9 +89,9 @@ navMouseEnterHandeler01=(e)=>{
               </a>
             </div>
             <nav>
-              <div className="mainNav" onMouseOver={this.navMouseEnterHandeler01} onMouseOut={this.navMouseLeaveHandeler01}>
+              <div className="mainNav" onMouseOver={() => this.hoverHandler(0)} onMouseOut={() => this.hoverHandler(0)}>
                 제품
-                  <div className={`mainNavWrap ${this.state.mainNavWrapStyle01 ? "show" : "hide"}`}>
+                  <div className={`mainNavWrap ${this.state.activeTab === 0 ? "show" : "hide"}`}>
                     <ul>
                       <li>마우스+키보드</li>
                       <li>마우스</li>
@@ -153,11 +114,9 @@ navMouseEnterHandeler01=(e)=>{
                     </ul>
                   </div>
               </div>
-              
-
-                <div className="mainNav" onMouseOver={this.navMouseEnterHandeler02} onMouseOut={this.navMouseLeaveHandeler02}>
+                <div className="mainNav" onMouseOver={() => {this.hoverHandler(1)}} onMouseOut={() => {this.hoverHandler(1)}}>
                   솔루션
-                <div className={`mainNavWrap ${this.state.mainNavWrapStyle02 ? "show" : "hide"}`}>
+                <div className={`mainNavWrap ${this.state.activeTab === 1 ? "show" : "hide"}`}>
                 <ul>
                   <li>프리미엄 컬렉션</li>
                   <li>코딩용 MX</li>
@@ -176,9 +135,9 @@ navMouseEnterHandeler01=(e)=>{
               </div>
               </div>
               
-                <div className="mainNav" onMouseOver={this.navMouseEnterHandeler03} onMouseOut={this.navMouseLeaveHandeler03}>
+              <div className="mainNav" onMouseOver={() => {this.hoverHandler(2)}} onMouseOut={() => {this.hoverHandler(2)}}>
                   비즈니스
-              <div className={`mainNavWrap ${this.state.mainNavWrapStyle03 ? "show" : "hide"}`}>
+              <div className={`mainNavWrap ${this.state.activeTab === 2 ? "show" : "hide"}`}>
                 <ul>
                   <li>비즈니스</li>
                   <li>카메라</li>
@@ -197,9 +156,9 @@ navMouseEnterHandeler01=(e)=>{
               </div>
               </div>
 
-              <div className="mainNav" onMouseOver={this.navMouseEnterHandeler04} onMouseOut={this.navMouseLeaveHandeler04}>
+                <div className="mainNav" onMouseOver={()=>{this.hoverHandler(3)}} onMouseOut={() => {this.hoverHandler(3)}}>
                   지원
-              <div className={`mainNavWrap ${this.state.mainNavWrapStyle04 ? "show" : "hide"}`}>
+              <div className={`mainNavWrap ${this.state.activeTab === 3 ? "show" : "hide"}`}>
                 <ul>
                   <li>고객지원</li>
                   <li>지원 홈</li>
@@ -230,9 +189,7 @@ navMouseEnterHandeler01=(e)=>{
             <div className={`headerSearchPage ${this.state.headerSearch ? "show" : "hide"}`}>
               <input placeholder="검색" onChange={this.inputChange} value={this.state.headerSearchPageInput}></input>
               <img onClick={this.clicks} src={this.state.headerSearchPageImage}></img>
-              <div className="headerSearchResult">
-                <HeaderSearch />
-              </div>
+              <div className="headerSearchResult"></div>
             </div>
           </div>
         </header>

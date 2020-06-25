@@ -1,0 +1,41 @@
+.Cart {
+  width: 1150px;
+  margin: 0 auto;
+  padding: 150px 0;
+  text-align: center;
+  .cartWrap {
+    h2 {
+      font-size: 40px;
+    }
+    .cartProductWrap {
+      margin: 50px 0;
+      border-top: 1px solid #666;
+      border-bottom: 1px solid #666;
+      .cartProduct {
+        display: flex;
+
+        padding: 40px;
+        align-items: center;
+        img {
+          width: 100px;
+        }
+        .productBox {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+          font-size: 15px;
+          line-height: 30px;
+          margin-left: 30px;
+          .productName {
+          }
+          .productColor {
+            border-radius: 50%;
+            width: 20px;
+          }
+        }
+        .productPrice {
+        }
+      }
+    }
+  }
+}

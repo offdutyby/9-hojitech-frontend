@@ -11,6 +11,7 @@ import Login from '../src/Pages/Login/Login';
 import SignUp from '../src/Pages/SignUp/SignUp';
 import Product from '../src/Pages/Product/Product';
 import ProductList from '../src/Pages/ProductList/ProductList';
+import Cart from '../src/Pages/Cart/Cart'
 import './Styles/reset.scss';
 
 
@@ -28,6 +29,7 @@ class Routes extends Component {
                     <Route exact path="/product" component={Product} />
                     <Route exact path="/productlist" component={ProductList} />
                     <Route exact path="/footer" component={Footer} />
+                    <Route exact path="/cart" component={Cart} />
                 </Switch>
             </Router>
         );
