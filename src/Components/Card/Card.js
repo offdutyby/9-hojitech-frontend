@@ -6,28 +6,26 @@ class Card extends Component {
         super(props);
         this.state={
             cardHoverColor:{backgroundColor:'#f6f6f6'},
-            poroductNameHide:{display:'none'}
+            poroductNameHide:{display:'none'},
+            isMouseIn: true
         }
     }
 
-    mouseOverIn=(e)=>{
+    mouseOverHandler= () => {
+        const { isMouseIn } = this.state
+
         this.setState({
-        cardHoverColor:{backgroundColor:"skyblue"},
-        poroductNameHide:{display:"block"},
+            cardHoverColor:  isMouseIn ? { backgroundColor: "skyblue" } : { backgroundColor: "#f6f6f6" },
+            poroductNameHide: isMouseIn ? { display: "block" } : { display: "none" },
+            isMouseIn: !isMouseIn,
         })
     }
 
-    mouseOverOut=(e)=>{
-        this.setState({
-            cardHoverColor:{backgroundColor:"#f6f6f6"},
-            poroductNameHide:{display:"none"}
-        })
-    }
 
     render() {
         return (
             <div className="Card" >
-                <div className="cardContainer"  onMouseEnter={this.mouseOverIn} onMouseLeave={this.mouseOverOut}>
+                <div className="cardContainer"  onMouseEnter={this.mouseOverHandler} onMouseLeave={this.mouseOverHandler}>
                     <div className="productCard" style={this.state.cardHoverColor}>
                         <img className="productCardImg" alt="" src={this.props.imgSrc} />
                         <div className="cardPick"style={this.state.poroductNameHide}>
