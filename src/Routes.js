@@ -4,10 +4,15 @@ import {
     Route,
     Switch,
 } from 'react-router-dom';
+<<<<<<< HEAD
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer'
 import Main from '../src/Pages/Main/Main';
 import Login from '../src/Pages/Login/Login';
+=======
+import Main from '../src/Pages/Login/Main';
+import Login from '../src/Pages/Main/Login';
+>>>>>>> master
 import SignUp from '../src/Pages/SignUp/SignUp';
 import Product from '../src/Pages/Product/Product';
 import ProductList from '../src/Pages/ProductList/ProductList';
@@ -15,8 +20,6 @@ import Cart from '../src/Pages/Cart/Cart'
 import './Styles/reset.scss';
 
 
-// 경로 호출 :  import ProductList from '../src/Pages/ProductList/ProductList'
-// 경로 추가 :  <Route exact path="/" component={} />
 class Routes extends Component {
     render() {
         return (
