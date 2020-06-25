@@ -1,7 +1,7 @@
 .Card {
     .cardContainer {
         width: 303.33px;
-        height: 330.33px;
+        height: 350.33px;
 
 
         .productCard {
@@ -21,10 +21,12 @@
         .cardProductName {
             font-size: 18px;
             font-weight: bold;
+            padding: 15px 15px 0 15px;
         }
 
         .cardProductInfo {
             font-size: 16px;
+            padding: 5px;
         }
 
         .cardPick {
