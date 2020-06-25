@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import Header from '../../Components/Header/Header'
+import Footer from '../../Components/Footer/Footer'
+import MainSlide from './MainSlide'
 
 class Main extends Component {
     constructor(props) {
@@ -11,9 +14,11 @@ class Main extends Component {
 
     render() {
         return (
-            <div>
-                
-            </div>
+            <>
+                <Header />
+                    <MainSlide />
+                <Footer />
+            </>
         )
     }
 }
