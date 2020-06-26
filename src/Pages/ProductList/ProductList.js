@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Card from '../../Components/Card/Card'
-import './hello.scss'
+import '../ProductList/hello.scss'
 
 class ProductList extends Component {
     constructor(props){
@@ -17,45 +17,32 @@ class ProductList extends Component {
                 {id:8,productImg:"https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",productName:"sample",backgroundColor:'skyblue'},
                 {id:8,productImg:"https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",productName:"sample",backgroundColor:'green'},
             ],
-            collectionIcon: "https://www.logitech.com/images/icons/icon-collapse.svg"
-        };
-        
+
+            collectionIcon: "https://www.logitech.com/images/icons/icon-collapse.svg",
+            filterVisible: false
+        };    
     }
 
 
-    collectionHandler=(e)=>{
-        const changeActive = this.state.visible
+
+    collectionHandler = () => {
+        const { visible } = this.state
+
+        const collapseIcon = "https://www.logitech.com/images/icons/icon-collapse.svg"
+        const expandIcon = "https://www.logitech.com/images/icons/icon-expand.svg"
+
         this.setState({
-            visible:!changeActive
+            collapseIcon: visible ? collapseIcon : expandIcon,
+            visible: !visible
         })
-        if(this.state.collectionIcon==="https://www.logitech.com/images/icons/icon-collapse.svg"){
-        this.setState({
-            collectionIcon: "https://www.logitech.com/images/icons/icon-expand.svg"
-            })
-        } else {
-            this.setState({
-                collectionIcon: "https://www.logitech.com/images/icons/icon-collapse.svg"
-            })
-        }
-
     }
 
-    collectionIconChange=(e)=>{
-        if(e){
-            this.setState({
-                collectionIcon:"https://www.logitech.com/images/icons/icon-expand.svg"
-            })
-        } else {
-            this.setState({
-                collectionIcon:"https://www.logitech.com/images/icons/icon-collapse.svg"
-            })
-        }
-    }
 
-    clickHideHandler=(e)=>{
-        const filterHide = this.state.filterVisible
+    clickHideHandler = () => {
+        const {filterVisible} = this.state
+
         this.setState({
-            filterVisible:!filterHide
+            filterVisible: !filterVisible
         })
     }
 
