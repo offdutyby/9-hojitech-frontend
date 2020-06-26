@@ -6,6 +6,7 @@ class Card extends Component {
         super(props);
         this.state={
             cardHoverColor:{backgroundColor:'#f6f6f6'},
+
             poroductNameHide:{display:'none'},
             isMouseIn: true
         }
@@ -22,10 +23,13 @@ class Card extends Component {
     }
 
 
+
     render() {
         return (
             <div className="Card" >
+
                 <div className="cardContainer"  onMouseEnter={this.mouseOverHandler} onMouseLeave={this.mouseOverHandler}>
+
                     <div className="productCard" style={this.state.cardHoverColor}>
                         <img className="productCardImg" alt="" src={this.props.imgSrc} />
                         <div className="cardPick"style={this.state.poroductNameHide}>

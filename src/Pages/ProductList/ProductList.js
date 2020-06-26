@@ -17,11 +17,12 @@ class ProductList extends Component {
                 {id:8,productImg:"https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",productName:"sample",backgroundColor:'skyblue'},
                 {id:8,productImg:"https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",productName:"sample",backgroundColor:'green'},
             ],
+
             collectionIcon: "https://www.logitech.com/images/icons/icon-collapse.svg",
             filterVisible: false
-        };
-        
+        };    
     }
+
 
 
     collectionHandler = () => {
