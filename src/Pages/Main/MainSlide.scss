@@ -1,0 +1,70 @@
+.MainSlide {
+  .awssld {
+    --loader-bar-color: #b2f651;
+  }
+  .awssld__content {
+    .slideTextBox {
+      position: absolute;
+      z-index: 9999;
+      top: 50%;
+      left: 200px;
+      transform: translateY(-50%);
+      h3 {
+        font-size: 25px;
+        font-weight: 300;
+      }
+      h2 {
+        font-size: 70px;
+        padding: 30px 0;
+        line-height: 85px;
+      }
+      a {
+        display: block;
+        padding: 15px 10px;
+        width: 200px;
+        font-size: 14px;
+        background-color: #252a2c;
+        border: 2px solid #252a2c;
+        text-align: center;
+        font-weight: 400;
+        color: #b2f651;
+        letter-spacing: 0.5px;
+        &:hover {
+          background-color: #b2f651;
+          color: #252a2c;
+        }
+      }
+    }
+    .TextBoxCenter {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      a {
+        width: 180px;
+        margin-right: 15px;
+        display: inline-block;
+      }
+    }
+  }
+  .awssld__bullets {
+    bottom: 50px;
+    z-index: 10;
+
+    button {
+      width: 10px;
+      height: 10px;
+      margin: 5px;
+      border-radius: 50%;
+      background: #fff0;
+      border: 1px solid #fff;
+      transition: transform 0.225s cubic-bezier(0.8, 1.35, 0.75, 1.45);
+    }
+    .awssld__bullets--active {
+      transform: scale(1.2);
+      background: #b2f651;
+    }
+    .awssld__controls button {
+      z-index: 11;
+    }
+  }
+}

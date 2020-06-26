@@ -1,0 +1,110 @@
+.ProductList {
+  width: 100%;
+
+  .navContainer {
+    background-color: #00ead0;
+    width: 100%;
+    height: 510px;
+    position: relative;
+    margin: 0 auto;
+
+    .navMouseImg {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 150px;
+    }
+
+    .navTextContainer {
+      font-family: Arial, Helvetica, sans-serif;
+      position: relative;
+      top: 200px;
+      width: 1150px;
+      margin: 0 auto;
+
+      .mouseProductName {
+        font-size: 25px;
+        font-weight: lighter;
+
+        .mouseKeyboardLink {
+          text-decoration-line: underline;
+        }
+      }
+
+      .mouseText {
+        font-size: 100px;
+        font-weight: bold;
+      }
+
+      .logitechMouse {
+        font-size: 20px;
+        margin: 10px 0 0 0;
+      }
+    }
+  }
+
+  .productListMainContainer {
+    width: 1150px;
+    margin: 0 auto;
+
+    .filterHideContainer {
+      border-bottom: 1px solid #ccc;
+      width: 1150px;
+      margin-bottom: 50px;
+
+      .filterHide {
+        font-size: 13px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+      }
+
+      .filterIcon {
+        width: 19px;
+        height: 18px;
+        margin-right: 10px;
+      }
+    }
+
+    .filterSidebar {
+      width: 250px;
+      height: 763px;
+
+      .collectionContainer {
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        transition: all 0.335s ease;
+
+        .collection {
+          margin-bottom: 10px;
+          transition: all 0.335s ease;
+
+          .collectionName {
+            margin-right: 190px;
+          }
+        }
+
+        .minusImg {
+          width: 18px;
+        }
+
+        .collectionList {
+          font-weight: lighter;
+          color: #70787a;
+          transition: all 0.1s ease-out;
+          opacity: 0;
+          height: 0;
+          overflow: hidden;
+        }
+
+        .collectionListActive {
+          font-weight: lighter;
+          color: #70787a;
+          opacity: 1;
+          height: auto;
+          transition: all 0.1s ease-out;
+        }
+      }
+    }
+  }
+}
