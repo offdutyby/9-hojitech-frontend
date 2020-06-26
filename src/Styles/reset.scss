@@ -1,3 +1,21 @@
 * {
     box-sizing: border-box;
-}
+    margin: 0;
+    padding: 0;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+
+  
+  
+  //reset.scss 에 덮어씌워주세요!!
+  //가로는 1220px 기준입니다!
