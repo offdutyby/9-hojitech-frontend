@@ -1,7 +1,12 @@
 .Card {
     .cardContainer {
         width: 303.33px;
-        height: 330.33px;
+        height: 350.33px;
+        border: 1px solid white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
 
 
         .productCard {
@@ -21,17 +26,22 @@
         .cardProductName {
             font-size: 18px;
             font-weight: bold;
+            padding: 15px 10px 5px 10px;
         }
 
         .cardProductInfo {
-            font-size: 16px;
+            font-size: 15px;
+            padding-left: 10px;
         }
 
         .cardPick {
             position: absolute;
             top: 12px;
             left: 10px;
+        }
 
+        .check {
+            margin-right: 7px;
         }
     }
 }

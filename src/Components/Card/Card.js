@@ -15,7 +15,7 @@ class Card extends Component {
         const { isMouseIn } = this.state
 
         this.setState({
-            cardHoverColor:  isMouseIn ? { backgroundColor: "skyblue" } : { backgroundColor: "#f6f6f6" },
+            cardHoverColor:  isMouseIn ? { backgroundColor: [this.props.hoverColor] } : { backgroundColor: "#f6f6f6" },
             poroductNameHide: isMouseIn ? { display: "block" } : { display: "none" },
             isMouseIn: !isMouseIn,
         })
@@ -29,14 +29,14 @@ class Card extends Component {
                     <div className="productCard" style={this.state.cardHoverColor}>
                         <img className="productCardImg" alt="" src={this.props.imgSrc} />
                         <div className="cardPick"style={this.state.poroductNameHide}>
-                        <input type="checkbox" />선택한 항목을 비교
+                        <input className="check" type="checkbox" />선택한 항목을 비교
                         </div>
                     </div>
                     <div className="cardProductName">
                         {this.props.name}
                     </div>
                     <div className="cardProductInfo" style={this.state.poroductNameHide}>
-                        로지텍 마스터 시리즈
+                        {this.props.thumbnailDescription}
                     </div>
                     
                 </div>                
