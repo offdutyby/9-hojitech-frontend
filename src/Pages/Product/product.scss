@@ -1,0 +1,59 @@
+.Product {
+  .headerContainer {
+    background-color: #00b8fc;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+
+    .headerInfoContainer {
+      display: flex;
+      align-items: center;
+      width: 1150px;
+      margin: 174px auto 0 auto;
+      justify-content: center;
+
+      .productImgContainer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .productImg {
+          max-height: 428px;
+        }
+      }
+
+      .productInfo {
+        .productInfoName {
+          .name {
+            font-size: 32px;
+            font-weight: bold;
+          }
+
+          .description {
+            font-size: 16px;
+          }
+        }
+
+        .productInfoColor {
+          .colorName {}
+
+          .colorImg {
+            border-radius: 50%;
+          }
+        }
+
+        .specPrice {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+
+          .plusImg {
+            width: 25px;
+            margin-right: 3px;
+
+          }
+        }
+      }
+    }
+  }
+}
