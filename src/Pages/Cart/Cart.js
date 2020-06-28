@@ -8,7 +8,7 @@ import './cart.scss'
 class Cart extends Component {
     state = {
         productList:[],
-        test:''
+        totalPrice:''
     }
 
     componentDidMount = () => {
@@ -21,24 +21,34 @@ class Cart extends Component {
     allRemoveHandler = () => {
         this.setState({
             productList:[],
+            totalPrice : ''
         })
 
     }
 
     deleteProd = (idx) => {
-      let {productList} = this.state
-      console.log(idx,"<idx")
-  
-      productList.splice(idx-1,1)
-        console.log(idx)
+      const list = this.state.productList
+      let total = this.state.totalPrice
+      total = total - Number(this.state.productList[idx].productPrice)
+      list.splice(idx,1)
         this.setState({
-          productList:productList,
+          productList:list,
+          totalPrice:total,
         })
-        console.log(this.state.productList)
+      }
+      
+      totalPrice = ( ) => {
+        let total = null;
+        for (let i in this.state.productList){
+          total += Number(this.state.productList[i].productPrice)
+        }
+        this.setState({
+          totalPrice : total
+        })
+
       }
 
     render() {
-
         return (
             <>
                 <Header />
@@ -46,16 +56,16 @@ class Cart extends Component {
                     <div className="cartWrap">
                         <h2>장바구니</h2>
                         <div className="cartProductWrap">
-                            <div className="cartClearButton"><span onClick={this.allRemoveHandler}>전체삭제</span></div>
+                            <div className="cartClearButton"><span style={this.state.productList.length === 0 ? {display:"none"} : {display:"block"}} onClick={this.allRemoveHandler}>전체삭제</span></div>
                             {this.state.productList.length === 0 ? 
                                 <div className="cartClear">장바구니가 비었습니다</div> :
-                                this.state.productList.map((id,index)=>{
-                                return <CartProduct key={id.index} productName={id.productName} thumbnailImage={id.thumbnailImage} productPrice={id.productPrice} deleteProd={this.deleteProd}/>
+                                this.state.productList.map((id,index )=>{
+                                return <CartProduct id={index} key={id.id} productName={id.productName} thumbnailImage={id.thumbnailImage} productPrice={id.productPrice} deleteProd={this.deleteProd} totalPrice={this.totalPrice}/>
                             })}
                             {}
                         </div>
                         <div className="orderPriceWrap">
-                            <span>결제 예정 금액<span className="TotalProductPrice">10000</span></span>
+                          <span>결제 예정 금액<span className="TotalProductPrice">{this.state.totalPrice}</span></span>
                             <button className="purchase">구매하기</button>
                         </div>
                     </div>
