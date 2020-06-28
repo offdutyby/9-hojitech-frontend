@@ -130,6 +130,7 @@
       left: 50%;
       top: 0;
       background-color: #fff;
+      border-bottom: 1px solid #e5e5e5;
       @extend .flexItemsCenter;
       &.show {
         display: flex;

@@ -183,11 +183,11 @@ class Header extends Component {
                 type="text"
                 placeholder="검색"
                 onClick={this.seachInputClick}
-                value="검색"
+                defaultValue="검색"
               ></input>
             </div>
             <div className={`headerSearchPage ${this.state.headerSearch ? "show" : "hide"}`}>
-              <input placeholder="검색" onChange={this.inputChange} value={this.state.headerSearchPageInput}></input>
+              <input placeholder="검색" onChange={this.inputChange} defaultValue={this.state.headerSearchPageInput}></input>
               <img onClick={this.clicks} src={this.state.headerSearchPageImage}></img>
               <div className="headerSearchResult"></div>
             </div>
