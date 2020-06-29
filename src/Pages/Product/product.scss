@@ -1,9 +1,11 @@
 .Product {
+
   .headerContainer {
     background-color: #00b8fc;
     height: 100%;
     display: flex;
     margin: 0 auto;
+    flex-direction: column;
 
 
     .headerInfoContainer {
@@ -108,5 +110,20 @@
         }
       }
     }
+
+    .imgCollection {
+      display: flex;
+      width: 1150px;
+      margin: 0 auto;
+
+      .img {
+        width: 70px;
+        padding-right: 10px;
+        ;
+      }
+    }
   }
+
+
+
 }

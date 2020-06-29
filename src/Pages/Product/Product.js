@@ -56,9 +56,9 @@ class Product extends Component {
               </div>
               <ul className="imgCollection">
                 <li><img className="img" src="https://assets.logitech.com/assets/65123/wireless-mouse-m590-multi-device-silent.png" alt="" /></li>
-                <li><img className="img" src="" /></li>
-                <li><img className="img" src="" /></li>
-                <li><img className="img" src="" /></li>
+                <li><img className="img" src="https://assets.logitech.com/assets/65123/2/wireless-mouse-m590-multi-device-silent.png" alt="" /></li>
+                <li><img className="img" src="https://assets.logitech.com/assets/65123/3/wireless-mouse-m590-multi-device-silent.png" alt="" /></li>
+                <li><img className="img" src="https://assets.logitech.com/assets/65123/4/wireless-mouse-m590-multi-device-silent.png" alt="" /></li>
               </ul>
             </div>
           </header>
