@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
-import "./SignUp.scss";
+import "./signup.scss";
 
 class SignUp extends Component { 
     render() {
@@ -27,4 +27,4 @@ class SignUp extends Component {
       }
     }
 
-export default SignUp
+export default SignUp;

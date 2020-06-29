@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LoginModal from './LoginModal';
 import SignUp from '../SignUp/SignUp';
-import ProductRegister from '../SignUp/ProductRegister';
+import ProductRegister from '../SignUp/productregister';
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
-import "./Login.scss";
+import "./login.scss";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -58,21 +58,21 @@ render() {
               <img className= "iconImage" src= "https://www.logitech.com/content/dam/logitech/my-account/cart.svg.imgo.svg"></img>
               <h2>계정</h2>
               <h3>주문을 추적 또는 수정하고, 주문을 반환하고, 계정을 관리합니다.</h3>
-              <p className= "clickSubItems">계정 정보 ></p>
-              <p className= "clickSubItems">개인정보 + 데이터 ></p>
+              <p className= "clickSubItems">계정 정보 &gt;</p>
+              <p className= "clickSubItems">개인정보 + 데이터 &gt;</p>
             </div>
             <div className= "contentDiv2">
               <img className= "iconImage" src= "https://www.logitech.com/content/dam/logitech/my-account/compass.svg.imgo.svg"></img>
               <h2>시작하기</h2>
               <h3>제품을 등록하고 시작하는 데 필요한 모든 정보를 얻으십시오.</h3>
-              <Link to="/productregister"><p className= "clickSubItems">제품 등록 ></p></Link>
-              <p className= "clickSubItems">다운로드 ></p>
+              <Link to="/productregister"><p className= "clickSubItems">제품 등록 &gt;</p></Link>
+              <p className= "clickSubItems">다운로드 &gt;</p>
             </div>
             <div className= "contentDiv3">
               <img className= "iconImagee" src= "https://www.logitech.com/content/dam/logitech/my-account/cloud.svg.imgo.svg"></img>
               <h2>서비스</h2>
               <h3>모든 구독을 간편하게 관리하세요.</h3>
-              <p className= "clickSubItems">모든 서비스 ></p>
+              <p className= "clickSubItems">모든 서비스 &gt;</p>
             </div>
           </div>
           <div className= "bottomDiv">
@@ -105,6 +105,5 @@ render() {
   )
 }
 }
-
 
 export default Login;

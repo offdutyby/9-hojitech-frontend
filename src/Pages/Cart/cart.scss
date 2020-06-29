@@ -3,38 +3,126 @@
   margin: 0 auto;
   padding: 150px 0;
   text-align: center;
+
   .cartWrap {
     h2 {
       font-size: 40px;
     }
-    .cartProductWrap {
-      margin: 50px 0;
-      border-top: 1px solid #666;
-      border-bottom: 1px solid #666;
-      .cartProduct {
-        display: flex;
 
-        padding: 40px;
-        align-items: center;
-        img {
-          width: 100px;
+    .cartProductWrap {
+      width: 100%;
+      .cartClearButton {
+        text-align: left;
+        font-size: 14px;
+        line-height: 60px;
+        display: block;
+        color: #666;
+        margin-left: 50px;
+        span {
+          cursor: pointer;
         }
-        .productBox {
+      }
+      .cartClear {
+        margin: 100px 0 50px;
+        font-size: 20px;
+        color: #8e8e8e;
+      }
+      padding-bottom: 50px;
+      margin-top: 80px;
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+      .CartProduct {
+        display: flex;
+        border-top: 1px solid #e5e5e5;
+        padding: 40px 70px;
+        align-items: center;
+        position: relative;
+        &:last-child {
+          border-bottom: 1px solid #e5e5e5;
+        }
+        .cartCheckbox {
+          margin-right: 30px;
+        }
+        .thumbnail {
+          width: 100px;
+          height: 100px;
+          padding: 15px;
+          background-color: #e5e5e5;
+          margin-right: 20px;
+        }
+        .cartText {
+          align-items: flex-start;
           display: flex;
           flex-direction: column;
-          text-align: left;
-          font-size: 15px;
-          line-height: 30px;
-          margin-left: 30px;
+          font-size: 14px;
           .productName {
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            .productColor {
+              margin-left: 5px;
+              margin-top: 1px;
+              width: 17px;
+              height: 17px;
+              border-radius: 50%;
+              border-radius: 50%;
+            }
           }
-          .productColor {
-            border-radius: 50%;
-            width: 20px;
+          .productCount {
+            margin: 3px 0 8px;
+            font-size: 15px;
+            color: #a5a5a5;
+            &::before {
+              content: "수량 /  ";
+            }
+          }
+          .productPrice {
+            color: #04a7e0;
+            font-size: 18px;
+            font-weight: 600;
+            &::after {
+              content: " 원";
+            }
           }
         }
-        .productPrice {
+      }
+      .productDelete {
+        width: 20px;
+        position: absolute;
+        right: 40px;
+        cursor: pointer;
+      }
+    }
+    .orderPriceWrap {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin: 60px 50px 0;
+      span {
+        font-size: 18px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+      }
+      .TotalProductPrice {
+        color: #04a7e0;
+        display: inline-block;
+        font-size: 24px;
+        padding: 0 40px 0 20px;
+        &::after {
+          content: " 원";
+          font-weight: 400;
         }
+      }
+      .purchase {
+        width: 200px;
+        background-color: #04a7e0;
+        height: 50px;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        letter-spacing: 1px;
       }
     }
   }
