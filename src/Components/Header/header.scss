@@ -19,6 +19,9 @@
           &:last-child img {
             border-right: none;
           }
+          &:first-child img {
+            padding-left: 0;
+          }
         }
         img {
           height: 20px;
