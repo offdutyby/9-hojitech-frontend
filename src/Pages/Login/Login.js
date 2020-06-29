@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import LoginClick from '../Login/loginclick';
+import LoginModal from './LoginModal';
 import SignUp from '../SignUp/SignUp';
 import ProductRegister from '../SignUp/productregister';
-import "./login.scss";
+import "./Login.scss";
 
 class Login extends Component {
   constructor(props) {
@@ -41,14 +41,14 @@ class Login extends Component {
  
 render() {
   return (
-    <div className = "Login">
-      <div className = "header">
-        <img className= "logoImage" src ="https://www.logitech.com/content/dam/logitech/common/en/logi-logo-dark.png"></img>
-        <img id= "myAccountImage" src= "https://www.logitech.com/content/dam/logitech/my-account/hero-authenticated.png"></img>
+    <div className="Login">
+      <div className="loginHeader">
+        <img src ="https://www.logitech.com/content/dam/logitech/common/en/logi-logo-dark.png"></img>
+        <img src= "https://www.logitech.com/content/dam/logitech/my-account/hero-authenticated.png"></img>
       </div>
       <div className = "myAccountSection">
         <h1 id= "myAccountText"> 내 계정 </h1>
-          <button id="loginbtn" onClick={this.openPopUp}>로그인</button>
+        <button id="loginbtn" onClick={this.openPopUp}>로그인</button>
         <button id="makeAccountbtn" onClick={this.openPopUp1}>계정 만들기</button>
       </div>
       <div className = "wholeDiv">
@@ -96,7 +96,7 @@ render() {
           </div>
           </div>
       </div>
-      <LoginClick isActive={this.state.isLoginClickPopUpActive} isNotActive={this.closePopUp}/> 
+      <LoginModal isActive={this.state.isLoginClickPopUpActive} isNotActive={this.closePopUp}/> 
       <SignUp isActive1={this.state.isSignUpPopUpActive} isNotActive1={this.closePopUp1}/>
     </div>
   )

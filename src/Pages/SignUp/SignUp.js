@@ -2,15 +2,9 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import "./signup.scss";
 
-class SignUp extends Component {
-      constructor(props) {
-        super(props);
-        this.state = {};
-        }
-    
+class SignUp extends Component { 
     render() {
       return (
-        <>
         <div className= {this.props.isActive1 ? "SignUp show" : "SignUp hide"}> 
           <div className="overlay" >
             <div className = "container">
@@ -31,9 +25,8 @@ class SignUp extends Component {
             </div>
           </div>
         </div>
-        </>
         )
-        }
+      }
     }
 
 export default SignUp
