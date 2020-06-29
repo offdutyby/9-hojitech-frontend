@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "../src/Pages/Main/Main";
-import Login from '../src/Pages/Login/Login';
-import LoginModal from './Pages/Login/LoginModal';
-import SignUp from '../src/Pages/SignUp/SignUp';
-import ProductRegister from '../src/Pages/SignUp/productregister';
+import Login from "../src/Pages/Login/Login";
+import LoginModal from "./Pages/Login/LoginModal";
+import SignUp from "../src/Pages/SignUp/SignUp";
+import ProductRegister from "../src/Pages/SignUp/productregister";
 import Product from "../src/Pages/Product/Product";
 import ProductList from "../src/Pages/ProductList/ProductList";
 import Cart from "../src/Pages/Cart/Cart";

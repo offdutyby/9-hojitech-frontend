@@ -3,6 +3,7 @@ import Card from "../../Components/Card/Card";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import "../ProductList/hello.scss";
+
 class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -91,7 +92,11 @@ class ProductList extends Component {
                     <span className="collectionName">컬렉션</span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
-                  <ul className={`collectionList ${visible ? "show" : "hide"}`}>
+                  <ul
+                    className={`collectionList ${
+                      visible ? "listShow" : "listHide"
+                    }`}
+                  >
                     <li>MX 퍼포먼스</li>
                     <li>인체공학 제품군</li>
                     <li>멀티 디바이스</li>
