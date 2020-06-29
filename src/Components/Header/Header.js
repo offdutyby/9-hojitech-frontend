@@ -15,7 +15,7 @@ class Header extends Component {
     };
   }
 
-  seachInputClick = () => {
+  searchInputClick = () => {
     this.setState({
       headerSearch: true,
     });
@@ -25,7 +25,7 @@ class Header extends Component {
     this.setState({
       headerSearchPageInput: e.target.value,
     });
-    if (this.state.headerSearchPageInput.length !== 0) {
+    if (e.target.value !== "") {
       this.setState({
         headerSearchPageImage:
           "https://img.icons8.com/material-rounded/24/000000/multiply--v1.png",
@@ -37,14 +37,15 @@ class Header extends Component {
     }
   };
 
-  clicks = () => {
+  headerSearchClose = () => {
+    console.log("this is closed!!");
     this.setState({
       headerSearch: false,
       headerSearchPageInput: "",
     });
   };
 
-  hoverHandler = (id) => {
+  mainNavHover = (id) => {
     if (this.state.activeTab === id) this.setState({ activeTab: null });
     else this.setState({ activeTab: id });
   };
@@ -97,8 +98,8 @@ class Header extends Component {
             <nav>
               <div
                 className="mainNav"
-                onMouseOver={() => this.hoverHandler(0)}
-                onMouseOut={() => this.hoverHandler(0)}
+                onMouseOver={() => this.mainNavHover(0)}
+                onMouseOut={() => this.mainNavHover(0)}
               >
                 제품
                 <div
@@ -131,10 +132,10 @@ class Header extends Component {
               <div
                 className="mainNav"
                 onMouseOver={() => {
-                  this.hoverHandler(1);
+                  this.mainNavHover(1);
                 }}
                 onMouseOut={() => {
-                  this.hoverHandler(1);
+                  this.mainNavHover(1);
                 }}
               >
                 솔루션
@@ -164,10 +165,10 @@ class Header extends Component {
               <div
                 className="mainNav"
                 onMouseOver={() => {
-                  this.hoverHandler(2);
+                  this.mainNavHover(2);
                 }}
                 onMouseOut={() => {
-                  this.hoverHandler(2);
+                  this.mainNavHover(2);
                 }}
               >
                 비즈니스
@@ -197,10 +198,10 @@ class Header extends Component {
               <div
                 className="mainNav"
                 onMouseOver={() => {
-                  this.hoverHandler(3);
+                  this.mainNavHover(3);
                 }}
                 onMouseOut={() => {
-                  this.hoverHandler(3);
+                  this.mainNavHover(3);
                 }}
               >
                 지원
@@ -232,7 +233,7 @@ class Header extends Component {
                 className="searchInput"
                 type="text"
                 placeholder="검색"
-                onClick={this.seachInputClick}
+                onClick={this.searchInputClick}
                 defaultValue="검색"
               ></input>
             </div>
@@ -247,7 +248,7 @@ class Header extends Component {
                 defaultValue={this.state.headerSearchPageInput}
               ></input>
               <img
-                onClick={this.clicks}
+                onClick={this.headerSearchClose}
                 src={this.state.headerSearchPageImage}
                 alt=""
               ></img>

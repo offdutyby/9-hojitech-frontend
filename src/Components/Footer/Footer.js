@@ -6,16 +6,16 @@ class Footer extends Component {
     return (
       <div className="Footer">
         <div className="footerTop">
-          <a>연락처</a>
-          <a>소개</a>
-          <a>채용정보</a>
-          <a>개인정보 취급방침</a>
-          <a>사이트맵</a>
-          <a>투자자</a>
-          <a>이용 약관</a>
-          <a>지속 가능성</a>
-          <a>보도 자료</a>
-          <a>이메일 구독</a>
+          <a href="/#">소개</a>
+          <a href="/#">채용정보</a>
+          <a href="/#">연락처</a>
+          <a href="/#">개인정보 취급방침</a>
+          <a href="/#">사이트맵</a>
+          <a href="/#">투자자</a>
+          <a href="/#">이용 약관</a>
+          <a href="/#">지속 가능성</a>
+          <a href="/#">보도 자료</a>
+          <a href="/#">이메일 구독</a>
         </div>
         <div className="footerBottom">
           <div className="footerBottomLeft">
@@ -47,8 +47,11 @@ class Footer extends Component {
           </div>
         </div>
         <div className="footerCopyright">
-          <a>
-            <img src="https://www.logitech.com/images/flags/south-korea.gif"></img>
+          <a href="/#">
+            <img
+              src="https://www.logitech.com/images/flags/south-korea.gif"
+              alt=""
+            ></img>
             대한민국 ▶
           </a>
           <p>© 2020 Logitech. All rights reserved</p>
