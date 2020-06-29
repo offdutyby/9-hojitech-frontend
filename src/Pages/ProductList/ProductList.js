@@ -3,7 +3,6 @@ import Card from "../../Components/Card/Card";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import "../ProductList/hello.scss";
-
 class ProductList extends Component {
   constructor(props) {
     super(props);
