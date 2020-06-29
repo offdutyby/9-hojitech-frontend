@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
+import CartImg from "../../Images/icons8-shopping-cart-32.png";
 import "./product.scss";
 
 class Product extends Component {
@@ -21,6 +22,7 @@ class Product extends Component {
                   <img
                     className="productImg"
                     src="https://assets.logitech.com/assets/65123/wireless-mouse-m590-multi-device-silent.png"
+                    alt=""
                   />
                 </div>
                 <div className="productInfo">
@@ -54,26 +56,15 @@ class Product extends Component {
                     <img
                       className="plusImg"
                       src="https://icons.iconarchive.com/icons/icons8/ios7/256/User-Interface-Plus-icon.png"
+                      alt=""
                     />
                     <span className="spec">사양</span>
                     <span className="price">₩ 10.000</span>
                   </div>
-                  <div className="quantityContainer">
-                    <input
-                      className="quantity"
-                      type="number"
-                      min="1"
-                      max="100"
-                    />
-                  </div>
                   <div className="btnContainer">
                     <div className="buyBtn">구매하기</div>
                     <div className="cartBtn">
-                      <img
-                        className="cartImg"
-                        src="https://www.brandeps.com/icon-download/C/Cart-icon-vector-01.svg"
-                        alt=""
-                      />
+                      <img className="cartImg" src={CartImg} alt="" />
                     </div>
                   </div>
                 </div>
