@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import Facebook from '../../Images/facebooklogo.png'
+import Amazon from '../../Images/amazonlogo.png'
+import Google from '../../Images/googlelogo.png'
 import "./LoginModal.scss";
 
 class LoginModal extends Component {
@@ -18,9 +21,9 @@ class LoginModal extends Component {
             <button className="button" type="button">로그인</button><br></br>
             <button className="again">또는</button>
             <div class="greyline"></div>
-            <img className="facebook" src ="./facebooklogo.png"/>
-            <img className="amazon" src ="./amazonlogo.png"/>
-            <img className="google" src ="./googlelogo.png"/>
+            <img className="facebook" src ={Facebook}/>
+            <img className="amazon" src ={Amazon}/>
+            <img className="google" src ={Google}/>
             <Link to="/signup"> <p class="makeaccount">{`계정만들기 >`}</p></Link>
             <p class="logiid">{`LOGI ID 정보 >`}</p>
           </div>

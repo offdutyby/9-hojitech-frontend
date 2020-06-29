@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import "./productregister.scss";
+import Header from '../../Components/Header/Header'
+import Footer from '../../Components/Footer/Footer'
+import "./ProductRegister.scss";
 
 class ProductRegister extends Component {
       constructor(props) {
@@ -9,8 +11,9 @@ class ProductRegister extends Component {
     
     render() {
       return (
-        <div className = "Container">
-            <img className= "logoImage" src ="https://www.logitech.com/content/dam/logitech/common/en/logi-logo-dark.png"></img>
+        <>
+          <Header />
+          <div className = "ProductRegister">
             <img id= "backgroundImage" src= "https://theme.zdassets.com/theme_assets/9049502/bd24d19eb305cc0a7b89b57e340deaa901ee2709.png"></img>
             <h1 id= "welcome"> Logitech 고객 지원에 오신 것을 환영합니다 </h1>
             <h2>제품 등록</h2>
@@ -20,7 +23,9 @@ class ProductRegister extends Component {
             <button class="button" type= "submit">제출</button><br></br>
             <p className= "select">제품 선택</p> 
             <input class="productname" type="text"/>
-        </div>
+          </div>
+          <Footer />
+          </>
         )
         }
     }
