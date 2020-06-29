@@ -7,7 +7,6 @@
     margin: 0 auto;
     flex-direction: column;
 
-
     .headerInfoContainer {
       display: flex;
       align-items: center;
@@ -90,6 +89,7 @@
 
         .btnContainer {
           display: flex;
+          margin-top: 24px;
 
           .buyBtn {
             width: 90%;
@@ -105,6 +105,8 @@
             .cartImg {
               margin-left: 4px;
               width: 40px;
+              background-color: black;
+              padding: 5px;
             }
           }
         }
@@ -123,7 +125,4 @@
       }
     }
   }
-
-
-
 }
