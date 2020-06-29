@@ -2,41 +2,49 @@ import React, { Component } from "react";
 import "./CardPractice.scss";
 
 class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cardHoverColor: { backgroundColor: "#f6f6f6" },
-      poroductNameHide: { display: "none" },
-    };
-  }
 
-  mouseOverIn = (e) => {
-    this.setState({
-      cardHoverColor: { backgroundColor: "skyblue" },
-      poroductNameHide: { display: "block" },
-    });
-  };
+    constructor(props){
+        super(props);
+        this.state={
+            cardHoverColor:{backgroundColor:'#f6f6f6'},
 
-  mouseOverOut = (e) => {
-    this.setState({
-      cardHoverColor: { backgroundColor: "#f6f6f6" },
-      poroductNameHide: { display: "none" },
-    });
-  };
+            poroductNameHide:{display:'none'},
+            isMouseIn: true
+        }
+    }
 
-  render() {
-    return (
-      <div className="Card">
-        <div
-          className="cardContainer"
-          onMouseEnter={this.mouseOverIn}
-          onMouseLeave={this.mouseOverOut}
-        >
-          <div className="productCard" style={this.state.cardHoverColor}>
-            <img className="productCardImg" alt="" src={this.props.imgSrc} />
-            <div className="cardPick" style={this.state.poroductNameHide}>
-              <input type="checkbox" />
-              선택한 항목을 비교
+    mouseOverHandler= () => {
+        const { isMouseIn } = this.state
+
+        this.setState({
+            cardHoverColor:  isMouseIn ? { backgroundColor: "skyblue" } : { backgroundColor: "#f6f6f6" },
+            poroductNameHide: isMouseIn ? { display: "block" } : { display: "none" },
+            isMouseIn: !isMouseIn,
+        })
+    }
+
+
+
+    render() {
+        return (
+            <div className="Card" >
+
+                <div className="cardContainer"  onMouseEnter={this.mouseOverHandler} onMouseLeave={this.mouseOverHandler}>
+
+                    <div className="productCard" style={this.state.cardHoverColor}>
+                        <img className="productCardImg" alt="" src={this.props.imgSrc} />
+                        <div className="cardPick"style={this.state.poroductNameHide}>
+                        <input type="checkbox" />선택한 항목을 비교
+                        </div>
+                    </div>
+                    <div className="cardProductName">
+                        {this.props.name}
+                    </div>
+                    <div className="cardProductInfo" style={this.state.poroductNameHide}>
+                        로지텍 마스터 시리즈
+                    </div>
+                   
+                </div>                
             </div>
           </div>
           <div className="cardProductName">{this.props.name}</div>
