@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Card from "../../Components/Card/Card";
 import "../ProductList/hello.scss";
-
 class ProductList extends Component {
   constructor(props) {
     super(props);
