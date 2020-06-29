@@ -6,6 +6,7 @@ class Card extends Component {
     super(props);
     this.state = {
       cardHoverColor: { backgroundColor: "#f6f6f6" },
+
       poroductNameHide: { display: "none" },
       isMouseIn: true,
     };
@@ -15,18 +16,15 @@ class Card extends Component {
     const { isMouseIn } = this.state;
 
     this.setState({
-      cardHoverColor: {
-        backgroundColor: isMouseIn ? [this.props.hoverColor] : "#f6f6f6",
-      },
-      poroductNameHide: { display: isMouseIn ? "block" : "none" },
+      cardHoverColor: isMouseIn
+        ? { backgroundColor: "skyblue" }
+        : { backgroundColor: "#f6f6f6" },
+      poroductNameHide: isMouseIn ? { display: "block" } : { display: "none" },
       isMouseIn: !isMouseIn,
     });
   };
 
   render() {
-    const { cardHoverColor, poroductNameHide } = this.state;
-    const { imgSrc, name, thumbnailDescription } = this.props;
-
     return (
       <div className="Card">
         <div
@@ -34,17 +32,21 @@ class Card extends Component {
           onMouseEnter={this.mouseOverHandler}
           onMouseLeave={this.mouseOverHandler}
         >
-          <div className="productCard" style={cardHoverColor}>
-            <img className="productCardImg" alt="" src={imgSrc} />
-            <div className="cardPick" style={poroductNameHide}>
-              <input className="check" type="checkbox" />
+          <div className="productCard" style={this.state.cardHoverColor}>
+            <img className="productCardImg" alt="" src={this.props.imgSrc} />
+            <div className="cardPick" style={this.state.poroductNameHide}>
+              <input type="checkbox" />
               선택한 항목을 비교
             </div>
           </div>
-          <div className="cardProductName">{name}</div>
-          <div className="cardProductInfo" style={poroductNameHide}>
-            {thumbnailDescription}
+          <div className="cardProductName">{this.props.name}</div>
+          <div className="cardProductInfo" style={this.state.poroductNameHide}>
+            로지텍 마스터 시리즈
           </div>
+        </div>
+        <div className="cardProductName">{this.props.name}</div>
+        <div className="cardProductInfo" style={this.state.poroductNameHide}>
+          로지텍 마스터 시리즈
         </div>
       </div>
     );

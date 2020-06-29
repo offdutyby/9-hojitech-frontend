@@ -1,153 +1,147 @@
 .ProductList {
+  width: 100%;
+
+  .navContainer {
+    background-color: #00ead0;
+    width: 100%;
+    height: 510px;
+    position: relative;
+    margin: 0 auto;
+
+    .navMouseImg {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 150px;
+    }
+
+    .navTextContainer {
+      font-family: Arial, Helvetica, sans-serif;
+      position: relative;
+      top: 200px;
+      width: 1150px;
+      margin: 0 auto;
+
+      .mouseProductName {
+        font-size: 25px;
+        font-weight: lighter;
+
+        .mouseKeyboardLink {
+          text-decoration-line: underline;
+        }
+      }
+
+      .mouseText {
+        font-size: 100px;
+        font-weight: bold;
+      }
+
+      .logitechMouse {
+        font-size: 20px;
+        margin: 10px 0 0 0;
+      }
+    }
+  }
+
+  .mainArticle {
     width: 100%;
 
-    .navContainer {
-        background-color: #00ead0;
-        width: 100%;
-        height: 510px;
-        position: relative;
+    .filterHideContainer {
+      border-bottom: 1px solid #ccc;
+      width: 100%;
+      margin-bottom: 50px;
+
+      .filterHide {
+        width: 1150px;
+        font-size: 13px;
+        height: 50px;
+        display: flex;
+        align-items: center;
         margin: 0 auto;
+        cursor: pointer;
+      }
 
-        .navMouseImg {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            right: 150px;
-        }
-
-        .navTextContainer {
-            font-family: Arial, Helvetica, sans-serif;
-            position: relative;
-            top: 200px;
-            width: 1150px;
-            margin: 0 auto;
-
-            .mouseProductName {
-                font-size: 25px;
-                font-weight: lighter;
-
-                .mouseKeyboardLink {
-                    text-decoration-line: underline;
-                }
-            }
-
-            .mouseText {
-                font-size: 100px;
-                font-weight: bold;
-            }
-
-            .logitechMouse {
-                font-size: 20px;
-                margin: 10px 0 0 0;
-            }
-        }
+      .filterIcon {
+        width: 19px;
+        height: 18px;
+        margin-right: 10px;
+      }
     }
 
-    .mainArticle {
-        width: 100%;
+    .productListMainContainer {
+      display: flex;
+      flex-direction: row;
+      width: 1150px;
+      margin: 0 auto;
 
-        .filterHideContainer {
-            border-bottom: 1px solid #ccc;
-            width: 100%;
-            margin-bottom: 50px;
+      .filterSidebar {
+        width: 200px;
+        height: 763px;
+        margin-right: 40px;
 
-
-            .filterHide {
-                width: 1150px;
-                font-size: 13px;
-                height: 50px;
-                display: flex;
-                align-items: center;
-                margin: 0 auto;
-            }
-
-            .filterHideText {
-                cursor: pointer;
-            }
-
-            .filterIcon {
-                width: 19px;
-                height: 18px;
-                margin-right: 10px;
-                cursor: pointer;
-            }
+        &.showFilter {
+          max-width: 200px;
+          transition: max-width 0.3s ease-in;
+          opacity: 1;
         }
 
-        .productListMainContainer {
+        &.hideFilter {
+          max-width: 0px;
+          transition: max-width 0.3s ease-in-out;
+          opacity: 0;
+        }
+
+        .collectionContainer {
+          width: 100%;
+          border-bottom: 1px solid #ccc;
+
+          .collection {
+            margin-bottom: 10px;
             display: flex;
-            flex-direction: row;
-            width: 1150px;
-            margin: 0 auto;
+            cursor: pointer;
 
-            .filterSidebar {
-                width: 200px;
-                height: 763px;
-                margin-right: 40px;
+            .collectionName {
+              width: 240px;
+            }
+          }
 
-                &.showFilter {
-                    max-width: 200px;
-                    transition: max-width 0.3s ease-in;
-                    opacity: 1;
-                }
+          .minusImg {
+            width: 18px;
+            display: flex;
+            align-self: flex-end;
+            transition: all 2s ease-in;
+          }
 
-                &.hideFilter {
-                    max-width: 0px;
-                    transition: max-width 0.3s ease-in-out;
-                    opacity: 0;
-                }
+          .collectionList {
+            line-height: 30px;
+            font-weight: lighter;
+            color: #70787a;
+            overflow: hidden;
+            max-height: 0px;
 
-                .collectionContainer {
-                    width: 100%;
-                    border-bottom: 1px solid #ccc;
-
-                    .collection {
-                        margin-bottom: 10px;
-                        display: flex;
-                        cursor: pointer;
-
-                        .collectionName {
-                            width: 240px;
-                        }
-                    }
-
-                    .minusImg {
-                        width: 18px;
-                        display: flex;
-                        align-self: flex-end;
-                        transition: all 2s ease-in;
-                    }
-
-
-                    .collectionList {
-                        line-height: 30px;
-                        font-weight: lighter;
-                        color: #70787a;
-                        overflow: hidden;
-                        max-height: 0px;
-
-                        &.show {
-                            max-height: 500px;
-                            transition: max-height 0.5s ease-in;
-                        }
-
-                        &.hide {
-                            max-height: 0;
-                            transition: max-height 0.5s ease-out;
-                            overflow: hidden;
-                        }
-                    }
-                }
+            &.show {
+              max-height: 500px;
+              transition: max-height 0.5s ease-in;
             }
 
-            .cardList {
-                width: 910px;
-
-                .content {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                }
+            &.hide {
+              max-height: 0;
+              transition: max-height 0.5s ease-out;
+              overflow: hidden;
             }
+          }
         }
+      }
+
+      .cardList {
+        width: 910px;
+
+        .content {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
     }
+  }
 }
