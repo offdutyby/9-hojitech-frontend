@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
-import './card.scss'
+import React, { Component } from "react";
+import "./CardPractice.scss";
 
 class Card extends Component {
+
     constructor(props){
         super(props);
         this.state={
@@ -42,11 +43,18 @@ class Card extends Component {
                     <div className="cardProductInfo" style={this.state.poroductNameHide}>
                         로지텍 마스터 시리즈
                     </div>
-                    
+                   
                 </div>                
             </div>
-        )
-    }
+          </div>
+          <div className="cardProductName">{this.props.name}</div>
+          <div className="cardProductInfo" style={this.state.poroductNameHide}>
+            로지텍 마스터 시리즈
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default Card
+export default Card;

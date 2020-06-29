@@ -45,75 +45,93 @@ class ProductList extends Component {
             filterVisible: !filterVisible
         })
     }
+  };
 
+  clickHideHandler = (e) => {
+    const filterHide = this.state.filterVisible;
+    this.setState({
+      filterVisible: !filterHide,
+    });
+  };
 
-
-    render(){
-        return (
-            <div className="ProductList">
-                <div>
-                    <div className="navContainer"> 
-                        <div className="navTextContainer">
-                            <div className="mouseProductName">
-                                <a className="mouseKeyboardLink" href="/">마우스+키보드</a>/마우스
-                            </div>
-                            <div className="mouseText">
-                            마우스
-                            </div>
-                            <div className="logitechMouse">
-                            로지텍 마우스
-                            </div>
-                        </div>
-                        <img className="navMouseImg" src="https://www.logitech.com/assets/64464/mice.png" alt=""/>
-                    </div>
-                </div>
-                <div className="mainArticle">
-                        <div className="filterHideContainer">
-                            <div className="filterHide" >
-                                <img className="filterIcon"  src="https://www.logitech.com/images/icons/filter-toggle.svg" alt=""/>
-                                <span onClick={this.clickHideHandler}>필터 숨기기</span>
-                            </div>  
-                        </div>
-                        <div className="productListMainContainer">
-                            <div className={`filterSidebar ${this.state.filterVisible ? "hideFilter": "showFilter"}`}>
-                                <div className="collectionContainer">
-                                    <div className="collection"  onClick={this.collectionHandler}>
-                                        <span className="collectionName">컬렉션</span>
-                                        <img className="minusImg"  alt="" src={this.state.collectionIcon} />
-                                    </div>
-                                    <ul className={`collectionList ${this.state.visible? "show" : "hide"}`}>
-                                        <li >
-                                        MX 퍼포먼스
-                                        </li>
-                                        <li >
-                                        인체공학 제품군
-                                        </li>
-                                        <li >
-                                        멀티 디바이스
-                                        </li>
-                                        <li >
-                                        무선
-                                        </li>
-                                        <li >
-                                        비즈니스용
-                                        </li>
-                                        <li >
-                                        게이밍 마우스
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="cardList">
-                                    <div className="content">
-                                            {this.state.mockData.map((el,idx)=>(
-                                                <Card key={idx} imgSrc={el.productImg} name={el.productName} backgroundColor={el.backgroundColor}/>
-                                            ))}
-                                </div>
-                            </div>                  
-                        </div>
-                </div>  
+  render() {
+    return (
+      <div className="ProductList">
+        <div>
+          <div className="navContainer">
+            <div className="navTextContainer">
+              <div className="mouseProductName">
+                <a className="mouseKeyboardLink" href="/">
+                  마우스+키보드
+                </a>
+                /마우스
+              </div>
+              <div className="mouseText">마우스</div>
+              <div className="logitechMouse">로지텍 마우스</div>
             </div>
-        )
-    }
+            <img
+              className="navMouseImg"
+              src="https://www.logitech.com/assets/64464/mice.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <div className="mainArticle">
+          <div className="filterHideContainer">
+            <div className="filterHide">
+              <img
+                className="filterIcon"
+                src="https://www.logitech.com/images/icons/filter-toggle.svg"
+                alt=""
+              />
+              <span onClick={this.clickHideHandler}>필터 숨기기</span>
+            </div>
+          </div>
+          <div className="productListMainContainer">
+            <div
+              className={`filterSidebar ${
+                this.state.filterVisible ? "hideFilter" : "showFilter"
+              }`}
+            >
+              <div className="collectionContainer">
+                <div className="collection" onClick={this.collectionHandler}>
+                  <span className="collectionName">컬렉션</span>
+                  <img
+                    className="minusImg"
+                    alt=""
+                    src={this.state.collectionIcon}
+                  />
+                </div>
+                <ul
+                  className={`collectionList ${
+                    this.state.visible ? "show" : "hide"
+                  }`}
+                >
+                  <li>MX 퍼포먼스</li>
+                  <li>인체공학 제품군</li>
+                  <li>멀티 디바이스</li>
+                  <li>무선</li>
+                  <li>비즈니스용</li>
+                  <li>게이밍 마우스</li>
+                </ul>
+              </div>
+            </div>
+            <div className="cardList">
+              <div className="content">
+                {this.state.mockData.map((el, idx) => (
+                  <Card
+                    key={idx}
+                    imgSrc={el.productImg}
+                    name={el.productName}
+                    backgroundColor={el.backgroundColor}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
-export default ProductList
+export default ProductList;
