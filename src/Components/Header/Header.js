@@ -5,8 +5,8 @@ import LogoBk from "../../Images/logo_bk.png";
 import "./header.scss";
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       activeTab: null,
       headerSearch: false,
@@ -36,6 +36,7 @@ class Header extends Component {
       });
     }
   };
+
   clicks = () => {
     this.setState({
       headerSearch: false,
@@ -55,19 +56,19 @@ class Header extends Component {
           <div className="headerTopWrap">
             <div className="haederTop">
               <div className="headerTopLeft">
-                <Link to="/main">
+                <Link to="/">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/logitechg-bottom.svg"
                     alt="logitechG"
                   ></img>
                 </Link>
-                <a>
+                <a href="/#">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/jaybird-overlay.svg"
                     alt="jaybirdsoprt"
                   ></img>
                 </a>
-                <a>
+                <a href="/#">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/ue-bottom.svg"
                     alt="ultimateears"
@@ -75,8 +76,11 @@ class Header extends Component {
                 </a>
               </div>
               <div className="headerTopRight">
-                <a>
-                  <img src="https://www.logitech.com/images/flags/south-korea.gif"></img>
+                <a href="/#">
+                  <img
+                    src="https://www.logitech.com/images/flags/south-korea.gif"
+                    alt=""
+                  ></img>
                   KO
                 </a>
                 <Link to="/cart">장바구니</Link>
@@ -86,7 +90,7 @@ class Header extends Component {
           </div>
           <div className="headerMain">
             <div className="headerMainRight">
-              <Link to="/main">
+              <Link to="/">
                 <img src={LogoBk} alt="mainlogo"></img>
               </Link>
             </div>
@@ -245,6 +249,7 @@ class Header extends Component {
               <img
                 onClick={this.clicks}
                 src={this.state.headerSearchPageImage}
+                alt=""
               ></img>
               <div className="headerSearchResult"></div>
             </div>

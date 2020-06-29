@@ -1,0 +1,38 @@
+.Card {
+    .cardContainer {
+        width: 303.33px;
+        height: 330.33px;
+
+
+
+        .productCard {
+            width: 281.33px;
+            height: 281.33px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .productCardImg {
+                width: 225.06px;
+                height: 225.06px;
+            }
+        }
+
+        .cardProductName {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cardProductInfo {
+            font-size: 16px;
+        }
+
+        .cardPick {
+            position: absolute;
+            top: 12px;
+            left: 10px;
+
+        }
+    }
+}

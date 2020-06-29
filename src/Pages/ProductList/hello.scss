@@ -43,20 +43,22 @@
     }
   }
 
-  .productListMainContainer {
-    width: 1150px;
-    margin: 0 auto;
+  .mainArticle {
+    width: 100%;
 
     .filterHideContainer {
       border-bottom: 1px solid #ccc;
-      width: 1150px;
+      width: 100%;
       margin-bottom: 50px;
 
       .filterHide {
+        width: 1150px;
         font-size: 13px;
         height: 50px;
         display: flex;
         align-items: center;
+        margin: 0 auto;
+        cursor: pointer;
       }
 
       .filterIcon {
@@ -66,43 +68,78 @@
       }
     }
 
-    .filterSidebar {
-      width: 250px;
-      height: 763px;
+    .productListMainContainer {
+      display: flex;
+      flex-direction: row;
+      width: 1150px;
+      margin: 0 auto;
 
-      .collectionContainer {
-        width: 100%;
-        border-bottom: 1px solid #ccc;
-        transition: all 0.335s ease;
+      .filterSidebar {
+        width: 200px;
+        height: 763px;
+        margin-right: 40px;
 
-        .collection {
-          margin-bottom: 10px;
-          transition: all 0.335s ease;
+        &.showFilter {
+          max-width: 200px;
+          transition: max-width 0.3s ease-in;
+          opacity: 1;
+        }
 
-          .collectionName {
-            margin-right: 190px;
+        &.hideFilter {
+          max-width: 0px;
+          transition: max-width 0.3s ease-in-out;
+          opacity: 0;
+        }
+
+        .collectionContainer {
+          width: 100%;
+          border-bottom: 1px solid #ccc;
+
+          .collection {
+            margin-bottom: 10px;
+            display: flex;
+            cursor: pointer;
+
+            .collectionName {
+              width: 240px;
+            }
+          }
+
+          .minusImg {
+            width: 18px;
+            display: flex;
+            align-self: flex-end;
+            transition: all 2s ease-in;
+          }
+
+          .collectionList {
+            line-height: 30px;
+            font-weight: lighter;
+            color: #70787a;
+            overflow: hidden;
+            max-height: 0px;
+
+            &.show {
+              max-height: 500px;
+              transition: max-height 0.5s ease-in;
+            }
+
+            &.hide {
+              max-height: 0;
+              transition: max-height 0.5s ease-out;
+              overflow: hidden;
+            }
           }
         }
+      }
 
-        .minusImg {
-          width: 18px;
-        }
+      .cardList {
+        width: 910px;
 
-        .collectionList {
-          font-weight: lighter;
-          color: #70787a;
-          transition: all 0.1s ease-out;
-          opacity: 0;
-          height: 0;
-          overflow: hidden;
-        }
-
-        .collectionListActive {
-          font-weight: lighter;
-          color: #70787a;
-          opacity: 1;
-          height: auto;
-          transition: all 0.1s ease-out;
+        .content {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
         }
       }
     }
