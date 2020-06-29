@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HeaderSearch from "./HeaderSearch";
+import { Link } from "react-router-dom";
 import LogoBk from "../../Images/logo_bk.png";
 import "./header.scss";
 
@@ -55,12 +56,12 @@ class Header extends Component {
           <div className="headerTopWrap">
             <div className="haederTop">
               <div className="headerTopLeft">
-                <a href="/#">
+                <Link to="/">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/logitechg-bottom.svg"
                     alt="logitechG"
                   ></img>
-                </a>
+                </Link>
                 <a href="/#">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/jaybird-overlay.svg"
@@ -76,18 +77,22 @@ class Header extends Component {
               </div>
               <div className="headerTopRight">
                 <a href="/#">
-                  <img src="https://www.logitech.com/images/flags/south-korea.gif"></img>
+                  <img
+                    src="https://www.logitech.com/images/flags/south-korea.gif"
+                    alt=""
+                  ></img>
                   KO
                 </a>
-                <a href="/#">내 계정</a>
+                <Link to="/cart">장바구니</Link>
+                <Link to="/login">내 계정</Link>
               </div>
             </div>
           </div>
           <div className="headerMain">
             <div className="headerMainRight">
-              <a href="/#">
+              <Link to="/">
                 <img src={LogoBk} alt="mainlogo"></img>
-              </a>
+              </Link>
             </div>
             <nav>
               <div
@@ -228,7 +233,7 @@ class Header extends Component {
                 type="text"
                 placeholder="검색"
                 onClick={this.seachInputClick}
-                value="검색"
+                defaultValue="검색"
               ></input>
             </div>
             <div
@@ -239,11 +244,12 @@ class Header extends Component {
               <input
                 placeholder="검색"
                 onChange={this.inputChange}
-                value={this.state.headerSearchPageInput}
+                defaultValue={this.state.headerSearchPageInput}
               ></input>
               <img
                 onClick={this.clicks}
                 src={this.state.headerSearchPageImage}
+                alt=""
               ></img>
               <div className="headerSearchResult"></div>
             </div>
