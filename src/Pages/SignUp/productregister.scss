@@ -2,7 +2,7 @@
     text-align: center;
     height: 1030px;
      
-    #backgroundImage {
+    img {
         width: 100%;
         height: 480px;
         top: 80px;
@@ -12,7 +12,7 @@
         filter: brightness(80%);
     }
 
-     #welcome {
+    h1 {
          color: white;
          font-family: Verdana, Geneva, Tahoma, sans-serif;
          font-size: 40px;
@@ -20,7 +20,7 @@
          top: 230px;
          left: 640px;
          width: 650px;
-     }
+    }
     
     h2 {
         font-size: 24px;

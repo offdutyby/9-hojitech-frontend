@@ -4,11 +4,11 @@ import Facebook from '../../Images/facebooklogo.png'
 import Amazon from '../../Images/amazonlogo.png'
 import Google from '../../Images/googlelogo.png'
 import "./LoginModal.scss";
-
 class LoginModal extends Component {
   render() {
     return (
-      <div className={this.props.isActive ? "LoginModal show" : "LoginModal hide"}>
+      <div className = "LoginModal">
+      <div className={this.props.isActive ? "SubLoginModal show" : "SubLoginModal hide"}>
         <div className="overlay">
           <div className="container">
             <div className="closebutton" onClick={this.props.isNotActive} >X
@@ -25,10 +25,11 @@ class LoginModal extends Component {
             <img className="amazon" src ={Amazon}/>
             <img className="google" src ={Google}/>
             <Link to="/signup"> <p class="makeaccount">{`계정만들기 >`}</p></Link>
-            <p class="logiid">{`LOGI ID 정보 >`}</p>
+            <p className="logiid">{`LOGI ID 정보 >`}</p>
           </div>
         </div> 
       </div> 
+    </div>
     )
   }
 }
