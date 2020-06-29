@@ -16,7 +16,6 @@ class ProductList extends Component {
 
   collectionHandler = () => {
     const { visible } = this.state;
-
     const collapseIcon =
       "https://www.logitech.com/images/icons/icon-collapse.svg";
     const expandIcon = "https://www.logitech.com/images/icons/icon-expand.svg";
@@ -37,7 +36,7 @@ class ProductList extends Component {
 
   componentDidMount() {
     fetch("http://10.58.0.179:8000/product/mice")
-      .then((res) => res.json()) 
+      .then((res) => res.json())
       .then((res) => this.setState({ realData: res.data }));
   }
 
