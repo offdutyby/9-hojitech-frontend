@@ -16,9 +16,6 @@ class Product extends Component {
   componentDidMount() {
     fetch("http://10.58.5.139:8000/product/productdetail", {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
       body: JSON.stringify({
         product_name: "M585 MULTI-DEVICE",
       }),
