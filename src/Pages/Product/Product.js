@@ -9,7 +9,7 @@ class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      htmlBody: [],
+      htmlBody: "",
     };
   }
 
@@ -30,10 +30,9 @@ class Product extends Component {
   // [this.state.htmlBody[0].product_name]
 
   render() {
-    const htmlCode = [
-      this.state.htmlBody[0] && this.state.htmlBody[0].Description,
-    ];
-    const teaser = [this.state.htmlBody[0] && this.state.htmlBody[0].Teaser];
+    const htmlCode = this.state.htmlBody && this.state.htmlBody.Description;
+    console.log("hello", htmlCode);
+    const teaser = this.state.htmlBody && this.state.htmlBody.Teaser;
     return (
       <div className="Product">
         <Header />
@@ -125,8 +124,8 @@ class Product extends Component {
             </div>
           </header>
           <article>
-            <div dangerouslySetInnerHTML={{ __html: teaser }}></div>;
-            <div dangerouslySetInnerHTML={{ __html: htmlCode }}></div>;
+            <div dangerouslySetInnerHTML={{ __html: teaser }}></div>
+            <div dangerouslySetInnerHTML={{ __html: htmlCode }}></div>
           </article>
           <footer></footer>
         </section>
