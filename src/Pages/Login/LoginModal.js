@@ -14,7 +14,7 @@ class LoginModal extends Component {
   }
 
   handleButton = () => {
-    fetch("___", {
+    fetch("http://10.58.5.139:8000/account/sign-in", {
       method: "POST",
       /*headers: {
           Authorization: localStorage.getItem("access_token")
@@ -24,8 +24,14 @@ class LoginModal extends Component {
         password: this.state.pw
       })
     })
-      .then(res => res.json())
-      .then(res=> console.log(res))
+      .then(res => {
+        if (res.status === 200) {
+          alert("로그인 성공");
+          this.props.isNotActive();
+        } else {
+          return alert("다시 입력해주십시오")
+        }
+      })
     };
 
     handleID = event => {
@@ -39,7 +45,6 @@ class LoginModal extends Component {
     };
 
   render() {
-    
   console.log(this.state)
     return (
       <div className = "LoginModal">
@@ -50,9 +55,9 @@ class LoginModal extends Component {
             <img className="logoimage" src= "https://www.logitech.com/content/dam/logitech/en/header/logitech.svg"/>
             <p className="LoginSubtitle">Logi Id로 로그인하기</p>
             <input className="id" onChange = {this.handleID} type="text" placeholder= "이메일 주소"/><br></br>
-            <input className="password" onChange = {this.handlePW} type="text" placeholder="암호"/>
+            <input className="password" onChange = {this.handlePW} type="password" placeholder="암호"/>
             <p className="forgotpw">암호를 잊으셨습니까?</p>
-            <button className="button" onClick={this.handleButton} type="button" style= {{opacity: this.state.id.length > 1 && this.state.pw.length > 4 ? "1" : "0.3"  }}>로그인</button><br></br>
+            <button className="button" onClick={this.handleButton} type="button">로그인</button><br></br>
             <button className="again">또는</button>
             <div className="greyline"></div>
             <img className="facebook" src ={Facebook}/>
