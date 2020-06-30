@@ -38,7 +38,6 @@ class Header extends Component {
   };
 
   headerSearchClose = () => {
-    console.log("this is closed!!");
     this.setState({
       headerSearch: false,
       headerSearchPageInput: "",
@@ -63,27 +62,27 @@ class Header extends Component {
                     alt="logitechG"
                   ></img>
                 </Link>
-                <a href="/#">
+                <Link to="/">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/jaybird-overlay.svg"
                     alt="jaybirdsoprt"
                   ></img>
-                </a>
-                <a href="/#">
+                </Link>
+                <Link to="/">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/ue-bottom.svg"
                     alt="ultimateears"
                   ></img>
-                </a>
+                </Link>
               </div>
               <div className="headerTopRight">
-                <a href="/#">
+                <Link to="/">
                   <img
                     src="https://www.logitech.com/images/flags/south-korea.gif"
                     alt=""
                   ></img>
                   KO
-                </a>
+                </Link>
                 <Link to="/cart">장바구니</Link>
                 <Link to="/login">내 계정</Link>
               </div>
