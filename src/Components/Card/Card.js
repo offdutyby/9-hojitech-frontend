@@ -8,6 +8,7 @@ class Card extends Component {
       cardHoverColor: { backgroundColor: "#f6f6f6" },
       poroductNameHide: { display: "none" },
       isMouseIn: true,
+      borderBlock: { border: "" },
     };
   }
 
@@ -19,12 +20,13 @@ class Card extends Component {
         backgroundColor: isMouseIn ? [this.props.hoverColor] : "#f6f6f6",
       },
       poroductNameHide: { display: isMouseIn ? "block" : "none" },
+      borderBlock: { border: isMouseIn ? "1px solid grey" : "" },
       isMouseIn: !isMouseIn,
     });
   };
 
   render() {
-    const { cardHoverColor, poroductNameHide } = this.state;
+    const { cardHoverColor, poroductNameHide, borderBlock } = this.state;
     const { imgSrc, name, thumbnailDescription } = this.props;
 
     return (
@@ -33,6 +35,7 @@ class Card extends Component {
           className="cardContainer"
           onMouseEnter={this.mouseOverHandler}
           onMouseLeave={this.mouseOverHandler}
+          style={borderBlock}
         >
           <div className="productCard" style={cardHoverColor}>
             <img className="productCardImg" alt="" src={imgSrc} />
@@ -44,6 +47,19 @@ class Card extends Component {
           <div className="cardProductName">{name}</div>
           <div className="cardProductInfo" style={poroductNameHide}>
             {thumbnailDescription}
+          </div>
+          <div style={poroductNameHide}>
+            <ul>
+              <li>
+                <img src={this.props.productColor1} alt="" />
+              </li>
+              <li>
+                <img src={this.props.productColor2} alt="" />
+              </li>
+              <li>
+                <img src={this.props.productColor3} alt="" />
+              </li>
+            </ul>
           </div>
         </div>
       </div>

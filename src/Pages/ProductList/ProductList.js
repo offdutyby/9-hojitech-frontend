@@ -8,9 +8,23 @@ class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      realData: [],
+      realData: [
+        {
+          thumbnail_image:
+            "https://www.logitech.com/assets/65776/73/mx-master-3.png",
+          product_name: "MX MASTER 3",
+          thumbnail_color: "red",
+          description: "이제품은 이렇게저렇고저롷ㄱ",
+          product_color: [
+            "https://www.logitech.com/assets/65123/24/wireless-mouse-m590-multi-device-silent.jpg",
+            "https://www.logitech.com/assets/65123/25/wireless-mouse-m590-multi-device-silent.jpg",
+            "https://www.logitech.com/assets/65123/26/wireless-mouse-m590-multi-device-silent.jpg",
+          ],
+        },
+      ],
       collectionIcon: "https://www.logitech.com/images/icons/icon-collapse.svg",
       filterVisible: false,
+      visible: false,
     };
   }
 
@@ -35,11 +49,11 @@ class ProductList extends Component {
     });
   };
 
-  componentDidMount() {
-    fetch("http://10.58.0.179:8000/product/mice")
-      .then((res) => res.json())
-      .then((res) => this.setState({ realData: res.data }));
-  }
+  // componentDidMount() {
+  //   fetch("http://10.58.0.179:8000/product/mice")
+  //     .then((res) => res.json())
+  //     .then((res) => this.setState({ realData: res.data }));
+  // }
 
   render() {
     const { visible, filterVisible, collectionIcon } = this.state;
@@ -105,6 +119,95 @@ class ProductList extends Component {
                     <li>게이밍 마우스</li>
                   </ul>
                 </div>
+                <div className="collectionContainer">
+                  <div className="collection" onClick={this.collectionHandler}>
+                    <span className="collectionName">크기 및 핏</span>
+                    <img className="minusImg" alt="" src={collectionIcon} />
+                  </div>
+                  <ul
+                    className={`collectionList ${
+                      visible ? "listShow" : "listHide"
+                    }`}
+                  >
+                    <li>소형 / 휴대용</li>
+                    <li>대형</li>
+                    <li>양손잡이</li>
+                  </ul>
+                </div>
+                <div className="collectionContainer">
+                  <div className="collection" onClick={this.collectionHandler}>
+                    <span className="collectionName">플랫폼</span>
+                    <img className="minusImg" alt="" src={collectionIcon} />
+                  </div>
+                  <ul
+                    className={`collectionList ${
+                      visible ? "listShow" : "listHide"
+                    }`}
+                  >
+                    <li>Windows</li>
+                    <li>Mac</li>
+                    <li>Chrome</li>
+                    <li>표면</li>
+                    <li>Linux</li>
+                  </ul>
+                </div>
+                <div className="collectionContainer">
+                  <div className="collection" onClick={this.collectionHandler}>
+                    <span className="collectionName">연결</span>
+                    <img className="minusImg" alt="" src={collectionIcon} />
+                  </div>
+                  <ul
+                    className={`collectionList ${
+                      visible ? "listShow" : "listHide"
+                    }`}
+                  >
+                    <li>Usb 수신기</li>
+                    <li>USB Unifying 수신기</li>
+                    <li>Bluetooth</li>
+                    <li>Bluetooth + USB 수신기</li>
+                    <li>유선</li>
+                  </ul>
+                </div>
+                <div className="collectionContainer">
+                  <div className="collection" onClick={this.collectionHandler}>
+                    <span className="collectionName">기능</span>
+                    <img className="minusImg" alt="" src={collectionIcon} />
+                  </div>
+                  <ul
+                    className={`collectionList ${
+                      visible ? "listShow" : "listHide"
+                    }`}
+                  >
+                    <li>충전식</li>
+                    <li>조용한 클릭</li>
+                    <li>이지-스위치 기술</li>
+                    <li>플로우 테크놀로지</li>
+                    <li>다크필드 트레킹</li>
+                    <li>프로그래밍이 가능한 버튼</li>
+                  </ul>
+                </div>
+                <div className="collectionContainer">
+                  <div className="collection" onClick={this.collectionHandler}>
+                    <span className="collectionName">고급 스크롤 유형</span>
+                    <img className="minusImg" alt="" src={collectionIcon} />
+                  </div>
+                  <ul
+                    className={`collectionList ${
+                      visible ? "listShow" : "listHide"
+                    }`}
+                  ></ul>
+                </div>
+                <div className="collectionContainer">
+                  <div className="collection" onClick={this.collectionHandler}>
+                    <span className="collectionName">작업 및 용도</span>
+                    <img className="minusImg" alt="" src={collectionIcon} />
+                  </div>
+                  <ul
+                    className={`collectionList ${
+                      visible ? "listShow" : "listHide"
+                    }`}
+                  ></ul>
+                </div>
               </div>
               <div className="cardList">
                 <div className="content">
@@ -116,6 +219,9 @@ class ProductList extends Component {
                         name={el.product_name}
                         hoverColor={el.thumbnail_color}
                         thumbnailDescription={el.description}
+                        productColor1={el.product_color[0]}
+                        productColor2={el.product_color[1]}
+                        productColor3={el.product_color[2]}
                       />
                     ))}
                 </div>
