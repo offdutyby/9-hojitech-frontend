@@ -95,6 +95,8 @@
           width: 100%;
           border-bottom: 1px solid #ccc;
           margin-bottom: 20px;
+          padding: 8px 0;
+          font-weight: 350;
 
 
           .collection {
@@ -131,6 +133,16 @@
               transition: max-height 0.5s ease-out;
               overflow: hidden;
             }
+          }
+        }
+
+        .filterFooter {
+          font-size: 13px;
+          margin-bottom: 10px;
+
+          img {
+            width: 7px;
+            margin-left: 10px;
           }
         }
       }

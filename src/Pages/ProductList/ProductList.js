@@ -28,7 +28,8 @@ class ProductList extends Component {
     };
   }
 
-  collectionHandler = () => {
+  collectionHandler = (e) => {
+    console.log(e.target.name);
     const { visible } = this.state;
 
     const collapseIcon =
@@ -65,9 +66,7 @@ class ProductList extends Component {
           <div className="navContainer">
             <div className="navTextContainer">
               <div className="mouseProductName">
-                <a className="mouseKeyboardLink" href="/">
-                  마우스+키보드
-                </a>
+                <span className="mouseKeyboardLink">마우스+키보드</span>
                 /마우스
               </div>
               <div className="mouseText">마우스</div>
@@ -103,7 +102,9 @@ class ProductList extends Component {
               >
                 <div className="collectionContainer">
                   <div className="collection" onClick={this.collectionHandler}>
-                    <span className="collectionName">컬렉션</span>
+                    <span className="collectionName" name="filterCollection">
+                      컬렉션
+                    </span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
                   <ul
@@ -120,7 +121,11 @@ class ProductList extends Component {
                   </ul>
                 </div>
                 <div className="collectionContainer">
-                  <div className="collection" onClick={this.collectionHandler}>
+                  <div
+                    className="collection"
+                    onClick={this.collectionHandler}
+                    name="filterSize"
+                  >
                     <span className="collectionName">크기 및 핏</span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
@@ -135,7 +140,11 @@ class ProductList extends Component {
                   </ul>
                 </div>
                 <div className="collectionContainer">
-                  <div className="collection" onClick={this.collectionHandler}>
+                  <div
+                    className="collection"
+                    onClick={this.collectionHandler}
+                    name="filterPlatfrom"
+                  >
                     <span className="collectionName">플랫폼</span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
@@ -152,7 +161,11 @@ class ProductList extends Component {
                   </ul>
                 </div>
                 <div className="collectionContainer">
-                  <div className="collection" onClick={this.collectionHandler}>
+                  <div
+                    className="collection"
+                    onClick={this.collectionHandler}
+                    name="filterConnection"
+                  >
                     <span className="collectionName">연결</span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
@@ -170,7 +183,9 @@ class ProductList extends Component {
                 </div>
                 <div className="collectionContainer">
                   <div className="collection" onClick={this.collectionHandler}>
-                    <span className="collectionName">기능</span>
+                    <span className="collectionName" name="filterFunction">
+                      기능
+                    </span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
                   <ul
@@ -188,7 +203,9 @@ class ProductList extends Component {
                 </div>
                 <div className="collectionContainer">
                   <div className="collection" onClick={this.collectionHandler}>
-                    <span className="collectionName">고급 스크롤 유형</span>
+                    <span className="collectionName" name="filterScroll">
+                      고급 스크롤 유형
+                    </span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
                   <ul
@@ -199,7 +216,9 @@ class ProductList extends Component {
                 </div>
                 <div className="collectionContainer">
                   <div className="collection" onClick={this.collectionHandler}>
-                    <span className="collectionName">작업 및 용도</span>
+                    <span className="collectionName" name="filterWork">
+                      작업 및 용도
+                    </span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
                   <ul
@@ -207,6 +226,20 @@ class ProductList extends Component {
                       visible ? "listShow" : "listHide"
                     }`}
                   ></ul>
+                </div>
+                <div className="filterFooter">
+                  로지텍 기술에 대해 자세히 알아보기
+                  <img
+                    src="https://www.logitech.com/images/icons/icon-chevron-right-black.svg"
+                    alt=""
+                  />
+                </div>
+                <div className="filterFooter">
+                  로지텍 마우스 디자인에 대해 자세히 알아보기
+                  <img
+                    src="https://www.logitech.com/images/icons/icon-chevron-right-black.svg"
+                    alt=""
+                  />
                 </div>
               </div>
               <div className="cardList">
