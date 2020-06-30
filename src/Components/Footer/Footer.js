@@ -6,16 +6,16 @@ class Footer extends Component {
     return (
       <div className="Footer">
         <div className="footerTop">
-          <a>연락처</a>
-          <a>소개</a>
-          <a>채용정보</a>
-          <a>개인정보 취급방침</a>
-          <a>사이트맵</a>
-          <a>투자자</a>
-          <a>이용 약관</a>
-          <a>지속 가능성</a>
-          <a>보도 자료</a>
-          <a>이메일 구독</a>
+          <span>소개</span>
+          <span>채용정보</span>
+          <span>연락처</span>
+          <span>개인정보 취급방침</span>
+          <span>사이트맵</span>
+          <span>투자자</span>
+          <span>이용 약관</span>
+          <span>지속 가능성</span>
+          <span>보도 자료</span>
+          <span>이메일 구독</span>
         </div>
         <div className="footerBottom">
           <div className="footerBottomLeft">
@@ -47,10 +47,13 @@ class Footer extends Component {
           </div>
         </div>
         <div className="footerCopyright">
-          <a>
-            <img src="https://www.logitech.com/images/flags/south-korea.gif"></img>
+          <span>
+            <img
+              src="https://www.logitech.com/images/flags/south-korea.gif"
+              alt=""
+            ></img>
             대한민국 ▶
-          </a>
+          </span>
           <p>© 2020 Logitech. All rights reserved</p>
           <p>
             고객 지원 센터 (제품 및 A/S 문의처): 00798-601-8207 (수신자부담)
