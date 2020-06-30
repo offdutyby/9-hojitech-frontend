@@ -16,23 +16,35 @@ class LoginModal extends Component {
   handleButton = () => {
     fetch("http://10.58.5.139:8000/account/sign-in", {
       method: "POST",
-      /*headers: {
-          Authorization: localStorage.getItem("access_token")
-      },*/
+      // headers: {
+      //   Authorization: localStorage.getItem("access_token")
+      //},
       body:JSON.stringify({
         email: this.state.id,
         password: this.state.pw
       })
     })
       .then(res => {
+        console.log("first then response >>> ", res)
         if (res.status === 200) {
           alert("로그인 성공");
-          this.props.isNotActive();
+          this.props.whenLoggedIn();
+          // this.props.isNotActive();
+          // this.props.handleLogin();
+          return res;
         } else {
-          return alert("다시 입력해주십시오")
+          alert("다시 입력해주십시오");
+          return res;
         }
       })
-    };
+      .then(response => response.json())
+      .then(response => {
+        console.log("third then response >>> ", response)
+        if (response.token) {
+          localStorage.setItem('token', response.token);
+        }
+      })
+  };
 
     handleID = event => {
       this.setState({

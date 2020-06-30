@@ -6,13 +6,29 @@ import ProductRegister from '../SignUp/productregister';
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import "./login.scss";
+
+/*class LoggedInComponent extends Component {
+  render(props) {
+  return <p>환영합니다</p>
+  }
+}
+*/
 class Login extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       isLoginModalPopUpActive: false,
-      isSignUpPopUpActive: false
+      isSignUpPopUpActive: false,
+      isLoggedIn : false
     };
+  }
+
+  componentDidMount = () => {
+    if(localStorage.getItem("token")){
+      this.setState({
+        isLoggedIn: true
+      })
+    }
   }
 
   openPopUp = () => {
@@ -21,11 +37,24 @@ class Login extends Component {
     }) 
   }
 
-  closePopUp = () => {
+  handleWhenLoggedIn = () => {
     this.setState({
-      isLoginModalPopUpActive: false
+      isLoginModalPopUpActive: false,
+      isLoggedIn: true
     }) 
   }
+
+  // closePopUp = () => {
+  //   this.setState({
+  //     isLoginModalPopUpActive: false
+  //   }) 
+  // }
+
+  // handleLoginState = () => {
+  //   this.setState({
+  //     isLoggedIn: true
+  //   })
+  // }
 
   openPopUp1 = () => {
     this.setState({
@@ -38,19 +67,39 @@ class Login extends Component {
       isSignUpPopUpActive: false
     }) 
   }
+
+  handleLogOutState = () => {
+    this.setState({
+      isLoggedIn: false
+    })
+    localStorage.removeItem('token')
+  }
+
+  /*handleName = name => {
+    this.setState({
+      userName: name
+    })
+  }*/
       
 render() {
   return (
     <>
       <Header />
       <div className="Login">
-        <div className="loginHeader">
-          <img src= "https://www.logitech.com/content/dam/logitech/my-account/hero-authenticated.png"></img>
-        </div>
-        <div className = "myAccountSection">
-          <h1> 내 계정 </h1>
-          <button onClick= {this.openPopUp}>로그인</button>
-          <button onClick= {this.openPopUp1}>계정 만들기</button>
+        <div className="loginHeader" style={{backgroundImage: "https://www.logitech.com/content/dam/logitech/my-account/hero-authenticated.png"}}>
+        {this.state.isLoggedIn 
+          ? <div className= "loggedIn"> 안녕하세요 <br></br> 
+            <div className = "logOut" onClick= {this.handleLogOutState}>로그아웃</div></div> 
+          : (
+            <div className="myAccountSection">
+              <h1>내 계정</h1>
+              <div>
+                <button onClick= {this.openPopUp}>로그인</button>
+                <button onClick= {this.openPopUp1}>계정 만들기</button>
+              </div>
+            </div>
+            )
+       }
         </div>
         <div className = "wholeDiv">
           <div className= "topDiv">
@@ -99,11 +148,19 @@ render() {
         </div>
       </div>
       <Footer />
-      <LoginModal isActive={this.state.isLoginModalPopUpActive} isNotActive={this.closePopUp}/> 
-      <SignUp isActive1={this.state.isSignUpPopUpActive} isNotActive1={this.closePopUp1}/>
+      <LoginModal 
+        isActive={this.state.isLoginModalPopUpActive} 
+        // isNotActive={this.closePopUp}
+        // handleLogin={this.handleLoginState} 
+        whenLoggedIn={this.handleWhenLoggedIn} 
+      /> 
+      <SignUp 
+        isActive1={this.state.isSignUpPopUpActive} 
+        isNotActive1={this.closePopUp1}/>
      </>
     )
   }
 }
 
 export default Login;
+
