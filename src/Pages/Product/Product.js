@@ -10,6 +10,7 @@ class Product extends Component {
     super(props);
     this.state = {
       htmlBody: [],
+      clickHandlerId: "",
     };
   }
 
@@ -24,25 +25,20 @@ class Product extends Component {
   }
   // [this.state.htmlBody[0].product_name]
 
+  clickHandler(num) {
+    this.setState({ clickHandlerId: num });
+  }
+
   render() {
-    const {
-      Description,
-      Teaser,
-      recommend_product_description,
-      recommend_product_name,
-      recommend_product_thumbnail,
-      specification,
-    } = this.state.htmlBody;
+    const { Description, Teaser, specification } = this.state.htmlBody;
 
     const htmlCode = this.state.htmlBody && Description;
     const teaser = this.state.htmlBody && Teaser;
-    const recommendDescription =
-      this.state.htmlBody && recommend_product_description;
-    const recommendName = this.state.htmlBody && recommend_product_name;
-    const recommendThumbnail =
-      this.state.htmlBody && recommend_product_thumbnail;
     const spec = this.state.htmlBody && specification;
-    console.log("hello", this.state);
+    console.log(
+      "hello",
+      this.state.htmlBody.length !== 0 ? this.state.htmlBody : "ddd"
+    );
     return (
       <div className="Product">
         <Header />
@@ -66,24 +62,26 @@ class Product extends Component {
                   </div>
                   <div className="productInfoColor">
                     <p className="colorName">
-                      {this.state.htmlBody.color && this.state.htmlBody.color}
+                      {this.state.htmlBody.length !== 0 &&
+                        this.state.htmlBody.color[0]}
                     </p>
                     <div className="colorImgContainer">
                       <img
+                        onClick={() => this.clickHandler(1)}
                         className="colorImg"
                         src="https://assets.logitech.com/assets/65123/24/wireless-mouse-m590-multi-device-silent.jpg"
                         alt=""
-                      ></img>
+                      />
                       <img
                         className="colorImg"
                         src="https://assets.logitech.com/assets/65123/25/wireless-mouse-m590-multi-device-silent.jpg"
                         alt=""
-                      ></img>
+                      />
                       <img
                         className="colorImg"
                         src="https://assets.logitech.com/assets/65123/26/wireless-mouse-m590-multi-device-silent.jpg"
                         alt=""
-                      ></img>
+                      />
                     </div>
                   </div>
                   <div className="specPrice">
@@ -93,7 +91,7 @@ class Product extends Component {
                       alt=""
                     />
                     <span className="spec">사양</span>
-                    <span className="price">₩ 10.000</span>
+                    <span className="price">₩ {this.state.htmlBody.price}</span>
                   </div>
                   <div className="btnContainer">
                     <div className="buyBtn">구매하기</div>
@@ -138,11 +136,6 @@ class Product extends Component {
           <article>
             <div dangerouslySetInnerHTML={{ __html: teaser }}></div>
             <div dangerouslySetInnerHTML={{ __html: htmlCode }}></div>
-            <div
-              dangerouslySetInnerHTML={{ __html: recommendDescription }}
-            ></div>
-            <div dangerouslySetInnerHTML={{ __html: recommendName }}></div>
-            <div dangerouslySetInnerHTML={{ __html: recommendThumbnail }}></div>
             <div dangerouslySetInnerHTML={{ __html: spec }}></div>
           </article>
         </section>
