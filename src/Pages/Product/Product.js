@@ -9,17 +9,12 @@ class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      htmlBody: "",
+      htmlBody: [],
     };
   }
 
   componentDidMount() {
-    fetch("http://10.58.5.139:8000/product/productdetail", {
-      method: "POST",
-      body: JSON.stringify({
-        product_name: "M585 MULTI-DEVICE",
-      }),
-    })
+    fetch(`http://10.58.5.139:8000/product/productdetail/${1}`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -30,9 +25,24 @@ class Product extends Component {
   // [this.state.htmlBody[0].product_name]
 
   render() {
-    const htmlCode = this.state.htmlBody && this.state.htmlBody.Description;
-    console.log("hello", htmlCode);
-    const teaser = this.state.htmlBody && this.state.htmlBody.Teaser;
+    const {
+      Description,
+      Teaser,
+      recommend_product_description,
+      recommend_product_name,
+      recommend_product_thumbnail,
+      specification,
+    } = this.state.htmlBody;
+
+    const htmlCode = this.state.htmlBody && Description;
+    const teaser = this.state.htmlBody && Teaser;
+    const recommendDescription =
+      this.state.htmlBody && recommend_product_description;
+    const recommendName = this.state.htmlBody && recommend_product_name;
+    const recommendThumbnail =
+      this.state.htmlBody && recommend_product_thumbnail;
+    const spec = this.state.htmlBody && specification;
+    console.log("hello", this.state);
     return (
       <div className="Product">
         <Header />
@@ -49,13 +59,15 @@ class Product extends Component {
                 </div>
                 <div className="productInfo">
                   <div className="productInfoName">
-                    <p className="name">M590 MULTI-DEVICE SILENT</p>
+                    <p className="name">{this.state.htmlBody.product_name}</p>
                     <p className="description">
-                      파워 유저를 위한 무소음 무선 마우스
+                      {this.state.htmlBody.product_description}
                     </p>
                   </div>
                   <div className="productInfoColor">
-                    <p className="colorName">그라파이트 토날</p>
+                    <p className="colorName">
+                      {this.state.htmlBody.color && this.state.htmlBody.color}
+                    </p>
                     <div className="colorImgContainer">
                       <img
                         className="colorImg"
@@ -126,8 +138,13 @@ class Product extends Component {
           <article>
             <div dangerouslySetInnerHTML={{ __html: teaser }}></div>
             <div dangerouslySetInnerHTML={{ __html: htmlCode }}></div>
+            <div
+              dangerouslySetInnerHTML={{ __html: recommendDescription }}
+            ></div>
+            <div dangerouslySetInnerHTML={{ __html: recommendName }}></div>
+            <div dangerouslySetInnerHTML={{ __html: recommendThumbnail }}></div>
+            <div dangerouslySetInnerHTML={{ __html: spec }}></div>
           </article>
-          <footer></footer>
         </section>
         <Footer />
       </div>

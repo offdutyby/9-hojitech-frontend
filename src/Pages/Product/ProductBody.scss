@@ -18826,6 +18826,14 @@ html.js .additional-features-rows.business #section-product-hero.enabled>.additi
   color: #000
 }
 
+.tabs {
+  margin: 0;
+  columns: 3;
+  column-gap: 6em;
+}
+
+
+
 .modal-comparison table.product-compare thead h4 a {
   color: #000
 }
