@@ -14,12 +14,12 @@ class Cart extends Component {
   componentDidMount = () => {
     fetch("http://localhost:3000/data/data.json")
       .then((res) => res.json())
-      .then((res) => this.setState({ productList: res.data[0] }));
+      .then((res) => this.setState({ productList: res.data[0].product_info }));
   };
 
   allRemove = () => {
     this.setState({
-      productList: null,
+      productList: [],
       totalPrice: "0",
     });
   };
@@ -31,12 +31,12 @@ class Cart extends Component {
     let newArr;
     let selectedProduct;
     let addPrice;
+    console.log("id>>>", id);
+    console.log("checked>>>", checked);
 
     !checked.includes(id)
-      ? (addPrice =
-          this.state.totalPrice + Number(productList[id - 1].productPrice))
-      : (addPrice =
-          this.state.totalPrice - Number(productList[id - 1].productPrice));
+      ? (addPrice = this.state.totalPrice + Number(productList[id - 1].price))
+      : (addPrice = this.state.totalPrice - Number(productList[id - 1].price));
 
     for (let i = 0; i < productList.length; i++) {
       if (productList[i].id === id) selectedProduct = productList[i];
@@ -66,28 +66,14 @@ class Cart extends Component {
 
   deleteProds = (idx) => {
     const { productList } = this.state;
-    //let { totalPrice } = this.state;
-    // totalPrice = totalPrice - Number(this.state.productList[idx].productPrice);
+
     productList.splice(idx, 1);
     this.setState({
       productList: productList,
-
-      //totalPrice: totalPrice,
     });
   };
 
-  // totalPrice = () => {
-  //   let total = null;
-  //   for (let i in this.state.productList) {
-  //     total += Number(this.state.productList[i].productPrice);
-  //   }
-  //   this.setState({
-  //     totalPrice: total,
-  //   });
-  // };
-
   render() {
-    console.log(this.state.productList);
     return (
       <>
         <Header />
@@ -98,7 +84,7 @@ class Cart extends Component {
               <div
                 className="cartClearButton"
                 style={
-                  this.state.productList === 0
+                  this.state.productList.length === 0
                     ? { display: "none" }
                     : { display: "block" }
                 }
@@ -106,17 +92,19 @@ class Cart extends Component {
                 <span onClick={this.allRemove}>전체삭제</span>
                 <span onClick={this.selectRemove}>선택삭제 </span>
               </div>
-              {this.state.productList === 0 ? (
+              {this.state.productList.length === 0 ? (
                 <div className="cartClear">장바구니가 비었습니다</div>
               ) : (
                 this.state.productList.map((product, index) => {
                   return (
                     <CartProduct
+                      key={index}
+                      colorImage={product.color_image}
                       id={product.id}
-                      key={product.id}
-                      productName={product.productName}
-                      thumbnailImage={product.thumbnailImage}
-                      productPrice={product.productPrice}
+                      productName={product.name}
+                      thumbnailImage={product.thumbnail_image}
+                      productPrice={product.price}
+                      quantity={product.quantity}
                       deleteProds={this.deleteProds}
                       //totalPrice={this.totalPrice}
                       selectCheckbox={this.selectCheckbox}
@@ -129,7 +117,7 @@ class Cart extends Component {
               <span>
                 결제 예정 금액
                 <span className="TotalProductPrice">
-                  {this.state.totalPrice.toLocaleString()}
+                  {this.state.totalPrice}
                 </span>
               </span>
               <button className="purchase">구매하기</button>

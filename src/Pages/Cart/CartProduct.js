@@ -23,14 +23,10 @@ class CartProduct extends Component {
         <div className="cartText">
           <span className="productName">
             {this.props.productName}
-            <img
-              className="productColor"
-              src="https://assets.logitech.com/assets/65123/26/wireless-mouse-m590-multi-device-silent.jpg"
-              alt=""
-            />
+            <img className="productColor" src={this.props.colorImage} alt="" />
           </span>
-          <span className="productCount">{this.props.id}</span>
-          <span className="productPrice"> {this.props.productPricehgu}</span>
+          <span className="productCount">{this.props.quantity}</span>
+          <span className="productPrice"> {this.props.productPrice}</span>
         </div>
         <img
           className="productDelete"
