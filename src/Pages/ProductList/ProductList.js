@@ -12,7 +12,6 @@ class ProductList extends Component {
       collectionIcon: "https://www.logitech.com/images/icons/icon-expand.svg",
       filterVisible: false,
       id: null,
-      user: {},
     };
   }
 
@@ -21,6 +20,14 @@ class ProductList extends Component {
       .then((res) => res.json())
       .then((res) => this.setState({ realData: res.data }));
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.match.params.pid !== this.props.match.params.pid) {
+  //     fetch(
+  //       `http://10.58.2.233:8000/product/mice/${this.props.match.params.pid}`
+  //     );
+  //   }
+  // }
 
   clickSumbitHandler = (num) => {
     this.handleData(num);
@@ -54,6 +61,10 @@ class ProductList extends Component {
     this.setState({
       filterVisible: !filterVisible,
     });
+  };
+
+  clickHandler = (id) => {
+    this.props.history.push(`/productlist/${id}`);
   };
 
   render() {
@@ -301,6 +312,7 @@ class ProductList extends Component {
                   {this.state.realData[0] &&
                     this.state.realData.map((el, idx) => (
                       <Card
+                        onClick={() => this.clickHandler(el.id)}
                         key={idx}
                         imgSrc={el.thumbnail_image}
                         name={el.product_name}
