@@ -63,7 +63,7 @@ class LoginModal extends Component {
       <div className={this.props.isActive ? "SubLoginModal show" : "SubLoginModal hide"}>
         <div className="overlay">
           <div className="container">
-            <div className="closebutton" onClick={this.props.isNotActive} > X </div>
+            <div className="closebutton" onClick={this.props.whenLoggedIn} > X </div>
             <img className="logoimage" src= "https://www.logitech.com/content/dam/logitech/en/header/logitech.svg"/>
             <p className="LoginSubtitle">Logi Id로 로그인하기</p>
             <input className="id" onChange = {this.handleID} type="text" placeholder= "이메일 주소"/><br></br>
