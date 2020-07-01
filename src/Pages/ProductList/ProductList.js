@@ -1,14 +1,77 @@
 import React, { Component } from "react";
 import Card from "../../Components/Card/Card";
-import Header from "../../Components/Header/Header";
-import Footer from "../../Components/Footer/Footer";
 import "../ProductList/hello.scss";
 
 class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      realData: [],
+      mockData: [
+        {
+          id: 1,
+          productImg:
+            "https://www.logitech.com/assets/65776/73/mx-master-3.png",
+          productName: "MX MASTER 3",
+          backgroundColor: "red",
+        },
+        {
+          id: 2,
+          productImg:
+            "https://www.logitech.com/assets/65107/13/mx-anywhere-2s.png",
+          productName: "MX Anywhere 2S",
+          backgroundColor: "navy",
+        },
+        {
+          id: 3,
+          productImg:
+            "https://www.logitech.com/assets/65685/15/logitech-pebble-m350.png",
+          productName: "Logitech Pebble M350",
+          backgroundColor: "orange",
+        },
+        {
+          id: 4,
+          productImg:
+            "https://www.logitech.com/assets/65122/13/wireless-mouse-m585-multi-device.png",
+          productName: "sampleImg",
+          backgroundColor: "white",
+        },
+        {
+          id: 5,
+          productImg:
+            "https://i.pinimg.com/474x/71/84/b9/7184b9c6f6adc1530eaa532abbbe7a4e.jpg",
+          productName: "sample",
+          backgroundColor: "powderblue",
+        },
+        {
+          id: 6,
+          productImg:
+            "https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",
+          productName: "sample",
+          backgroundColor: "grey",
+        },
+        {
+          id: 7,
+          productImg:
+            "https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",
+          productName: "sample",
+          backgroundColor: "blue",
+        },
+        {
+          id: 8,
+          productImg:
+            "https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",
+          productName: "sample",
+          backgroundColor: "skyblue",
+        },
+        {
+          id: 8,
+          productImg:
+            "https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",
+          productName: "sample",
+          backgroundColor: "green",
+        },
+      ],
+
       collectionIcon: "https://www.logitech.com/images/icons/icon-collapse.svg",
       filterVisible: false,
     };
@@ -35,6 +98,14 @@ class ProductList extends Component {
     });
   };
 
+  clickHideHandler = () => {
+    const { filterVisible } = this.state;
+
+    this.setState({
+      filterVisible: !filterVisible,
+    });
+  };
+
   componentDidMount() {
     fetch("http://10.58.0.179:8000/product/mice")
       .then((res) => res.json())
@@ -46,7 +117,6 @@ class ProductList extends Component {
 
     return (
       <>
-        <Header />
         <div className="ProductList">
           <div className="navContainer">
             <div className="navTextContainer">
@@ -123,7 +193,6 @@ class ProductList extends Component {
             </div>
           </div>
         </div>
-        <Footer />
       </>
     );
   }

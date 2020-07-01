@@ -12,7 +12,7 @@ class MainSlide extends Component {
         <AutoplaySlider
           play={true}
           cancelOnInteraction={false} // should stop playing on user interaction
-          interval={5000}
+          interval={3000}
         >
           <div data-src="https://www.logitech.com/assets/65888/combo-touch.jpg">
             <div className="slideTextBox">
@@ -22,7 +22,7 @@ class MainSlide extends Component {
                 <br />
                 클릭만으로
               </h2>
-              <a href="#">TOUCH COMBO</a>
+              <span>TOUCH COMBO</span>
             </div>
           </div>
           <div data-src="https://www.logitech.com/assets/65762/30/streamcam.jpg">
@@ -33,7 +33,7 @@ class MainSlide extends Component {
                 <br />
                 STREAMCAM
               </h2>
-              <a href="#">STREAMCAM 탐색하기</a>
+              <span>STREAMCAM 탐색하기</span>
             </div>
           </div>
           <div data-src="https://www.logitech.com/assets/65906/slim-folio-pro-for-ipad-pro-11-inch-and-129-inch.jpg">
@@ -45,7 +45,7 @@ class MainSlide extends Component {
                 타이핑 느낌.
                 <br />새 PRO 모델 지원.
               </h2>
-              <a href="#">SLIM FOLIO PRO 알아보기</a>
+              <span>SLIM FOLIO PRO 알아보기</span>
             </div>
           </div>
         </AutoplaySlider>

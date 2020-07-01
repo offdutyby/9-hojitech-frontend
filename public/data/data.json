@@ -1,0 +1,57 @@
+{
+  "data": [{
+      "id": 1,
+      "thumbnailImage": "https://www.logitech.com/assets/65776/73/mx-master-3.png",
+      "productName": "MX MASTER 3",
+      "productPrice": 10000
+    },
+    {
+      "id": 2,
+      "thumbnailImage": "https://www.logitech.com/assets/65107/13/mx-anywhere-2s.png",
+      "productName": "MX Anywhere 2S",
+      "productPrice": 10000
+    },
+    {
+      "id": 3,
+      "thumbnailImage": "https://www.logitech.com/assets/65685/15/logitech-pebble-m350.png",
+      "productName": "Logitech Pebble M350",
+      "productPrice": 10000
+    },
+    {
+      "id": 4,
+      "thumbnailImage": "https://www.logitech.com/assets/65122/13/wireless-mouse-m585-multi-device.png",
+      "productName": "sampleImg",
+      "productPrice": 10000
+    },
+    {
+      "id": 5,
+      "thumbnailImage": "https://i.pinimg.com/474x/71/84/b9/7184b9c6f6adc1530eaa532abbbe7a4e.jpg",
+      "productName": "sample",
+      "productPrice": 10000
+    },
+    {
+      "id": 6,
+      "thumbnailImage": "https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",
+      "productName": "sample",
+      "productPrice": 10000
+    },
+    {
+      "id": 7,
+      "thumbnailImage": "https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",
+      "productName": "sample",
+      "productPrice": 10000
+    },
+    {
+      "id": 8,
+      "thumbnailImage": "https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",
+      "productName": "sample",
+      "productPrice": 10000
+    },
+    {
+      "id": 9,
+      "thumbnailImage": "https://i.pinimg.com/564x/15/e0/6a/15e06af473ec98a9870d3691fcb4277b.jpg",
+      "productName": "sample",
+      "productPrice": 10000
+    }
+  ]
+}

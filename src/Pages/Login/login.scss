@@ -1,0 +1,133 @@
+.Login {
+    align-content: center;
+    .loginHeader {
+        align-content: center;
+        img {
+            &:last-child {
+                width: 100%;
+                height: 550px;
+                background-position: center;
+                position: relative;
+                display: inline-block;
+            }
+        }
+    }
+
+    .makeAccount {
+        width: 1150px;
+    }
+
+    #loginbtn { //fix px
+        position: absolute;
+        margin: 0 auto;
+        left: 0;
+        right: 124px;
+        top: 350px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bolder;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.849);
+        border-color: black;
+        height: 49px;
+        width: 100px;
+        &:hover {
+            background: rgb(243, 240, 240);
+            color: black;
+            cursor: pointer;
+        }
+    }
+
+    #makeAccountbtn {
+        position: absolute;
+        margin: 0 auto;
+        left: 126px;
+        right: 0;
+        top: 350px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bolder;
+        height: 49px;
+        width: 120px;
+        border-radius: 0em;
+        border-width: 2 px;
+        border-color: black;
+        &:hover {
+            border-width: 3px;
+            cursor: pointer;
+        }
+    }
+
+    #myAccountText {
+        font-size: 48px;
+        font-weight: bold;
+        position: absolute;
+        margin: 0 auto;
+        left: 385px;
+        top: 260px;
+        text-align: center;
+        width: 60%;
+    }
+
+    .clickSubItems {
+        font-size: 13px;
+        font-weight: 600;
+        padding-top: 8px;
+        margin-top: 0px;
+        &:hover {
+            font-size: 15px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+    }
+
+    // li {
+    //     &:first-child{
+
+    //     }
+    // }
+
+    // li :first-child{
+
+    // }
+
+    .wholeDiv {
+        justify-items: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .topDiv {
+        display: inline-flex;
+        width: 100%;
+        margin-top: 55px;
+        margin-bottom: 0;
+        justify-content: center;
+    }
+    
+    .bottomDiv {
+        display: inline-flex;
+        margin-top: 0;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 55px;
+    }
+
+    h2 {
+        font-size: 30px;
+        margin: 20px 20px;
+    }
+
+    h3 {
+        margin-bottom: 20px;
+        font-size: 15px;
+        font-weight: normal;
+    }
+    
+    .contentDiv1, .contentDiv2, .contentDiv3, .contentDiv4, .contentDiv5, .contentDiv6 {
+        width: 23%;
+        text-align: center;
+        margin-top: 0%;
+        padding: 2% 4%;
+    }
+}
