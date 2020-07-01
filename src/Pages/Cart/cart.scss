@@ -23,6 +23,8 @@
         line-height: 60px;
         color: #666;
         span {
+          display: inline-block;
+          padding-right: 18px;
           cursor: pointer;
         }
       }

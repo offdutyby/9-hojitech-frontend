@@ -1,0 +1,35 @@
+.HeaderSearch {
+  margin: 0 10px 25px;
+  text-align: left;
+  padding: 15px;
+  &:hover {
+    outline: 1px solid lightgrey;
+  }
+  .imgWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 200px;
+    padding: 30px;
+    background: #f6f6f6;
+    img {
+      height: 100px;
+    }
+  }
+  h4 {
+    display: block;
+    margin: 15px 0 5px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+  span {
+    display: inline-block;
+    width: 270px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #9b9c9d;
+    white-space: none;
+    word-break: break-all;
+  }
+}
