@@ -91,12 +91,18 @@
           opacity: 0;
         }
 
+        .collectionContainer li {
+          cursor: pointer;
+        }
+
         .collectionContainer {
           width: 100%;
           border-bottom: 1px solid #ccc;
           margin-bottom: 20px;
           padding: 8px 0;
           font-weight: 350;
+
+
 
 
           .collection {
@@ -113,7 +119,6 @@
             width: 18px;
             display: flex;
             align-self: flex-end;
-            transition: all 2s ease-in;
           }
 
           .collectionList {

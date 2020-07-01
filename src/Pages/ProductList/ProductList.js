@@ -5,60 +5,59 @@ import Footer from "../../Components/Footer/Footer";
 import "../ProductList/hello.scss";
 
 class ProductList extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      realData: [
-        {
-          thumbnail_image:
-            "https://www.logitech.com/assets/65776/73/mx-master-3.png",
-          product_name: "MX MASTER 3",
-          thumbnail_color: "red",
-          description: "이제품은 이렇게저렇고저롷ㄱ",
-          product_color: [
-            "https://www.logitech.com/assets/65123/24/wireless-mouse-m590-multi-device-silent.jpg",
-            "https://www.logitech.com/assets/65123/25/wireless-mouse-m590-multi-device-silent.jpg",
-            "https://www.logitech.com/assets/65123/26/wireless-mouse-m590-multi-device-silent.jpg",
-          ],
-        },
-      ],
-      collectionIcon: "https://www.logitech.com/images/icons/icon-collapse.svg",
+      realData: [],
+      collectionIcon: "https://www.logitech.com/images/icons/icon-expand.svg",
       filterVisible: false,
-      visible: false,
+      id: null,
+      user: {},
     };
   }
 
-  collectionHandler = (e) => {
-    console.log(e.target.name);
-    const { visible } = this.state;
+  componentDidMount() {
+    fetch("http://10.58.2.233:8000/product/mice")
+      .then((res) => res.json())
+      .then((res) => this.setState({ realData: res.data }));
+  }
+
+  clickSumbitHandler = (num) => {
+    this.handleData(num);
+  };
+
+  handleData = (num) => {
+    fetch(`http://10.58.2.233:8000/product/mice/filter?filter=${num}`)
+      .then((res) => res.json())
+      .then((res) =>
+        this.setState({
+          realData: res.data,
+        })
+      );
+  };
+
+  collectionHandler = (num) => {
+    const { id } = this.state;
 
     const collapseIcon =
       "https://www.logitech.com/images/icons/icon-collapse.svg";
     const expandIcon = "https://www.logitech.com/images/icons/icon-expand.svg";
 
     this.setState({
-      collapseIcon: visible ? collapseIcon : expandIcon,
-      visible: !visible,
+      collectionIcon: num !== id ? collapseIcon : expandIcon,
+      id: num !== id ? num : null,
     });
   };
 
   clickHideHandler = () => {
     const { filterVisible } = this.state;
-
     this.setState({
       filterVisible: !filterVisible,
     });
   };
 
-  // componentDidMount() {
-  //   fetch("http://10.58.0.179:8000/product/mice")
-  //     .then((res) => res.json())
-  //     .then((res) => this.setState({ realData: res.data }));
-  // }
-
   render() {
-    const { visible, filterVisible, collectionIcon } = this.state;
-
+    const { filterVisible, collectionIcon, id } = this.state;
     return (
       <>
         <Header />
@@ -101,69 +100,107 @@ class ProductList extends Component {
                 }`}
               >
                 <div className="collectionContainer">
-                  <div className="collection" onClick={this.collectionHandler}>
+                  <div
+                    className="collection"
+                    onClick={() => this.collectionHandler(1)}
+                  >
                     <span className="collectionName" name="filterCollection">
                       컬렉션
                     </span>
-                    <img className="minusImg" alt="" src={collectionIcon} />
+                    <img
+                      className="minusImg"
+                      alt=""
+                      src={
+                        id === 1
+                          ? "https://www.logitech.com/images/icons/icon-collapse.svg"
+                          : collectionIcon
+                      }
+                    />
                   </div>
                   <ul
                     className={`collectionList ${
-                      visible ? "listShow" : "listHide"
+                      id === 1 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li>MX 퍼포먼스</li>
-                    <li>인체공학 제품군</li>
-                    <li>멀티 디바이스</li>
-                    <li>무선</li>
-                    <li>비즈니스용</li>
-                    <li>게이밍 마우스</li>
+                    <li onClick={() => this.clickSumbitHandler(1)}>
+                      MX 퍼포먼스
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(2)}>
+                      인체공학 제품군
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(3)}>
+                      멀티 디바이스
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(4)}>무선</li>
+                    <li onClick={() => this.clickSumbitHandler(5)}>
+                      비즈니스용
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(6)}>
+                      게이밍 마우스
+                    </li>
                   </ul>
                 </div>
                 <div className="collectionContainer">
                   <div
                     className="collection"
-                    onClick={this.collectionHandler}
-                    name="filterSize"
+                    onClick={() => this.collectionHandler(2)}
                   >
                     <span className="collectionName">크기 및 핏</span>
-                    <img className="minusImg" alt="" src={collectionIcon} />
+                    <img
+                      className="minusImg"
+                      alt=""
+                      src={
+                        id === 2
+                          ? "https://www.logitech.com/images/icons/icon-collapse.svg"
+                          : collectionIcon
+                      }
+                    />
                   </div>
                   <ul
                     className={`collectionList ${
-                      visible ? "listShow" : "listHide"
+                      id === 2 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li>소형 / 휴대용</li>
-                    <li>대형</li>
-                    <li>양손잡이</li>
+                    <li onClick={() => this.clickSumbitHandler(7)}>
+                      소형 / 휴대용
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(8)}>대형</li>
+                    <li onClick={() => this.clickSumbitHandler(9)}>양손잡이</li>
                   </ul>
                 </div>
                 <div className="collectionContainer">
                   <div
                     className="collection"
-                    onClick={this.collectionHandler}
+                    onClick={() => this.collectionHandler(3)}
                     name="filterPlatfrom"
                   >
                     <span className="collectionName">플랫폼</span>
-                    <img className="minusImg" alt="" src={collectionIcon} />
+                    <img
+                      className="minusImg"
+                      alt=""
+                      src={
+                        id === 3
+                          ? "https://www.logitech.com/images/icons/icon-collapse.svg"
+                          : collectionIcon
+                      }
+                    />
                   </div>
                   <ul
                     className={`collectionList ${
-                      visible ? "listShow" : "listHide"
+                      id === 3 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li>Windows</li>
-                    <li>Mac</li>
-                    <li>Chrome</li>
-                    <li>표면</li>
-                    <li>Linux</li>
+                    <li onClick={() => this.clickSumbitHandler(9)}>Windows</li>
+                    <li onClick={() => this.clickSumbitHandler(10)}>Mac</li>
+                    <li onClick={() => this.clickSumbitHandler(11)}>Chrome</li>
+                    <li onClick={() => this.clickSumbitHandler(12)}>표면</li>
+                    <li onClick={() => this.clickSumbitHandler(13)}>Linux</li>
                   </ul>
                 </div>
                 <div className="collectionContainer">
                   <div
                     className="collection"
-                    onClick={this.collectionHandler}
+                    onClick={() => this.collectionHandler(4)}
                     name="filterConnection"
                   >
                     <span className="collectionName">연결</span>
@@ -171,18 +208,29 @@ class ProductList extends Component {
                   </div>
                   <ul
                     className={`collectionList ${
-                      visible ? "listShow" : "listHide"
+                      id === 4 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li>Usb 수신기</li>
-                    <li>USB Unifying 수신기</li>
-                    <li>Bluetooth</li>
-                    <li>Bluetooth + USB 수신기</li>
-                    <li>유선</li>
+                    <li onClick={() => this.clickSumbitHandler(14)}>
+                      Usb 수신기
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(15)}>
+                      USB Unifying 수신기
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(16)}>
+                      Bluetooth
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(17)}>
+                      Bluetooth + USB 수신기
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(18)}>유선</li>
                   </ul>
                 </div>
                 <div className="collectionContainer">
-                  <div className="collection" onClick={this.collectionHandler}>
+                  <div
+                    className="collection"
+                    onClick={() => this.collectionHandler(5)}
+                  >
                     <span className="collectionName" name="filterFunction">
                       기능
                     </span>
@@ -190,7 +238,7 @@ class ProductList extends Component {
                   </div>
                   <ul
                     className={`collectionList ${
-                      visible ? "listShow" : "listHide"
+                      id === 5 ? "listShow" : "listHide"
                     }`}
                   >
                     <li>충전식</li>
@@ -202,7 +250,10 @@ class ProductList extends Component {
                   </ul>
                 </div>
                 <div className="collectionContainer">
-                  <div className="collection" onClick={this.collectionHandler}>
+                  <div
+                    className="collection"
+                    onClick={() => this.collectionHandler(6)}
+                  >
                     <span className="collectionName" name="filterScroll">
                       고급 스크롤 유형
                     </span>
@@ -210,12 +261,15 @@ class ProductList extends Component {
                   </div>
                   <ul
                     className={`collectionList ${
-                      visible ? "listShow" : "listHide"
+                      id === 6 ? "listShow" : "listHide"
                     }`}
                   ></ul>
                 </div>
                 <div className="collectionContainer">
-                  <div className="collection" onClick={this.collectionHandler}>
+                  <div
+                    className="collection"
+                    onClick={() => this.collectionHandler(7)}
+                  >
                     <span className="collectionName" name="filterWork">
                       작업 및 용도
                     </span>
@@ -223,7 +277,7 @@ class ProductList extends Component {
                   </div>
                   <ul
                     className={`collectionList ${
-                      visible ? "listShow" : "listHide"
+                      id === 7 ? "listShow" : "listHide"
                     }`}
                   ></ul>
                 </div>
@@ -252,9 +306,9 @@ class ProductList extends Component {
                         name={el.product_name}
                         hoverColor={el.thumbnail_color}
                         thumbnailDescription={el.description}
-                        productColor1={el.product_color[0]}
-                        productColor2={el.product_color[1]}
-                        productColor3={el.product_color[2]}
+                        productColor1={el.colors[0]}
+                        productColor2={el.colors[1]}
+                        productColor3={el.colors[2]}
                       />
                     ))}
                 </div>
