@@ -5,24 +5,23 @@ class CartProduct extends Component {
     this.props.deleteProds(this.props.id);
   };
 
-  sumAllPrice = (() => this.props.totalPrice(this.props.productPrice))();
-
   render() {
+    const { selectCheckbox, id, productPrice } = this.props;
     return (
       <div className="CartProduct">
+        <input
+          type="checkbox"
+          className="cartCheckbox"
+          onClick={() => selectCheckbox(id, productPrice)}
+        />
         <img className="thumbnail" src={this.props.thumbnailImage} alt="" />
         <div className="cartText">
           <span className="productName">
             {this.props.productName}
-            <img
-              className="productColor"
-              src="https://assets.logitech.com/assets/65123/26/wireless-mouse-m590-multi-device-silent.jpg"
-              alt=""
-            />
+            <img className="productColor" src={this.props.colorImage} alt="" />
           </span>
-          <span className="productCount">{this.props.id}</span>
+          <span className="productCount">{this.props.quantity}</span>
           <span className="productPrice">
-            {" "}
             {this.props.productPrice.toLocaleString()}
           </span>
         </div>

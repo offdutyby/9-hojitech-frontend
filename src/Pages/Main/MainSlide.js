@@ -8,7 +8,7 @@ class MainSlide extends Component {
   render() {
     const AutoplaySlider = withAutoplay(AwesomeSlider);
     return (
-      <div class="MainSlide">
+      <div className="MainSlide">
         <AutoplaySlider
           play={true}
           cancelOnInteraction={false} // should stop playing on user interaction
