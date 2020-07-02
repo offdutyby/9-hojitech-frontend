@@ -40,9 +40,10 @@ class Header extends Component {
 
   render() {
     let filterText = this.state.productList.filter((list) =>
-      list.product_name.includes(this.state.headerSearchInput)
+      list.product_name
+        .toLocaleLowerCase()
+        .includes(this.state.headerSearchInput.toLocaleLowerCase())
     );
-    console.log(this.state.productList);
 
     return (
       <div className="Header">
@@ -223,7 +224,7 @@ class Header extends Component {
             </nav>
             <div
               className={
-                this.state.isSwichOn === false
+                !this.state.isSwichOn
                   ? "headerMainLeftDefault"
                   : "headerMainLeftFocus"
               }
@@ -250,7 +251,7 @@ class Header extends Component {
               <div
                 className="headerSearchPage"
                 style={
-                  this.state.headerSearchInput === ""
+                  !this.state.headerSearchInput
                     ? { display: "none" }
                     : { display: "block" }
                 }
@@ -258,7 +259,7 @@ class Header extends Component {
                 <div
                   class="HeaderSearchWrap"
                   style={
-                    this.state.headerSearchInput === ""
+                    !this.state.headerSearchInput
                       ? { display: "none" }
                       : { display: "flex" }
                   }
