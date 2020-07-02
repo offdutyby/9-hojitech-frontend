@@ -8,48 +8,43 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
+      productList: [],
       activeTab: null,
-      headerSearch: false,
-      headerSearchPageInput: "",
-      headerSearchPageImage: "",
+      isSwichOn: false,
+      headerSearchInput: "",
     };
   }
 
-  searchInputClick = () => {
+  componentDidMount = () => {
+    fetch("http://10.58.2.233:8000/index/")
+      .then((res) => res.json())
+      .then((res) => this.setState({ productList: res.data }));
+  };
+
+  headerSearchInputChange = (e) => {
     this.setState({
-      headerSearch: true,
+      headerSearchInput: e.target.value,
     });
   };
 
-  inputChange = (e) => {
+  closeHeaderSearch = () => {
     this.setState({
-      headerSearchPageInput: e.target.value,
-    });
-    if (e.target.value !== "") {
-      this.setState({
-        headerSearchPageImage:
-          "https://img.icons8.com/material-rounded/24/000000/multiply--v1.png",
-      });
-    } else {
-      this.setState({
-        headerSearchPageImage: "",
-      });
-    }
-  };
-
-  headerSearchClose = () => {
-    this.setState({
-      headerSearch: false,
-      headerSearchPageInput: "",
+      isSwichOn: false,
+      headerSearchInput: "",
     });
   };
-
   mainNavHover = (id) => {
     if (this.state.activeTab === id) this.setState({ activeTab: null });
     else this.setState({ activeTab: id });
   };
 
   render() {
+    let filterText = this.state.productList.filter((list) =>
+      list.product_name
+        .toLocaleLowerCase()
+        .includes(this.state.headerSearchInput.toLocaleLowerCase())
+    );
+
     return (
       <div className="Header">
         <header>
@@ -227,31 +222,59 @@ class Header extends Component {
                 </div>
               </div>
             </nav>
-            <div className="headerMainLeft">
+            <div
+              className={
+                !this.state.isSwichOn
+                  ? "headerMainLeftDefault"
+                  : "headerMainLeftFocus"
+              }
+            >
               <input
                 className="searchInput"
                 type="text"
                 placeholder="검색"
-                onClick={this.searchInputClick}
-                defaultValue="검색"
-              ></input>
-            </div>
-            <div
-              className={`headerSearchPage ${
-                this.state.headerSearch ? "show" : "hide"
-              }`}
-            >
-              <input
-                placeholder="검색"
-                onChange={this.inputChange}
-                defaultValue={this.state.headerSearchPageInput}
+                value={this.state.headerSearchInput}
+                onClick={() => this.setState({ isSwichOn: true })}
+                onChange={this.headerSearchInputChange}
               ></input>
               <img
-                onClick={this.headerSearchClose}
-                src={this.state.headerSearchPageImage}
+                style={
+                  this.state.isSwichOn === false
+                    ? { display: "none" }
+                    : { display: "block" }
+                }
+                onClick={this.closeHeaderSearch}
+                src="https://img.icons8.com/material-rounded/24/000000/multiply--v1.png"
                 alt=""
-              ></img>
-              <div className="headerSearchResult"></div>
+              />
+
+              <div
+                className="headerSearchPage"
+                style={
+                  !this.state.headerSearchInput
+                    ? { display: "none" }
+                    : { display: "block" }
+                }
+              >
+                <div
+                  class="HeaderSearchWrap"
+                  style={
+                    !this.state.headerSearchInput
+                      ? { display: "none" }
+                      : { display: "flex" }
+                  }
+                >
+                  {filterText.map((list) => {
+                    return (
+                      <HeaderSearch
+                        productName={list.product_name}
+                        thumbnailImage={list.thumbnail_image}
+                        Description={list.description}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </header>
