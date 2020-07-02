@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import CartImg from "../../Images/icons8-shopping-cart-32.png";
+import { API_URL_HG } from "../../config";
 import "./product.scss";
 import "./ProductBody.scss";
 
 class Product extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       htmlBody: [],
       clickHandlerId: "",
@@ -18,10 +20,8 @@ class Product extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.split("/")[2];
-    // console.log(id);
-    // window.addEventListener("scroll", this.onScroll);
 
-    fetch(`http://10.58.5.139:8000/product/productdetail/${id}`)
+    fetch(`${API_URL_HG}/product/productdetail/${id}`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -41,20 +41,35 @@ class Product extends Component {
   //   console.log(window.pageYOffset);
   // };
 
+  //this.state.htmlBody.length !== 0 && this.state.htmlBody.product_id
+  //this.state.htmlBody.length !== 0 && this.state.htmlBody.color
+
   clickHandler(num) {
     this.setState({ colorIdNum: num });
   }
 
+  cartHandler = () => {
+    fetch(`${API_URL_HG}/cart/order`, {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+      },
+      body: JSON.stringify({
+        product_id: this.state.htmlBody.product_id,
+        color: this.state.htmlBody.color[this.state.colorIdNum],
+        quantity: 1,
+      }),
+    });
+  };
+
   render() {
     const { Description, Teaser, specification } = this.state.htmlBody;
 
-    const htmlCode = this.state.htmlBody && Description;
-    const teaser = this.state.htmlBody && Teaser;
-    const spec = this.state.htmlBody && specification;
-    console.log(
-      "hello",
-      this.state.htmlBody.length !== 0 ? this.state.htmlBody : "ddd"
-    );
+    const htmlCode = this.state.htmlBody.length !== 0 && Description;
+    const teaser = this.state.htmlBody.length !== 0 && Teaser;
+    const spec = this.state.htmlBody.length !== 0 && specification;
+
     return (
       <div className="Product">
         <Header />
@@ -127,7 +142,7 @@ class Product extends Component {
                   </div>
                   <div className="btnContainer">
                     <div className="buyBtn">구매하기</div>
-                    <div className="cartBtn">
+                    <div className="cartBtn" onClick={this.cartHandler}>
                       <img className="cartImg" src={CartImg} alt="" />
                     </div>
                   </div>
