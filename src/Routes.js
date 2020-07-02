@@ -8,7 +8,9 @@ import ProductRegister from "../src/Pages/SignUp/productregister";
 import Product from "../src/Pages/Product/Product";
 import ProductList from "../src/Pages/ProductList/ProductList";
 import Cart from "../src/Pages/Cart/Cart";
+import ProductListKeyboard from "./Pages/ProductListKeyboard/ProductListKeyboard";
 import "./Styles/reset.scss";
+import "./Styles/common.scss";
 
 class Routes extends Component {
   render() {
@@ -22,6 +24,11 @@ class Routes extends Component {
           <Route exact path="/productregister" component={ProductRegister} />
           <Route exact path="/productlist/:pid" component={Product} />
           <Route exact path="/productlist" component={ProductList} />
+          <Route
+            exact
+            path="/productlistkeyboard"
+            component={ProductListKeyboard}
+          />
           <Route exact path="/cart" component={Cart} />
         </Switch>
       </Router>

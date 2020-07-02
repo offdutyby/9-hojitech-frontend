@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Card from "../../Components/Card/Card";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
-import "../ProductList/hello.scss";
+import "../ProductListKeyboard/ProductListKeyboard.scss";
 
-class ProductList extends Component {
+class ProductListKeyboard extends Component {
   constructor() {
     super();
     this.state = {
@@ -70,14 +70,14 @@ class ProductList extends Component {
             <div className="navTextContainer">
               <div className="mouseProductName">
                 <span className="mouseKeyboardLink">마우스+키보드</span>
-                /마우스
+                /키보드
               </div>
-              <div className="mouseText">마우스</div>
-              <div className="logitechMouse">로지텍 마우스</div>
+              <div className="mouseText">키보드</div>
+              <div className="logitechMouse">로지텍 키보드</div>
             </div>
             <img
-              className="navMouseImg"
-              src="https://www.logitech.com/assets/64464/mice.png"
+              className="navKeyboardImg"
+              src="https://assets.logitech.com/assets/65781/205/mx-keys.png"
               alt=""
             />
           </div>
@@ -126,22 +126,13 @@ class ProductList extends Component {
                       id === 1 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li onClick={() => this.clickSumbitHandler(1)}>
+                    <li onClick={() => this.clickSumbitHandler(36)}>
                       MX 퍼포먼스
                     </li>
-                    <li onClick={() => this.clickSumbitHandler(2)}>
-                      인체공학 제품군
-                    </li>
-                    <li onClick={() => this.clickSumbitHandler(3)}>
+                    <li onClick={() => this.clickSumbitHandler(37)}>
                       멀티 디바이스
                     </li>
-                    <li onClick={() => this.clickSumbitHandler(4)}>무선</li>
-                    <li onClick={() => this.clickSumbitHandler(5)}>
-                      비즈니스용
-                    </li>
-                    <li onClick={() => this.clickSumbitHandler(6)}>
-                      게이밍 마우스
-                    </li>
+                    <li onClick={() => this.clickSumbitHandler(38)}>무선</li>
                   </ul>
                 </div>
                 <div className="collectionContainer">
@@ -149,7 +140,7 @@ class ProductList extends Component {
                     className="collection"
                     onClick={() => this.collectionHandler(2)}
                   >
-                    <span className="collectionName">크기 및 핏</span>
+                    <span className="collectionName">타이핑 느낌</span>
                     <img
                       className="minusImg"
                       alt=""
@@ -165,11 +156,12 @@ class ProductList extends Component {
                       id === 2 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li onClick={() => this.clickSumbitHandler(7)}>
-                      소형 / 휴대용
+                    <li onClick={() => this.clickSumbitHandler(39)}>
+                      노트북 같은 키
                     </li>
-                    <li onClick={() => this.clickSumbitHandler(8)}>대형</li>
-                    <li onClick={() => this.clickSumbitHandler(9)}>양손잡이</li>
+                    <li onClick={() => this.clickSumbitHandler(40)}>
+                      디 프로파일 키
+                    </li>
                   </ul>
                 </div>
                 <div className="collectionContainer">
@@ -178,7 +170,7 @@ class ProductList extends Component {
                     onClick={() => this.collectionHandler(3)}
                     name="filterPlatfrom"
                   >
-                    <span className="collectionName">플랫폼</span>
+                    <span className="collectionName">키보드 레이아웃 크기</span>
                     <img
                       className="minusImg"
                       alt=""
@@ -194,11 +186,15 @@ class ProductList extends Component {
                       id === 3 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li onClick={() => this.clickSumbitHandler(9)}>Windows</li>
-                    <li onClick={() => this.clickSumbitHandler(10)}>Mac</li>
-                    <li onClick={() => this.clickSumbitHandler(11)}>Chrome</li>
-                    <li onClick={() => this.clickSumbitHandler(12)}>표면</li>
-                    <li onClick={() => this.clickSumbitHandler(13)}>Linux</li>
+                    <li onClick={() => this.clickSumbitHandler(41)}>
+                      풀 사이즈 숫자 키패드
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(42)}>
+                      컴팩트형 숫자 키패드
+                    </li>
+                    <li onClick={() => this.clickSumbitHandler(43)}>
+                      미니멀한 레이아웃
+                    </li>
                   </ul>
                 </div>
                 <div className="collectionContainer">
@@ -216,19 +212,15 @@ class ProductList extends Component {
                       id === 4 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li onClick={() => this.clickSumbitHandler(14)}>
+                    <li onClick={() => this.clickSumbitHandler(44)}>
                       Usb 수신기
                     </li>
-                    <li onClick={() => this.clickSumbitHandler(15)}>
-                      USB Unifying 수신기
-                    </li>
-                    <li onClick={() => this.clickSumbitHandler(16)}>
+                    <li onClick={() => this.clickSumbitHandler(45)}>
                       Bluetooth
                     </li>
-                    <li onClick={() => this.clickSumbitHandler(17)}>
+                    <li onClick={() => this.clickSumbitHandler(46)}>
                       Bluetooth + USB 수신기
                     </li>
-                    <li onClick={() => this.clickSumbitHandler(18)}>유선</li>
                   </ul>
                 </div>
                 <div className="collectionContainer">
@@ -237,7 +229,7 @@ class ProductList extends Component {
                     onClick={() => this.collectionHandler(5)}
                   >
                     <span className="collectionName" name="filterFunction">
-                      기능
+                      플랫폼
                     </span>
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
@@ -246,46 +238,16 @@ class ProductList extends Component {
                       id === 5 ? "listShow" : "listHide"
                     }`}
                   >
-                    <li>충전식</li>
-                    <li>조용한 클릭</li>
-                    <li>이지-스위치 기술</li>
-                    <li>플로우 테크놀로지</li>
-                    <li>다크필드 트레킹</li>
-                    <li>프로그래밍이 가능한 버튼</li>
+                    <li onClick={() => this.clickSumbitHandler(47)}>Windows</li>
+                    <li onClick={() => this.clickSumbitHandler(48)}>Mac</li>
+                    <li onClick={() => this.clickSumbitHandler(49)}>Linux</li>
+                    <li onClick={() => this.clickSumbitHandler(50)}>Chrome</li>
+                    <li onClick={() => this.clickSumbitHandler(51)}>표면</li>
+                    <li onClick={() => this.clickSumbitHandler(52)}>Android</li>
+                    <li onClick={() => this.clickSumbitHandler(53)}>IOS</li>
                   </ul>
                 </div>
-                <div className="collectionContainer">
-                  <div
-                    className="collection"
-                    onClick={() => this.collectionHandler(6)}
-                  >
-                    <span className="collectionName" name="filterScroll">
-                      고급 스크롤 유형
-                    </span>
-                    <img className="minusImg" alt="" src={collectionIcon} />
-                  </div>
-                  <ul
-                    className={`collectionList ${
-                      id === 6 ? "listShow" : "listHide"
-                    }`}
-                  ></ul>
-                </div>
-                <div className="collectionContainer">
-                  <div
-                    className="collection"
-                    onClick={() => this.collectionHandler(7)}
-                  >
-                    <span className="collectionName" name="filterWork">
-                      작업 및 용도
-                    </span>
-                    <img className="minusImg" alt="" src={collectionIcon} />
-                  </div>
-                  <ul
-                    className={`collectionList ${
-                      id === 7 ? "listShow" : "listHide"
-                    }`}
-                  ></ul>
-                </div>
+
                 <div className="filterFooter">
                   로지텍 기술에 대해 자세히 알아보기
                   <img
@@ -329,4 +291,4 @@ class ProductList extends Component {
   }
 }
 
-export default ProductList;
+export default ProductListKeyboard;

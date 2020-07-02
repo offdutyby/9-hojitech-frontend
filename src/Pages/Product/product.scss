@@ -132,3 +132,211 @@
     }
   }
 }
+
+.Product {
+  .headerContainer {
+    background-color: #00b8fc;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: column;
+
+    .headerInfoContainer {
+      display: flex;
+      align-items: center;
+      width: 1150px;
+      margin: 174px auto 0 auto;
+      justify-content: center;
+      border-bottom: 1px solid black;
+
+      .productImgContainer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .productImg {
+          max-height: 428px;
+        }
+      }
+
+      .productInfo {
+        width: 40%;
+
+        .productInfoName {
+          width: 100%;
+          margin-bottom: 20px;
+          border-bottom: 1px solid black;
+
+          .name {
+            font-size: 32px;
+            font-weight: bold;
+          }
+
+          .description {
+            font-size: 16px;
+            padding-bottom: 20px;
+          }
+        }
+
+        .productInfoColor {
+          border-bottom: 1px solid black;
+
+          .colorName {
+            margin-bottom: 10px;
+          }
+
+          .colorImg {
+            border-radius: 100%;
+            margin: 7px 14px 7px 0;
+          }
+
+          .colorImg:hover {
+            width: 30px;
+          }
+        }
+
+        .specPrice {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          margin-top: 24px;
+
+          .plusImg {
+            width: 15px;
+            margin-right: 3px;
+          }
+
+          .price {
+            display: flex;
+            font-size: 20px;
+          }
+
+          .spec {
+            font-size: 13px;
+            width: 220px;
+          }
+        }
+
+        .quantityContainer {
+          margin-bottom: 10px;
+
+          .quantity {
+            width: 20%;
+          }
+        }
+
+        .btnContainer {
+          display: flex;
+          margin-top: 24px;
+
+          .buyBtn {
+            width: 90%;
+            height: 40px;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .cartBtn {
+            .cartImg {
+              margin-left: 4px;
+              width: 40px;
+              background-color: black;
+              padding: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .imgCollection {
+      display: flex;
+      width: 1150px;
+      margin: 0 auto;
+
+      .img {
+        width: 70px;
+        padding-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+.product-key-features {
+  padding: 80px 0 130px !important;
+}
+
+article {
+  width: 1150px;
+  margin: 0 auto 150px;
+}
+
+#specification-tabular.container .panel-collapse .panel-body .tabs-list[data-col="3"],
+#specification-tabular.container .panel-collapse .tab-pane .tabs-list[data-col="3"],
+#specification-tabular.container .tab-content .panel-body .tabs-list[data-col="3"],
+#specification-tabular.container .tab-content .tab-pane .tabs-list[data-col="3"],
+.additional-features-rows.business #specification-tabular.additional-features-header .panel-collapse .panel-body .tabs-list[data-col="3"],
+.additional-features-rows.business #specification-tabular.additional-features-header .panel-collapse .tab-pane .tabs-list[data-col="3"],
+.additional-features-rows.business #specification-tabular.additional-features-header .tab-content .panel-body .tabs-list[data-col="3"],
+.additional-features-rows.business #specification-tabular.additional-features-header .tab-content .tab-pane .tabs-list[data-col="3"] {
+  margin: 0 auto;
+  columns: 3;
+  grid-column-gap: 6em;
+  column-gap: 6em;
+  width: 1000px;
+}
+
+.specs-header h6 {
+  display: none;
+}
+
+.panel-heading a {
+  font-size: 34px;
+  padding-bottom: 10px;
+  margin-bottom: 40px;
+  display: block;
+  border-bottom: 1px solid #afafaf;
+}
+
+.tabs {
+  h3 {
+    font-size: 25px;
+    margin: 18px 0 10px;
+    color: #000;
+  }
+
+  h4 {
+    font-size: 16px;
+    margin-bottom: 14px;
+    color: #000;
+
+    div {
+      color: #697172;
+      padding-bottom: 15px;
+    }
+  }
+
+  p {
+    color: #697172;
+    line-height: 28px;
+    font-size: 15px;
+  }
+
+  .cell-group ul {
+    color: #697172;
+    line-height: 28px;
+    font-size: 15px;
+  }
+
+  h6 {
+    color: #fff;
+  }
+}
+
+a {
+  color: black
+}

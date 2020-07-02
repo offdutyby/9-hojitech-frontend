@@ -30,7 +30,10 @@ class Card extends Component {
     const { imgSrc, name, thumbnailDescription } = this.props;
 
     return (
-      <div className="Card">
+      <div
+        className="Card"
+        onClick={() => this.props.onClick(this.props.product_id)}
+      >
         <div
           className="cardContainer"
           onMouseEnter={this.mouseOverHandler}

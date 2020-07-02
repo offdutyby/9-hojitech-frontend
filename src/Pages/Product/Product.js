@@ -29,20 +29,6 @@ class Product extends Component {
         })
       );
   }
-  // [this.state.htmlBody[0].product_name]
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   const top = ReactDOM.findDOMNode(this).getBoundingClientRect().top;
-  //   top < 0 && this.setState({ a: "b" });
-  //   return true;
-  // }
-
-  // onScroll = (e) => {
-  //   console.log(window.pageYOffset);
-  // };
-
-  //this.state.htmlBody.length !== 0 && this.state.htmlBody.product_id
-  //this.state.htmlBody.length !== 0 && this.state.htmlBody.color
 
   clickHandler(num) {
     this.setState({ colorIdNum: num });
@@ -102,33 +88,39 @@ class Product extends Component {
                         this.state.htmlBody.color[this.state.colorIdNum]}
                     </p>
                     <div className="colorImgContainer">
-                      <img
-                        onClick={() => this.clickHandler(0)}
-                        className="colorImg"
-                        src={
-                          this.state.htmlBody.length !== 0 &&
-                          this.state.htmlBody.color_image[0]
-                        }
-                        alt=""
-                      />
-                      <img
-                        onClick={() => this.clickHandler(1)}
-                        className="colorImg"
-                        src={
-                          this.state.htmlBody.length !== 0 &&
-                          this.state.htmlBody.color_image[1]
-                        }
-                        alt=""
-                      />
-                      <img
-                        onClick={() => this.clickHandler(2)}
-                        className="colorImg"
-                        src={
-                          this.state.htmlBody.length !== 0 &&
-                          this.state.htmlBody.color_image[2]
-                        }
-                        alt=""
-                      />
+                      <span>
+                        <img
+                          onClick={() => this.clickHandler(0)}
+                          className="colorImg"
+                          src={
+                            this.state.htmlBody.length !== 0 &&
+                            this.state.htmlBody.color_image[0]
+                          }
+                          alt=""
+                        />
+                      </span>
+                      <span>
+                        <img
+                          onClick={() => this.clickHandler(1)}
+                          className="colorImg"
+                          src={
+                            this.state.htmlBody.length !== 0 &&
+                            this.state.htmlBody.color_image[1]
+                          }
+                          alt=""
+                        />
+                      </span>
+                      <span>
+                        <img
+                          onClick={() => this.clickHandler(2)}
+                          className="colorImg"
+                          src={
+                            this.state.htmlBody.length !== 0 &&
+                            this.state.htmlBody.color_image[2]
+                          }
+                          alt=""
+                        />
+                      </span>
                     </div>
                   </div>
                   <div className="specPrice">
