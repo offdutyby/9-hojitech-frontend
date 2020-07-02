@@ -21,37 +21,25 @@ class Cart extends Component {
     this.setState({
       productList: [],
       totalPrice: "0",
+      checked: [],
     });
   };
 
-  selectCheckbox = (id) => {
-    const { productList } = this.state;
+  selectCheckbox = (id, price) => {
+    const { totalPrice } = this.state;
     const { checked } = this.state;
 
-    let newArr;
-    let selectedProduct;
-    let addPrice;
-    console.log("id>>>", id);
-    console.log("checked>>>", checked);
-
-    !checked.includes(id)
-      ? (addPrice = this.state.totalPrice + Number(productList[id - 1].price))
-      : (addPrice = this.state.totalPrice - Number(productList[id - 1].price));
-
-    for (let i = 0; i < productList.length; i++) {
-      if (productList[i].id === id) selectedProduct = productList[i];
-    }
-
     if (checked.includes(id)) {
-      newArr = checked.filter((el) => el !== id);
+      this.setState({
+        totalPrice: totalPrice - price,
+        checked: checked.filter((el) => el !== id),
+      });
     } else {
-      newArr = checked.concat(id);
+      this.setState({
+        totalPrice: totalPrice + price,
+        checked: checked.concat(id),
+      });
     }
-
-    this.setState({
-      totalPrice: addPrice,
-      checked: newArr,
-    });
   };
 
   selectRemove = () => {
@@ -61,15 +49,14 @@ class Cart extends Component {
     const filterddarr = productList.filter((product, index) => {
       return !checked.includes(product.id);
     });
-    this.setState({ productList: filterddarr, checked: [] });
+    this.setState({ productList: filterddarr, checked: [], totalPrice: 0 });
   };
 
   deleteProds = (idx) => {
     const { productList } = this.state;
-
-    productList.splice(idx, 1);
+    const deletedList = productList.splice(idx, 1);
     this.setState({
-      productList: productList,
+      productList: deletedList,
     });
   };
 
@@ -98,7 +85,7 @@ class Cart extends Component {
                 this.state.productList.map((product, index) => {
                   return (
                     <CartProduct
-                      key={index}
+                      key={product.id}
                       colorImage={product.color_image}
                       id={product.id}
                       productName={product.name}

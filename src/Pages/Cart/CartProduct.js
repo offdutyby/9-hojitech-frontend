@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 
 class CartProduct extends Component {
-  clickCheckbox = () => {
-    this.props.selectCheckbox(this.props.id);
-  };
-
   deleteIndex = () => {
     this.props.deleteProds(this.props.id);
   };
 
-  //sumAllPrice = (() => this.props.totalPrice(this.props.productPrice))();
-
   render() {
+    const { selectCheckbox, id, productPrice } = this.props;
     return (
       <div className="CartProduct">
         <input
           type="checkbox"
           className="cartCheckbox"
-          onClick={this.clickCheckbox}
+          onClick={() => selectCheckbox(id, productPrice)}
         />
         <img className="thumbnail" src={this.props.thumbnailImage} alt="" />
         <div className="cartText">
@@ -26,7 +21,9 @@ class CartProduct extends Component {
             <img className="productColor" src={this.props.colorImage} alt="" />
           </span>
           <span className="productCount">{this.props.quantity}</span>
-          <span className="productPrice"> {this.props.productPrice}</span>
+          <span className="productPrice">
+            {this.props.productPrice.toLocaleString()}
+          </span>
         </div>
         <img
           className="productDelete"
