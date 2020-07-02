@@ -67,11 +67,18 @@ class ProductList extends Component {
     this.props.history.push(`/productlist/${id}`);
   };
 
+  // componentDidMount() {
+  //   fetch("http://10.58.0.179:8000/product/mice")
+  //     .then((res) => res.json())
+  //     .then((res) => this.setState({ realData: res.data }));
+  // }
+
   render() {
     const { filterVisible, collectionIcon, id } = this.state;
     return (
       <>
         <Header />
+
         <div className="ProductList">
           <div className="navContainer">
             <div className="navTextContainer">
@@ -215,6 +222,7 @@ class ProductList extends Component {
                     name="filterConnection"
                   >
                     <span className="collectionName">연결</span>
+
                     <img className="minusImg" alt="" src={collectionIcon} />
                   </div>
                   <ul
@@ -328,6 +336,7 @@ class ProductList extends Component {
             </div>
           </div>
         </div>
+
         <Footer />
       </>
     );

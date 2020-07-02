@@ -22,7 +22,7 @@
         line-height: 85px;
       }
 
-      a {
+      span {
         display: block;
         padding: 15px 10px;
         width: 200px;
@@ -46,7 +46,7 @@
       transform: translate(-50%, -50%);
       text-align: center;
 
-      a {
+      span {
         width: 180px;
         margin-right: 15px;
         display: inline-block;
@@ -56,7 +56,7 @@
 
   .awssld__bullets {
     bottom: 50px;
-    z-index: 10;
+    z-index: 2;
 
     button {
       width: 10px;
@@ -72,9 +72,8 @@
       transform: scale(1.2);
       background: #b2f651;
     }
-
-    .awssld__controls button {
-      z-index: 7 !important;
-    }
+  }
+  .awssld__controls button {
+    z-index: 2;
   }
 }

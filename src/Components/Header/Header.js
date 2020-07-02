@@ -8,48 +8,43 @@ class Header extends Component {
   constructor() {
     super();
     this.state = {
+      productList: [],
       activeTab: null,
-      headerSearch: false,
-      headerSearchPageInput: "",
-      headerSearchPageImage: "",
+      isSwichOn: false,
+      headerSearchInput: "",
     };
   }
 
-  seachInputClick = () => {
+  componentDidMount = () => {
+    fetch("http://10.58.2.233:8000/index/")
+      .then((res) => res.json())
+      .then((res) => this.setState({ productList: res.data }));
+  };
+
+  headerSearchInputChange = (e) => {
     this.setState({
-      headerSearch: true,
+      headerSearchInput: e.target.value,
     });
   };
 
-  inputChange = (e) => {
+  closeHeaderSearch = () => {
     this.setState({
-      headerSearchPageInput: e.target.value,
-    });
-    if (this.state.headerSearchPageInput.length !== 0) {
-      this.setState({
-        headerSearchPageImage:
-          "https://img.icons8.com/material-rounded/24/000000/multiply--v1.png",
-      });
-    } else {
-      this.setState({
-        headerSearchPageImage: "",
-      });
-    }
-  };
-
-  clicks = () => {
-    this.setState({
-      headerSearch: false,
-      headerSearchPageInput: "",
+      isSwichOn: false,
+      headerSearchInput: "",
     });
   };
-
-  hoverHandler = (id) => {
+  mainNavHover = (id) => {
     if (this.state.activeTab === id) this.setState({ activeTab: null });
     else this.setState({ activeTab: id });
   };
 
   render() {
+    let filterText = this.state.productList.filter((list) =>
+      list.product_name
+        .toLocaleLowerCase()
+        .includes(this.state.headerSearchInput.toLocaleLowerCase())
+    );
+
     return (
       <div className="Header">
         <header>
@@ -62,27 +57,27 @@ class Header extends Component {
                     alt="logitechG"
                   ></img>
                 </Link>
-                <a href="/#">
+                <Link to="/">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/jaybird-overlay.svg"
                     alt="jaybirdsoprt"
                   ></img>
-                </a>
-                <a href="/#">
+                </Link>
+                <Link to="/">
                   <img
                     src="https://www.logitech.com/content/dam/logitech/common/header/ue-bottom.svg"
                     alt="ultimateears"
                   ></img>
-                </a>
+                </Link>
               </div>
               <div className="headerTopRight">
-                <a href="/#">
+                <Link to="/">
                   <img
                     src="https://www.logitech.com/images/flags/south-korea.gif"
                     alt=""
                   ></img>
                   KO
-                </a>
+                </Link>
                 <Link to="/cart">장바구니</Link>
                 <Link to="/login">내 계정</Link>
               </div>
@@ -97,8 +92,8 @@ class Header extends Component {
             <nav>
               <div
                 className="mainNav"
-                onMouseOver={() => this.hoverHandler(0)}
-                onMouseOut={() => this.hoverHandler(0)}
+                onMouseOver={() => this.mainNavHover(0)}
+                onMouseOut={() => this.mainNavHover(0)}
               >
                 제품
                 <div
@@ -131,10 +126,10 @@ class Header extends Component {
               <div
                 className="mainNav"
                 onMouseOver={() => {
-                  this.hoverHandler(1);
+                  this.mainNavHover(1);
                 }}
                 onMouseOut={() => {
-                  this.hoverHandler(1);
+                  this.mainNavHover(1);
                 }}
               >
                 솔루션
@@ -164,10 +159,10 @@ class Header extends Component {
               <div
                 className="mainNav"
                 onMouseOver={() => {
-                  this.hoverHandler(2);
+                  this.mainNavHover(2);
                 }}
                 onMouseOut={() => {
-                  this.hoverHandler(2);
+                  this.mainNavHover(2);
                 }}
               >
                 비즈니스
@@ -197,10 +192,10 @@ class Header extends Component {
               <div
                 className="mainNav"
                 onMouseOver={() => {
-                  this.hoverHandler(3);
+                  this.mainNavHover(3);
                 }}
                 onMouseOut={() => {
-                  this.hoverHandler(3);
+                  this.mainNavHover(3);
                 }}
               >
                 지원
@@ -227,31 +222,59 @@ class Header extends Component {
                 </div>
               </div>
             </nav>
-            <div className="headerMainLeft">
+            <div
+              className={
+                !this.state.isSwichOn
+                  ? "headerMainLeftDefault"
+                  : "headerMainLeftFocus"
+              }
+            >
               <input
                 className="searchInput"
                 type="text"
                 placeholder="검색"
-                onClick={this.seachInputClick}
-                defaultValue="검색"
-              ></input>
-            </div>
-            <div
-              className={`headerSearchPage ${
-                this.state.headerSearch ? "show" : "hide"
-              }`}
-            >
-              <input
-                placeholder="검색"
-                onChange={this.inputChange}
-                defaultValue={this.state.headerSearchPageInput}
+                value={this.state.headerSearchInput}
+                onClick={() => this.setState({ isSwichOn: true })}
+                onChange={this.headerSearchInputChange}
               ></input>
               <img
-                onClick={this.clicks}
-                src={this.state.headerSearchPageImage}
+                style={
+                  this.state.isSwichOn === false
+                    ? { display: "none" }
+                    : { display: "block" }
+                }
+                onClick={this.closeHeaderSearch}
+                src="https://img.icons8.com/material-rounded/24/000000/multiply--v1.png"
                 alt=""
-              ></img>
-              <div className="headerSearchResult"></div>
+              />
+
+              <div
+                className="headerSearchPage"
+                style={
+                  !this.state.headerSearchInput
+                    ? { display: "none" }
+                    : { display: "block" }
+                }
+              >
+                <div
+                  class="HeaderSearchWrap"
+                  style={
+                    !this.state.headerSearchInput
+                      ? { display: "none" }
+                      : { display: "flex" }
+                  }
+                >
+                  {filterText.map((list) => {
+                    return (
+                      <HeaderSearch
+                        productName={list.product_name}
+                        thumbnailImage={list.thumbnail_image}
+                        Description={list.description}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </header>
