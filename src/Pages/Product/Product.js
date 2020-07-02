@@ -19,7 +19,7 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.split("/")[2];
+    const id = this.props.match.params.pid;
 
     fetch(`${API_URL_HG}/product/productdetail/${id}`)
       .then((res) => res.json())
