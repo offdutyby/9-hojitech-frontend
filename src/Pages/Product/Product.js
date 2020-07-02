@@ -11,6 +11,8 @@ class Product extends Component {
     this.state = {
       htmlBody: [],
       clickHandlerId: "",
+      colorId: 0,
+      colorIdNum: 0,
     };
   }
 
@@ -29,7 +31,14 @@ class Product extends Component {
   // [this.state.htmlBody[0].product_name]
 
   clickHandler(num) {
-    this.setState({ clickHandlerId: num });
+    this.setState({ colorIdNum: num });
+    if (num === 0) {
+      this.setState({ colorId: 0 });
+    } else if (num === 1) {
+      this.setState({ colorId: 0 });
+    } else if (num === 2) {
+      this.setState({ colorId: 0 });
+    }
   }
 
   render() {
@@ -52,7 +61,12 @@ class Product extends Component {
                 <div className="productImgContainer">
                   <img
                     className="productImg"
-                    src="https://assets.logitech.com/assets/65123/wireless-mouse-m590-multi-device-silent.png"
+                    src={
+                      this.state.htmlBody.length !== 0 &&
+                      this.state.htmlBody.product_images[
+                        `color${this.state.colorIdNum + 1}`
+                      ][this.state.colorId]
+                    }
                     alt=""
                   />
                 </div>
@@ -66,21 +80,23 @@ class Product extends Component {
                   <div className="productInfoColor">
                     <p className="colorName">
                       {this.state.htmlBody.length !== 0 &&
-                        this.state.htmlBody.color[0]}
+                        this.state.htmlBody.color[this.state.colorIdNum]}
                     </p>
                     <div className="colorImgContainer">
                       <img
-                        onClick={() => this.clickHandler(1)}
+                        onClick={() => this.clickHandler(0)}
                         className="colorImg"
                         src="https://assets.logitech.com/assets/65123/24/wireless-mouse-m590-multi-device-silent.jpg"
                         alt=""
                       />
                       <img
+                        onClick={() => this.clickHandler(1)}
                         className="colorImg"
                         src="https://assets.logitech.com/assets/65123/25/wireless-mouse-m590-multi-device-silent.jpg"
                         alt=""
                       />
                       <img
+                        onClick={() => this.clickHandler(2)}
                         className="colorImg"
                         src="https://assets.logitech.com/assets/65123/26/wireless-mouse-m590-multi-device-silent.jpg"
                         alt=""
@@ -108,28 +124,48 @@ class Product extends Component {
                 <li>
                   <img
                     className="img"
-                    src="https://assets.logitech.com/assets/65123/wireless-mouse-m590-multi-device-silent.png"
+                    src={
+                      this.state.htmlBody.length !== 0 &&
+                      this.state.htmlBody.product_images[
+                        `color${this.state.colorIdNum + 1}`
+                      ][this.state.colorId]
+                    }
                     alt=""
                   />
                 </li>
                 <li>
                   <img
                     className="img"
-                    src="https://assets.logitech.com/assets/65123/2/wireless-mouse-m590-multi-device-silent.png"
+                    src={
+                      this.state.htmlBody.length !== 0 &&
+                      this.state.htmlBody.product_images[
+                        `color${this.state.colorIdNum + 1}`
+                      ][this.state.colorId + 1]
+                    }
                     alt=""
                   />
                 </li>
                 <li>
                   <img
                     className="img"
-                    src="https://assets.logitech.com/assets/65123/3/wireless-mouse-m590-multi-device-silent.png"
+                    src={
+                      this.state.htmlBody.length !== 0 &&
+                      this.state.htmlBody.product_images[
+                        `color${this.state.colorIdNum + 1}`
+                      ][this.state.colorId + 2]
+                    }
                     alt=""
                   />
                 </li>
                 <li>
                   <img
                     className="img"
-                    src="https://assets.logitech.com/assets/65123/4/wireless-mouse-m590-multi-device-silent.png"
+                    src={
+                      this.state.htmlBody.length !== 0 &&
+                      this.state.htmlBody.product_images[
+                        `color${this.state.colorIdNum + 1}`
+                      ][this.state.colorId + 3]
+                    }
                     alt=""
                   />
                 </li>
