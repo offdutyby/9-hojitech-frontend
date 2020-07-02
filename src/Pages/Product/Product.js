@@ -15,9 +15,10 @@ class Product extends Component {
   }
 
   componentDidMount() {
-    fetch(
-      `http://10.58.5.139:8000/product/productdetail/${this.props.match.params.pid}`
-    )
+    // const id = this.props.match.params.split("/");
+    // console.log(id);
+
+    fetch(`http://10.58.5.139:8000/product/productdetail/${1}`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
