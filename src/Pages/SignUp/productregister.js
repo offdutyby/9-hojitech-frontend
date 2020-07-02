@@ -13,7 +13,20 @@ class ProductRegister extends Component {
     };
   }
 
-  useFetch = (e) => {
+  componentDidMount() {
+    fetch("http://localhost:3000/data/dataRegister.json", {
+      headers: {
+        Authorization: localStorage.getItem('token')
+        },
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        this.setState({originalProducts: res.data})
+    })
+  }
+
+  HandleFilter = (e) => {
     const option = e.target.value
     let filterList = [];
 
@@ -45,19 +58,6 @@ class ProductRegister extends Component {
       })
     };
 
-  componentDidMount() {
-    fetch("http://localhost:3000/data/dataRegister.json", {
-      headers: {
-        Authorization: localStorage.getItem('token')
-        },
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res)
-        this.setState({originalProducts: res.data})
-    })
-  }
-
   render() {
 
     return (
@@ -70,7 +70,7 @@ class ProductRegister extends Component {
             <h3>제품 범주를 선택하여 제품을 찾으십시오.</h3>
             <p className= "select1">제품 범주 선택</p>
             <div className= "subcontainer">
-              <select className= "dropdown1" name="product" id="product" onChange= {this.useFetch}>
+              <select className= "dropdown1" name="product" id="product" onChange= {this.HandleFilter}>
                 <option value="------">------</option>
                 <option value="keyboard">키보드</option>
                 <option value="mouse">마우스</option>
