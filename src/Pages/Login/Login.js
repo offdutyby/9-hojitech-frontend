@@ -7,12 +7,6 @@ import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import "./login.scss";
 
-/*class LoggedInComponent extends Component {
-  render(props) {
-  return <p>환영합니다</p>
-  }
-}
-*/
 class Login extends Component {
   constructor() {
     super();
@@ -44,18 +38,6 @@ class Login extends Component {
     }) 
   }
 
-  // closePopUp = () => {
-  //   this.setState({
-  //     isLoginModalPopUpActive: false
-  //   }) 
-  // }
-
-  // handleLoginState = () => {
-  //   this.setState({
-  //     isLoggedIn: true
-  //   })
-  // }
-
   openPopUp1 = () => {
     this.setState({
       isSignUpPopUpActive: true
@@ -75,18 +57,16 @@ class Login extends Component {
     localStorage.removeItem('token')
   }
 
-  /*handleName = name => {
-    this.setState({
-      userName: name
-    })
-  }*/
-      
+  handleToken = () => {
+    localStorage.getItem('token') ? this.props.history.push("/productregister") : alert('로그인 하세요');
+  }
+
 render() {
   return (
     <>
       <Header />
       <div className="Login">
-        <div className="loginHeader" style={{backgroundImage: "https://www.logitech.com/content/dam/logitech/my-account/hero-authenticated.png"}}>
+        <div className="loginHeader">
         {this.state.isLoggedIn 
           ? <div className= "loggedIn"> 안녕하세요 <br></br> 
             <div className = "logOut" onClick= {this.handleLogOutState}>로그아웃</div></div> 
@@ -104,17 +84,17 @@ render() {
         <div className = "wholeDiv">
           <div className= "topDiv">
             <div>
-              <img src= "https://www.logitech.com/content/dam/logitech/my-account/cart.svg.imgo.svg"></img>
+              <img src= "https://www.logitech.com/content/dam/logitech/my-account/cart.svg.imgo.svg"/>
               <h2>계정</h2>
               <h3>주문을 추적 또는 수정하고, 주문을 반환하고, 계정을 관리합니다.</h3>
               <p>계정 정보 &gt;</p>
               <p>개인정보 + 데이터 &gt;</p>
             </div>
             <div>
-              <img src= "https://www.logitech.com/content/dam/logitech/my-account/compass.svg.imgo.svg"></img>
+              <img src= "https://www.logitech.com/content/dam/logitech/my-account/compass.svg.imgo.svg"/>
               <h2>시작하기</h2>
               <h3>제품을 등록하고 시작하는 데 필요한 모든 정보를 얻으십시오.</h3>
-              <Link to="/productregister"><p className= "clickSubItems">제품 등록 &gt;</p></Link>
+              <p onClick = {this.handleToken}>제품 등록 &gt;</p>
               <p>다운로드 &gt;</p>
             </div>
             <div>
@@ -129,8 +109,8 @@ render() {
               <img src= "https://www.logitech.com/content/dam/logitech/my-account/question.svg.imgo.svg"></img>
               <h2>지원</h2>
               <h3>제품에 대한 궁금한 점이 있으십니까? 저희가 답해드리겠습니다.</h3>
-              <p className= "clickSubItems">지원받기 ></p>
-              <p className= "clickSubItems">예비 부품 ></p>
+              <p className= "clickSubItems">지원받기 &gt;</p>
+              <p className= "clickSubItems">예비 부품 &gt;</p>
             </div>
             <div>
               <img src= "https://www.logitech.com/content/dam/logitech/my-account/mail.svg.imgo.svg"></img>
@@ -149,9 +129,7 @@ render() {
       </div>
       <Footer />
       <LoginModal 
-        isActive={this.state.isLoginModalPopUpActive} 
-        // isNotActive={this.closePopUp}
-        // handleLogin={this.handleLoginState} 
+        isActive={this.state.isLoginModalPopUpActive}
         whenLoggedIn={this.handleWhenLoggedIn} 
       /> 
       <SignUp 

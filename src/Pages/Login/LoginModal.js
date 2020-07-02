@@ -14,10 +14,10 @@ class LoginModal extends Component {
   }
 
   handleButton = () => {
-    fetch("http://10.58.5.139:8000/account/sign-in", {
+    fetch("http://10.58.1.54:8000/account/sign-in", {
       method: "POST",
       // headers: {
-      //   Authorization: localStorage.getItem("access_token")
+      //   Authorization: localStorage.getItem('token')
       //},
       body:JSON.stringify({
         email: this.state.id,
@@ -57,7 +57,6 @@ class LoginModal extends Component {
     };
 
   render() {
-  console.log(this.state)
     return (
       <div className = "LoginModal">
       <div className={this.props.isActive ? "SubLoginModal show" : "SubLoginModal hide"}>

@@ -1,70 +1,89 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 import "./productregister.scss";
 
-const options = [
-  'one', 'two', 'three'
-];
-
-//const options2 = [
- // 'check-one', 'check-two', 'check-three'
-//];
-
-const defaultOption = options[0];
-//const defaultOption2 = options2[0];
 class ProductRegister extends Component { 
   constructor() {
     super();
     this.state = {
-      productgroup: "",
-      productname: ""
+      originalProducts: [],
+      filteredProducts: [],
+      productname: " "
     };
   }
 
-  /*handleButton = () => {
-    fetch("http://10.58.5.139:8000/account/sign-in", {
-      method: "POST",
-      // headers: {
-      //   Authorization: localStorage.getItem("access_token")
-      //},
-      body:JSON.stringify({
-        email: this.state.id,
-        password: this.state.pw
+  useFetch = (e) => {
+    const option = e.target.value
+    let filterList = [];
+
+    if (option === "keyboard") {
+      filterList = this.state.originalProducts.filter(element => {
+        return element.cate_name === "키보드"
       })
+    } else if (option === "mouse") {
+      filterList = this.state.originalProducts.filter(element => {
+        return element.cate_name === "마우스"
+      })
+    }
+  
+    this.setState({
+      filteredProducts: filterList
     })
-      .then(res => {
-        console.log("first then response >>> ", res)
-          return res;
-      }
-      .then(response => response.json())
-      .then(response => {
-        console.log("second then response >>> ", response)
+  }
+
+    handleDropDown2 = (e) => {
+      this.setState({ productname: e.target.value });
+    }
+
+    handleButton = () => {
+      fetch("http://10.58.1.54:8000/account/register", {
+        method: "POST",
+        body: JSON.stringify({
+          model_name: this.state.productname
         })
-  };*/
+      })
+    };
+
+  componentDidMount() {
+    fetch("http://localhost:3000/data/dataRegister.json", {
+      headers: {
+        Authorization: localStorage.getItem('token')
+        },
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        this.setState({originalProducts: res.data})
+    })
+  }
 
   render() {
+
     return (
       <>
         <Header />
           <div className = "ProductRegister">
-            <img src= "https://theme.zdassets.com/theme_assets/9049502/bd24d19eb305cc0a7b89b57e340deaa901ee2709.png"></img>
+            <img src="https://theme.zdassets.com/theme_assets/9049502/bd24d19eb305cc0a7b89b57e340deaa901ee2709.png"></img>
             <h1> Logitech 고객 지원에 오신 것을 환영합니다 </h1>
             <h2>제품 등록</h2>
             <h3>제품 범주를 선택하여 제품을 찾으십시오.</h3>
             <p className= "select1">제품 범주 선택</p>
             <div className= "subcontainer">
-              <div className= "dropdown1"><br></br>
-                <Dropdown options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select an option" />
-              </div>
-              <button className="button" type= "submit">제출</button>
-            </div><br></br>
-              <p className= "select2">제품 선택</p> 
-              <div className= "dropdown2">
-                <Dropdown options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select an option" />
+              <select className= "dropdown1" name="product" id="product" onChange= {this.useFetch}>
+                <option value="------">------</option>
+                <option value="keyboard">키보드</option>
+                <option value="mouse">마우스</option>
+                </select>
+              <button className="button" onClick= {this.handleButton} type= "submit">제출</button>
             </div>
+            <p className= "select2">제품 선택</p> <br></br>
+            <select className="dropdown2" name="product" id="product" onChange={this.handleDropDown2}>
+              <option value="------">------</option>
+              {this.state.filteredProducts.map((element, index) => {
+                return <option key={index} value={element.models}>{element.models}</option>
+              })}
+            </select>
           </div>
         <Footer />   
       </>

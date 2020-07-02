@@ -1,0 +1,61 @@
+{
+  "data" : [
+    {
+      "cate_id": 1, 
+      "cate_name": "마우스", 
+      "models": "M590 MULTI-DEVICE SILENT"
+    }, 
+    {
+      "cate_id": 1, 
+      "cate_name": "마우스", 
+      "models": "M585 MULTI-DEVICE"
+    }, 
+    {
+      "cate_id": 1, 
+      "cate_name": "마우스", 
+      "models": "M171"}, 
+    {
+      "cate_id": 1, 
+      "cate_name": "마우스", 
+      "models": "무선 미니 마우스 M187"
+    },
+    { "cate_id": 1, 
+      "cate_name": "마우스", 
+      "models": "M720 TRIATHLON"
+    }, 
+    {
+      "cate_id": 1, 
+      "cate_name": "마우스", 
+      "models": "M110 SILENT"
+    }, 
+    {
+      "cate_id": 3, 
+      "cate_name": "키보드", 
+      "models": "K780 Multi-Device Wireless Keyboard"
+    }, 
+    {
+      "cate_id": 3, 
+      "cate_name": "키보드", 
+      "models": "블루투스 멀티 디바이스 키보드 K480"
+    }, 
+    {
+      "cate_id": 3, 
+      "cate_name": "키보드", 
+      "models": "무선 솔라 키보드 K750r"
+    }, 
+    {
+      "cate_id": 3, 
+      "cate_name": "키보드", 
+      "models": "Wireless Touch Keyboard K400 Plus"
+    }, 
+    {
+      "cate_id": 3, 
+      "cate_name": "키보드", 
+      "models": "K375s MULTI-DEVICE"
+    }, 
+    {
+      "cate_id": 3, 
+      "cate_name": "키보드", 
+      "models": "MX KEYS 키보드"}
+    ]
+}
