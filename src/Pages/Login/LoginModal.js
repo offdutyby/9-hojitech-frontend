@@ -14,7 +14,7 @@ class LoginModal extends Component {
   }
 
   handleButton = () => {
-    fetch("http://10.58.1.54:8000/account/sign-in", {
+    fetch("http://10.58.5.229:8000/account/sign-in", {
       method: "POST",
       // headers: {
       //   Authorization: localStorage.getItem('token')
@@ -60,7 +60,7 @@ class LoginModal extends Component {
     return (
       <div className = "LoginModal">
       <div className={this.props.isActive ? "SubLoginModal show" : "SubLoginModal hide"}>
-        <div className="overlay" onClick={this.props.whenLoggedIn}>
+        <div className="overlay">
           <div className="container">
             <div className="closebutton" onClick={this.props.whenLoggedIn} > X </div>
             <img className="logoimage" src= "https://www.logitech.com/content/dam/logitech/en/header/logitech.svg"/>

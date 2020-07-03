@@ -14,10 +14,10 @@ class ProductRegister extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/data/dataRegister.json", {
+    fetch("http://10.58.5.229:8000/account/register", {
       headers: {
         Authorization: localStorage.getItem('token')
-        },
+      },
     })
       .then(res => res.json())
       .then(res => {
@@ -50,8 +50,11 @@ class ProductRegister extends Component {
     }
 
     handleButton = () => {
-      fetch("http://10.58.1.54:8000/account/register", {
+      fetch("http://10.58.5.229:8000/account/register", {
         method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("token")
+        },
         body: JSON.stringify({
           model_name: this.state.productname
         })

@@ -19,7 +19,7 @@ class SignUp extends Component {
   };
   
   handleButton = () => {
-    fetch("http://10.58.60.234:8000/account/sign-up", {
+    fetch("http://10.58.5.229:8000/account/sign-up", {
       method: "POST",
       body:JSON.stringify({
         email: this.state.id,
@@ -44,7 +44,7 @@ class SignUp extends Component {
     return (
       <div className = "SignUp">
         <div className = {this.props.isActive1 ? "SubSignUp show" : "SubSignUp hide"}> 
-          <div className ="overlay" onClick={this.props.isNotActive1} >
+          <div className ="overlay">
             <div className = "container">
               <div className = "closebutton" onClick={this.props.isNotActive1}>X</div>
               <img className = "logoimage" src= "https://www.logitech.com/content/dam/logitech/en/header/logitech.svg"/>
