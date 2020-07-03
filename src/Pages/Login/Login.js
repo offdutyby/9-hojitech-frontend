@@ -34,7 +34,7 @@ class Login extends Component {
   handleWhenLoggedIn = () => {
     this.setState({
       isLoginModalPopUpActive: false,
-      isLoggedIn: true
+      isLoggedIn: false
     }) 
   }
 
