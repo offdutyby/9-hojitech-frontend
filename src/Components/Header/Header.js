@@ -42,7 +42,19 @@ class Header extends Component {
     return (
       <div className="Header">
         <header>
-          <div className="headerTopWrap">
+          <div
+            className="headerTopWrap"
+            style={
+              this.state.isSwichOn === false
+                ? {}
+                : {
+                    position: "fixed",
+                    zIndex: "10",
+                    width: "100%",
+                    backgroundColor: "#333",
+                  }
+            }
+          >
             <div className="haederTop">
               <div className="headerTopLeft">
                 <Link to="/">
@@ -97,9 +109,9 @@ class Header extends Component {
                 >
                   <ul>
                     <li>마우스+키보드</li>
-                    <Link to = "/productlist"> <li>마우스</li></Link>
+                    <li>마우스</li>
                     <li>콤보</li>
-                    <Link to = "/productlistKeyboard"> <li>키보드</li></Link>
+                    <li>키보드</li>
                     <li>iPad 키보드</li>
                     <li>태블릿 키보드</li>
                   </ul>
