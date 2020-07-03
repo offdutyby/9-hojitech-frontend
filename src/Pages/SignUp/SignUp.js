@@ -44,7 +44,7 @@ class SignUp extends Component {
     return (
       <div className = "SignUp">
         <div className = {this.props.isActive1 ? "SubSignUp show" : "SubSignUp hide"}> 
-          <div className ="overlay" >
+          <div className ="overlay" onClick={this.props.isNotActive1} >
             <div className = "container">
               <div className = "closebutton" onClick={this.props.isNotActive1}>X</div>
               <img className = "logoimage" src= "https://www.logitech.com/content/dam/logitech/en/header/logitech.svg"/>
