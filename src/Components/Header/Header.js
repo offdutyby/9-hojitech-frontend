@@ -3,7 +3,6 @@ import HeaderSearch from "./HeaderSearch";
 import { Link } from "react-router-dom";
 import LogoBk from "../../Images/logo_bk.png";
 import "./header.scss";
-
 class Header extends Component {
   constructor() {
     super();
@@ -14,19 +13,16 @@ class Header extends Component {
       headerSearchInput: "",
     };
   }
-
   componentDidMount = () => {
-    fetch("http://10.58.2.233:8000/index/")
+    fetch("http://10.58.1.89:8000/index/")
       .then((res) => res.json())
       .then((res) => this.setState({ productList: res.data }));
   };
-
   headerSearchInputChange = (e) => {
     this.setState({
       headerSearchInput: e.target.value,
     });
   };
-
   closeHeaderSearch = () => {
     this.setState({
       isSwichOn: false,
@@ -37,14 +33,12 @@ class Header extends Component {
     if (this.state.activeTab === id) this.setState({ activeTab: null });
     else this.setState({ activeTab: id });
   };
-
   render() {
     let filterText = this.state.productList.filter((list) =>
       list.product_name
         .toLocaleLowerCase()
         .includes(this.state.headerSearchInput.toLocaleLowerCase())
     );
-
     return (
       <div className="Header">
         <header>
@@ -103,9 +97,9 @@ class Header extends Component {
                 >
                   <ul>
                     <li>마우스+키보드</li>
-                    <li>마우스</li>
+                    <Link to = "/productlist"> <li>마우스</li></Link>
                     <li>콤보</li>
-                    <li>키보드</li>
+                    <Link to = "/productlistKeyboard"> <li>키보드</li></Link>
                     <li>iPad 키보드</li>
                     <li>태블릿 키보드</li>
                   </ul>
@@ -155,7 +149,6 @@ class Header extends Component {
                   </ul>
                 </div>
               </div>
-
               <div
                 className="mainNav"
                 onMouseOver={() => {
@@ -188,7 +181,6 @@ class Header extends Component {
                   </ul>
                 </div>
               </div>
-
               <div
                 className="mainNav"
                 onMouseOver={() => {
@@ -247,7 +239,6 @@ class Header extends Component {
                 src="https://img.icons8.com/material-rounded/24/000000/multiply--v1.png"
                 alt=""
               />
-
               <div
                 className="headerSearchPage"
                 style={
@@ -266,11 +257,13 @@ class Header extends Component {
                 >
                   {filterText.map((list) => {
                     return (
-                      <HeaderSearch
-                        productName={list.product_name}
-                        thumbnailImage={list.thumbnail_image}
-                        Description={list.description}
-                      />
+                      <Link to={`/productlist/${list.product_id}`}>
+                        <HeaderSearch
+                          productName={list.product_name}
+                          thumbnailImage={list.thumbnail_image}
+                          Description={list.description}
+                        />
+                      </Link>
                     );
                   })}
                 </div>
@@ -282,5 +275,4 @@ class Header extends Component {
     );
   }
 }
-
 export default Header;

@@ -4,31 +4,82 @@ import Facebook from '../../Images/facebooklogo.png'
 import Amazon from '../../Images/amazonlogo.png'
 import Google from '../../Images/googlelogo.png'
 import "./LoginModal.scss";
-
 class LoginModal extends Component {
+  constructor() {
+    super();
+    this.state = {
+      id: '',
+      pw: '',
+    };
+  }
+
+  handleButton = () => {
+    fetch("http://10.58.1.54:8000/account/sign-in", {
+      method: "POST",
+      // headers: {
+      //   Authorization: localStorage.getItem('token')
+      //},
+      body:JSON.stringify({
+        email: this.state.id,
+        password: this.state.pw
+      })
+    })
+      .then(res => {
+        console.log("first then response >>> ", res)
+        if (res.status === 200) {
+          alert("로그인 성공");
+          this.props.whenLoggedIn();
+          // this.props.isNotActive();
+          // this.props.handleLogin();
+          return res;
+        } else {
+          alert("다시 입력해주십시오");
+          return res;
+        }
+      })
+      .then(response => response.json())
+      .then(response => {
+        console.log("third then response >>> ", response)
+        if (response.token) {
+          localStorage.setItem('token', response.token);
+        }
+      })
+  };
+
+    handleID = event => {
+      this.setState({
+      id: event.target.value}); 
+    };   
+
+    handlePW = event => {
+        this.setState({
+        pw: event.target.value});
+    };
+
   render() {
     return (
-      <div className={this.props.isActive ? "LoginModal show" : "LoginModal hide"}>
+      <div className = "LoginModal">
+      <div className={this.props.isActive ? "SubLoginModal show" : "SubLoginModal hide"}>
         <div className="overlay">
           <div className="container">
-            <div className="closebutton" onClick={this.props.isNotActive} >X
-            </div>
+            <div className="closebutton" onClick={this.props.whenLoggedIn} > X </div>
             <img className="logoimage" src= "https://www.logitech.com/content/dam/logitech/en/header/logitech.svg"/>
             <p className="LoginSubtitle">Logi Id로 로그인하기</p>
-            <input className="id" type="text" placeholder= "이메일 주소"/><br></br>
-            <input className="password" type="text" placeholder="암호"/>
+            <input className="id" onChange = {this.handleID} type="text" placeholder= "이메일 주소"/><br></br>
+            <input className="password" onChange = {this.handlePW} type="password" placeholder="암호"/>
             <p className="forgotpw">암호를 잊으셨습니까?</p>
-            <button className="button" type="button">로그인</button><br></br>
+            <button className="button" onClick={this.handleButton} type="button">로그인</button><br></br>
             <button className="again">또는</button>
-            <div class="greyline"></div>
+            <div className="greyline"></div>
             <img className="facebook" src ={Facebook}/>
             <img className="amazon" src ={Amazon}/>
             <img className="google" src ={Google}/>
             <Link to="/signup"> <p class="makeaccount">{`계정만들기 >`}</p></Link>
-            <p class="logiid">{`LOGI ID 정보 >`}</p>
+            <p className="logiid">{`LOGI ID 정보 >`}</p>
           </div>
         </div> 
       </div> 
+    </div>
     )
   }
 }

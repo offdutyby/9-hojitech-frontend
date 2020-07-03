@@ -2,33 +2,44 @@ import React, { Component } from "react";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import CartProduct from "./CartProduct";
+import {API_URL_HG} from "../../config"
 import "./cart.scss";
-
 class Cart extends Component {
   state = {
     productList: [],
     totalPrice: 0,
     checked: [],
   };
-
   componentDidMount = () => {
-    fetch("http://localhost:3000/data/data.json")
+    fetch("http://10.58.5.213:8000/cart/orderlist", {
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+      },
+    })
       .then((res) => res.json())
-      .then((res) => this.setState({ productList: res.data[0].product_info }));
+      .then((res) => this.setState({ productList: res.product_info }));
   };
-
   allRemove = () => {
     this.setState({
       productList: [],
       totalPrice: "0",
       checked: [],
     });
+    fetch(`${API_URL_HG}/cart/orderremoval`, {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+      },
+      body: JSON.stringify({
+        delete:"all"
+      }),
+    });
   };
-
   selectCheckbox = (id, price) => {
     const { totalPrice } = this.state;
     const { checked } = this.state;
-
     if (checked.includes(id)) {
       this.setState({
         totalPrice: totalPrice - price,
@@ -41,17 +52,25 @@ class Cart extends Component {
       });
     }
   };
-
   selectRemove = () => {
     const { productList } = this.state;
     const { checked } = this.state;
-
     const filterddarr = productList.filter((product, index) => {
       return !checked.includes(product.id);
+
     });
     this.setState({ productList: filterddarr, checked: [], totalPrice: 0 });
+    fetch(`${API_URL_HG}/cart/orderremoval`, {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+      },
+      body: JSON.stringify({
+        delete:this.state.checked
+      }),
+    });
   };
-
   deleteProds = (idx) => {
     const { productList } = this.state;
     const deletedList = productList.splice(idx, 1);
@@ -59,8 +78,35 @@ class Cart extends Component {
       productList: deletedList,
     });
   };
-
+  purchaseHandler = () => {
+    if(this.state.checked.length===0){
+    fetch(`${API_URL_HG}/cart/purchase`, {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+      },
+      body: JSON.stringify({
+        purchase:"all"
+      }),
+    });
+    this.setState({checked:[]})
+    window.location.reload();
+  } else if (this.state.checked.length >0){
+    fetch(`${API_URL_HG}/cart/purchase`, {
+      method: "POST",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+      },
+      body: JSON.stringify({
+        purchase:this.state.checked
+      }),
+    });
+  }
+  }
   render() {
+    console.log(this.state.productList.length !== 0 && this.state.checked);
     return (
       <>
         <Header />
@@ -107,7 +153,7 @@ class Cart extends Component {
                   {this.state.totalPrice}
                 </span>
               </span>
-              <button className="purchase">구매하기</button>
+              <button className="purchase" onClick={this.purchaseHandler}>구매하기</button>
             </div>
           </div>
         </div>
@@ -116,5 +162,4 @@ class Cart extends Component {
     );
   }
 }
-
 export default Cart;

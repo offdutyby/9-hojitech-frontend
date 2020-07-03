@@ -16,7 +16,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch("http://10.58.1.89:8000/product/mice")
+    fetch("http://10.58.5.151:8000/product/mice")
       .then((res) => res.json())
       .then((res) => this.setState({ realData: res.data }));
   }
@@ -26,7 +26,7 @@ class ProductList extends Component {
   };
 
   handleData = (num) => {
-    fetch(`http://10.58.1.89:8000/product/mice/filter?filter=${num}`)
+    fetch(`http://10.58.5.151:8000/product/mice/filter?filter=${num}`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
