@@ -13,8 +13,7 @@ class Cart extends Component {
   componentDidMount = () => {
     fetch("http://10.58.5.213:8000/cart/orderlist", {
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+        Authorization: localStorage.getItem('token'),
       },
     })
       .then((res) => res.json())
@@ -29,8 +28,7 @@ class Cart extends Component {
     fetch(`${API_URL_HG}/cart/orderremoval`, {
       method: "POST",
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         delete:"all"
@@ -64,7 +62,7 @@ class Cart extends Component {
       method: "POST",
       headers: {
         Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+        localStorage.getItem("token"),
       },
       body: JSON.stringify({
         delete:this.state.checked
@@ -83,8 +81,7 @@ class Cart extends Component {
     fetch(`${API_URL_HG}/cart/purchase`, {
       method: "POST",
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         purchase:"all"
@@ -96,8 +93,7 @@ class Cart extends Component {
     fetch(`${API_URL_HG}/cart/purchase`, {
       method: "POST",
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+        Authorization: localStorage.getItem('token'),
       },
       body: JSON.stringify({
         purchase:this.state.checked
@@ -139,7 +135,6 @@ class Cart extends Component {
                       productPrice={product.price}
                       quantity={product.quantity}
                       deleteProds={this.deleteProds}
-                      //totalPrice={this.totalPrice}
                       selectCheckbox={this.selectCheckbox}
                     />
                   );

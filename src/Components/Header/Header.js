@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import HeaderSearch from "./HeaderSearch";
 import { Link } from "react-router-dom";
+import {API_URL_HJ} from "../../config"
 import LogoBk from "../../Images/logo_bk.png";
 import "./header.scss";
 class Header extends Component {
@@ -14,7 +15,7 @@ class Header extends Component {
     };
   }
   componentDidMount = () => {
-    fetch("http://10.58.1.89:8000/index/")
+    fetch(`${API_URL_HJ}/index`)
       .then((res) => res.json())
       .then((res) => this.setState({ productList: res.data }));
   };
@@ -49,7 +50,7 @@ class Header extends Component {
                 ? {}
                 : {
                     position: "fixed",
-                    zIndex: "10",
+                    zIndex: "12",
                     width: "100%",
                     backgroundColor: "#333",
                   }
@@ -84,7 +85,8 @@ class Header extends Component {
                   ></img>
                   KO
                 </Link>
-                <Link to="/cart">장바구니</Link>
+                {localStorage.getItem('token')? <Link to="/cart" >장바구니</Link> : <Link onClick={()=>alert('로그인이 필요합니다.')} >장바구니</Link>}
+             
                 <Link to="/login">내 계정</Link>
               </div>
             </div>
@@ -109,9 +111,9 @@ class Header extends Component {
                 >
                   <ul>
                     <li>마우스+키보드</li>
-                    <li>마우스</li>
+                    <li><Link className="li" to ="/productlist">마우스</Link></li>
                     <li>콤보</li>
-                    <li>키보드</li>
+                    <li><Link className="li" to ="/productlistkeyboard">키보드</Link></li>
                     <li>iPad 키보드</li>
                     <li>태블릿 키보드</li>
                   </ul>

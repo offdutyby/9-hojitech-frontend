@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {API_URL_HG} from "../../config"
 import { Link } from 'react-router-dom';
 import Facebook from '../../Images/facebooklogo.png'
 import Amazon from '../../Images/amazonlogo.png'
@@ -14,7 +15,7 @@ class LoginModal extends Component {
   }
 
   handleButton = () => {
-    fetch("http://10.58.1.54:8000/account/sign-in", {
+    fetch(`${API_URL_HG}/account/sign-in`, {
       method: "POST",
       // headers: {
       //   Authorization: localStorage.getItem('token')
@@ -37,11 +38,10 @@ class LoginModal extends Component {
           return res;
         }
       })
-      .then(response => response.json())
-      .then(response => {
-        console.log("third then response >>> ", response)
-        if (response.token) {
-          localStorage.setItem('token', response.token);
+      .then(response => response.json()) 
+      .then(res => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
         }
       })
   };

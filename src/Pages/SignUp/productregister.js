@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
+import {API_URL_YJ} from '../../config';
 import "./productregister.scss";
-
 class ProductRegister extends Component { 
   constructor() {
     super();
@@ -12,11 +12,21 @@ class ProductRegister extends Component {
       productname: " "
     };
   }
-
-  useFetch = (e) => {
+  componentDidMount() {
+    fetch(`${API_URL_YJ}/account/register`, {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      },
+    })
+      .then(res => res.json())
+      .then(res => {
+        console.log(res)
+        this.setState({originalProducts: res.data})
+    })
+  }
+  HandleFilter = (e) => {
     const option = e.target.value
     let filterList = [];
-
     if (option === "keyboard") {
       filterList = this.state.originalProducts.filter(element => {
         return element.cate_name === "키보드"
@@ -26,40 +36,26 @@ class ProductRegister extends Component {
         return element.cate_name === "마우스"
       })
     }
-  
     this.setState({
       filteredProducts: filterList
     })
   }
-
     handleDropDown2 = (e) => {
       this.setState({ productname: e.target.value });
     }
-
     handleButton = () => {
-      fetch("http://10.58.1.54:8000/account/register", {
+      fetch(`${API_URL_YJ}/account/register`, {
         method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("token")
+        },
         body: JSON.stringify({
           model_name: this.state.productname
         })
       })
+      alert("제품 등록이 완료되었습니다.")
     };
-
-  componentDidMount() {
-    fetch("http://localhost:3000/data/dataRegister.json", {
-      headers: {
-        Authorization: localStorage.getItem('token')
-        },
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res)
-        this.setState({originalProducts: res.data})
-    })
-  }
-
   render() {
-
     return (
       <>
         <Header />
@@ -70,7 +66,7 @@ class ProductRegister extends Component {
             <h3>제품 범주를 선택하여 제품을 찾으십시오.</h3>
             <p className= "select1">제품 범주 선택</p>
             <div className= "subcontainer">
-              <select className= "dropdown1" name="product" id="product" onChange= {this.useFetch}>
+              <select className= "dropdown1" name="product" id="product" onChange= {this.HandleFilter}>
                 <option value="------">------</option>
                 <option value="keyboard">키보드</option>
                 <option value="mouse">마우스</option>
@@ -90,5 +86,4 @@ class ProductRegister extends Component {
     )
   }
 }
-
 export default ProductRegister

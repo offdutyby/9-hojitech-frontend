@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {API_URL_HJ} from "../../config"
 import Card from "../../Components/Card/Card";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
@@ -16,7 +17,7 @@ class ProductListKeyboard extends Component {
   }
 
   componentDidMount() {
-    fetch("http://10.58.5.151:8000/product/test/")
+    fetch(`${API_URL_HJ}/product/keyboards`)
       .then((res) => res.json())
       .then((res) => this.setState({ realData: res.data }));
   }
@@ -26,7 +27,7 @@ class ProductListKeyboard extends Component {
   };
 
   handleData = (num) => {
-    fetch(`http://10.58.5.151:8000/product/test/?filter=${num}`)
+    fetch(`${API_URL_HJ}/product/keyboards/filter?filter=${num}`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({

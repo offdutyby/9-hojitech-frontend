@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom';
+import {API_URL_HG} from "../../config"
 import "./signup.scss";
 class SignUp extends Component { 
   constructor() {
@@ -19,7 +19,7 @@ class SignUp extends Component {
   };
   
   handleButton = () => {
-    fetch("http://10.58.60.234:8000/account/sign-up", {
+    fetch(`${API_URL_HG}/account/sign-up`, {
       method: "POST",
       body:JSON.stringify({
         email: this.state.id,

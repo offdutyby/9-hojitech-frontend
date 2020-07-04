@@ -35,11 +35,15 @@ class Product extends Component {
   }
 
   cartHandler = () => {
+    
+      localStorage.getItem('token') ? alert('장바구니에 추가되었습니다.') :alert('로그인이 필요합니다.');
+      
     fetch(`${API_URL_HG}/cart/order`, {
+      
       method: "POST",
       headers: {
         Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.aSotmF-u-BxCD-U_jbFTRpZf6P-AHDKRhBynD-21DvA",
+        localStorage.getItem("token"),
       },
       body: JSON.stringify({
         product_id: this.state.htmlBody.product_id,

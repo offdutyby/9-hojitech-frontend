@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Card from "../../Components/Card/Card";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
+import {API_URL_HJ} from '../../config';
 import "../ProductList/hello.scss";
 
 class ProductList extends Component {
@@ -16,7 +17,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    fetch("http://10.58.5.151:8000/product/mice")
+    fetch(`${API_URL_HJ}/product/mice`)
       .then((res) => res.json())
       .then((res) => this.setState({ realData: res.data }));
   }
@@ -26,7 +27,7 @@ class ProductList extends Component {
   };
 
   handleData = (num) => {
-    fetch(`http://10.58.5.151:8000/product/mice/filter?filter=${num}`)
+    fetch(`${API_URL_HJ}/product/mice/filter?filter=${num}`)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
