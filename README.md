@@ -8,6 +8,7 @@
 <br>참여인원: 총 6명 ( Frontend:3명 / Backend:3명 )
 <br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LboMYtqNiD4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Video Label](https://www.youtube.com/embed/LboMYtqNiD4)](https://www.youtube.com/embed/LboMYtqNiD4)
 
 ### Tech Stack
 
