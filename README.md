@@ -7,7 +7,7 @@
 <br>기간 : 2020.06.22 ~ 2020.07.03(2주) 
 <br>참여인원: 총 6명 ( Frontend:3명 / Backend:3명 )
 <br>
-<video id="myVideo" src="https://youtu.be/LboMYtqNiD4" controls autoplay></video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LboMYtqNiD4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Tech Stack
 
