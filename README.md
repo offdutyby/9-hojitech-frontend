@@ -6,9 +6,7 @@
 제품 소개, 정품 등록 위주의 홈페이지로 구배나 장바구니 부분은 구현되어 있지 않은 상태여서, 팀에서 추가로 기획하여 제작했습니다.**
 <br>기간 : 2020.06.22 ~ 2020.07.03(2주) 
 <br>참여인원: 총 6명 ( Frontend:3명 / Backend:3명 )
-<br>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LboMYtqNiD4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-[![Video Label](https://www.youtube.com/embed/LboMYtqNiD4)](https://www.youtube.com/embed/LboMYtqNiD4)
+<br><a rel="https://www.youtube.com/embed/LboMYtqNiD4">영상링크</a>
 
 ### Tech Stack
 
